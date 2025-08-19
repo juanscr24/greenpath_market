@@ -1,6 +1,0 @@
-Configuraciones globales 
-Ej variables de entorno 
-DB_URL JWT_SECRET, ETC
-
-DEPENDENCIAS.PY 
-DEPENDENCIAS DE FASTAPI GET_DB, AUTENTICACION 
