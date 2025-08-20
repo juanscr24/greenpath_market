@@ -1,8 +1,40 @@
 {
     "users": [
         {
-            "username": "juan",
-            "password": "123"
+            "id": "b31d",
+            "fullName": "Juan Cardona",
+            "userName": "juanscr",
+            "email": "juan@gmail.com",
+            "address": "cra 20 # 20 20",
+            "documentType": "id",
+            "documentNumber": "10000000",
+            "password": "12345",
+            "passwordAgain": "12345",
+            "role": "client"
+        },
+        {
+            "id": "594d",
+            "fullName": "juan cardona",
+            "userName": "juanscr1",
+            "email": "juan@hotmail.com",
+            "address": "cra 20 20 20",
+            "documentType": "id",
+            "documentNumber": "11000000",
+            "password": "12345",
+            "passwordAgain": "12345",
+            "role": "seller"
+        },
+        {
+            "id": "9f86",
+            "fullName": "juan",
+            "userName": "juan2",
+            "email": "juan2@gmail.com",
+            "address": "cra 20 20",
+            "documentType": "id",
+            "documentNumber": "231421",
+            "password": "12345",
+            "passwordAgain": "12345",
+            "role": "seller"
         }
     ]
 }
