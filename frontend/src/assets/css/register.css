@@ -46,7 +46,7 @@
     z-index: 2;
 }
 
-#btnUp {
+#btnSign {
     position: absolute;
     bottom: 1;
     left: 70px;
@@ -63,11 +63,11 @@
     cursor: pointer;
 }
 
-#btnUp:hover {
+#btnSign:hover {
     background-position: right center;
 }
 
-#btnUp a {
+#btnSign a {
     outline: none;
     text-decoration: none;
     color: #D9D9D9;
@@ -94,8 +94,14 @@
     background: #07110C;
 }
 
+#fullName,
+#documentType,
+#email,
 #userName,
-#password {
+#password,
+#passwordAgain,
+#address
+{
     text-decoration: none;
     padding: 10px;
     width: 70%;
@@ -109,7 +115,7 @@
 }
 
 
-#btnSign {
+#btnUp {
     margin-top: 50px;
     padding: 15px 45px;
     border-radius: 30px;
