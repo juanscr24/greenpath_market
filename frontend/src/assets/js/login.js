@@ -2,9 +2,9 @@ import axios from "axios";
 import { endpointUsers } from "./main.js"; // ajusta la ruta si es necesario
 
 // Función para login
-async function loginUser(username, password) {
+async function loginUser(userName, password) {
     const { data } = await axios.get(
-        `${endpointUsers}?email=${username}&password=${password}`
+        `${endpointUsers}?userName=${userName}&password=${password}`
     );
 
     if (data.length > 0) {

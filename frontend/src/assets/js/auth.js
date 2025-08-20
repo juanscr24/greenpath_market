@@ -23,9 +23,9 @@ function toggleForm() {
             "https://res.cloudinary.com/dd7vy0y6n/image/upload/f_auto,q_auto/v1755644602/back-login_vtle9y.jpg";
 
         $form.innerHTML = `
-            <input id="userName" type="text" placeholder="U S E R N A M E">
-            <input id="password" type="password" placeholder="P A S S W O R D">
-            <input id="btnSign" type="button" value="S I G N   I N">
+            <input id="userName" type="text" placeholder="EMAIL OR USERNAME">
+            <input id="password" type="password" placeholder="PASSWORD">
+            <input id="btnSign" type="button" value="SIGN IN">
         `;
 
         $containerToggle.innerHTML = `
@@ -39,14 +39,26 @@ function toggleForm() {
             "https://res.cloudinary.com/dd7vy0y6n/image/upload/f_auto,q_auto/v1755644601/back-register_uiimdr.jpg";
 
         $form.innerHTML = `
-            <input id="fullName" type="text" placeholder="F U L L   N A M E">
-            <input id="documentType" type="text" placeholder="D O C U M E N T   T Y P E">
-            <input id="email" type="email" placeholder="E M A I L">
-            <input id="userName" type="text" placeholder="U S E R N A M E">
-            <input id="password" type="password" placeholder="P A S S W O R D">
-            <input id="passwordAgain" type="password" placeholder="P A S S W O R D   A G A I N">
-            <input id="address" type="text" placeholder="A D D R E S S">
-            <input id="btnUp" type="button" value="R E G I S T E R">
+            <input id="fullName" type="text" placeholder="FULL NAME">
+            <input id="userName" type="text" placeholder="USERNAME">
+            <input id="email" type="email" placeholder="EMAIL">
+            <input id="address" type="text" placeholder="ADDRESS">
+            <select name="documentType" id="documentType" required>
+                <option value="" disabled selected>SELECT DOCUMENT TYPE...</option>
+                <option value="id">NATIONAL ID</option>
+                <option value="identityCard">IDENTITY CARD</option>
+                <option value="foreignId">FOREIGN ID</option>
+                <option value="passport">PASSPORT</option>
+            </select>
+            <input id="documentNumber" type="text" placeholder="DOCUMENT NUMBER">
+            <input id="password" type="password" placeholder="PASSWORD">
+            <input id="passwordAgain" type="password" placeholder="PASSWORD AGAIN">
+            <select name="role" id="role" required>
+                <option value="" disabled selected>WHAT DO YOU WANT TO DO?</option>
+                <option value="seller">BE A SELLER</option>
+                <option value="client">BE A CLIENT</option>
+            </select>
+            <input id="btnUp" type="submit" value="REGISTER">
         `;
 
         $containerToggle.innerHTML = `
