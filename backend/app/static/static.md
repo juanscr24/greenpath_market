@@ -1,1 +1,0 @@
-Archivos staticos (Si llegas a servir imagenes, docs, etc)

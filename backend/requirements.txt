@@ -1,4 +1,0 @@
-Tus dependencias 
-FastAPI 
-dotenv 
-Etc
