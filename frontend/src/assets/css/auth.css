@@ -1,0 +1,27 @@
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 600px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.slider {
+    display: flex;
+    width: 200%;
+    /* 2 vistas (login y register) */
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+}
+
+.register-container,
+.login-container {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}

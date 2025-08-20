@@ -9,6 +9,7 @@ export default defineConfig({
                 login: resolve(__dirname, "./src/views/login.html"),
                 register: resolve(__dirname, "./src/views/register.html"),
                 dashboard: resolve(__dirname, "./src/views/dashboard.html"),
+                auth: resolve(__dirname, "./src/views/auth.html"),
             },
         },
     },
