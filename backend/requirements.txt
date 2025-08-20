@@ -1,0 +1,17 @@
+# Framework principal
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Base de datos
+sqlalchemy==2.0.23
+pymysql==1.1.0
+
+# Validación de datos
+pydantic==2.5.0
+pydantic[email]==2.5.0
+
+# Encriptación de contraseñas
+passlib[bcrypt]==1.7.4
+
+# Variables de entorno
+python-dotenv==1.0.0
