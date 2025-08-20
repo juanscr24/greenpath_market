@@ -1,27 +1,172 @@
-.slider-container {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0;
+    background: #07110C;
+}
+
+.container {
     position: relative;
     width: 100%;
-    max-width: 900px;
-    height: 600px;
-    margin: auto;
+    height: 100vh;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.slider {
-    display: flex;
-    width: 200%;
-    /* 2 vistas (login y register) */
-    height: 100%;
-    transition: transform 0.8s ease-in-out;
-}
-
-.register-container,
-.login-container {
+.form-container {
+    position: absolute;
     width: 50%;
+    height: 100%;
+    top: 0;
+    background: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 30px;
+    flex-direction: column;
+    transition: transform 0.8s ease;
+    z-index: 2;
+    background: #07110C;
+    color: white;
+}
+
+.form-container h2 {
+    font-size: 50px;
+    align-self: flex-start;
+    margin-left: 14%;
+    margin-bottom: 30px;
+
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    color: white;
+    background: #07110C;
+}
+
+#form input::placeholder{
+    color: white;
+}
+
+.image-container {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    z-index: 1;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estado Login -> form izquierda, imagen derecha */
+.container.login .form-container {
+    transform: translateX(0%);
+}
+
+.container.login .image-container {
+    transform: translateX(100%);
+}
+
+/* Estado Register -> form derecha, imagen izquierda */
+.container.register .form-container {
+    transform: translateX(100%);
+}
+
+.container.register .image-container {
+    transform: translateX(0%);
+}
+
+#fullName,
+#documentType,
+#email,
+#userName,
+#password,
+#passwordAgain,
+#address
+{
+    text-decoration: none;
+    padding: 10px;
+    width: 70%;
+    background: transparent;
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #284827, #1DD317) 1;
+    color: white;
+    font-size: 14px;
+}
+
+#toggleRegister, 
+#toggleLogin {
+    position: absolute;
+    transform: translateX(-50%);
+    font-weight: 600;
+    background: linear-gradient(to right, #284827, #1DD317);
+    background-size: 200% auto;
+    background-position: left center;
+    transition: background-position 0.8s ease-in-out;
+    padding: 14px 40px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+#toggleLogin {
+    top: 0;
+    left: 85px;
+    border-bottom-right-radius: 30px;
+}
+
+#toggleRegister {
+    top: 0;
+    right: -95px;
+    border-bottom-left-radius: 30px;
+}
+
+#toggleRegister:hover, 
+#toggleLogin:hover {
+    background-position: right center;
+}
+
+#btnSign, #btnUp {
+    margin-top: 50px;
+    padding: 15px 45px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(to right, #284827, #1DD317);
+    background-size: 200% auto;
+    background-position: left center;
+    transition: background-position 0.8s ease-in-out;
+}
+
+#btnSign:hover, #btnUp:hover {
+    background-position: right center;
 }

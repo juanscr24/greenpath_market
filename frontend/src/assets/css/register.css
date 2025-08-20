@@ -6,7 +6,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-.login-container {
+.register-container {
     display: flex;
 }
 
@@ -82,7 +82,7 @@
     margin-bottom: 30px;
 }
 
-.login-container form {
+.register-container form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,7 +115,7 @@
 }
 
 
-#btnUp {
+#goRegister {
     margin-top: 50px;
     padding: 15px 45px;
     border-radius: 30px;
@@ -130,7 +130,7 @@
     transition: background-position 0.8s ease-in-out;
 }
 
-#btnSign:hover {
+#goLogin:hover {
     background-position: right center;
 }
 
@@ -139,12 +139,12 @@ form input::placeholder {
     color: white;
 }
 
-.login-container form .containerIcons {
+.register-container form .containerIcons {
     display: flex;
     gap: 20px;
 }
 
-.login-container form .containerIcons img {
+.register-container form .containerIcons img {
     width: 30px;
     cursor: pointer;
 }

@@ -5,104 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Register Slide</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #f0f0f0;
-        }
-
-        .container {
-            position: relative;
-            width: 800px;
-            height: 500px;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .form-container {
-            position: absolute;
-            width: 50%;
-            height: 100%;
-            top: 0;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: transform 0.8s ease;
-            z-index: 2;
-        }
-
-        .form-container h2 {
-            margin-bottom: 20px;
-        }
-
-        .form-container input {
-            margin: 8px 0;
-            padding: 10px;
-            width: 70%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .form-container button {
-            margin-top: 15px;
-            padding: 10px 25px;
-            border: none;
-            border-radius: 20px;
-            background: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-
-        .image-container {
-            position: absolute;
-            width: 50%;
-            height: 100%;
-            top: 0;
-            transition: transform 0.8s ease, opacity 0.8s ease;
-            z-index: 1;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Estado Login -> form izquierda, imagen derecha */
-        .container.login .form-container {
-            transform: translateX(0%);
-        }
-
-        .container.login .image-container {
-            transform: translateX(100%);
-        }
-
-        /* Estado Register -> form derecha, imagen izquierda */
-        .container.register .form-container {
-            transform: translateX(100%);
-        }
-
-        .container.register .image-container {
-            transform: translateX(0%);
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    <script type="module" src="../assets/js/guard/login.guard.js"></script>
 </head>
 
 <body>
     <div class="container login" id="container">
-        <div class="form-container" id="form">
+        <div class="form-container" id="form-container">
             <h2 id="formTitle">Login</h2>
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <button id="toggleBtn">Go to Register</button>
+            <form action="form" id="form">
+                <input id="userName" type="text" placeholder="U S E R N A M E">
+                <input id="password" type="password" placeholder="P A S S W O R D">
+                <input id="btnSign" type="button" value="S I G N   I N">
+            </form>
+            <div id="containerToggle">
+            </div>
         </div>
 
         <div class="image-container">
@@ -112,31 +29,9 @@
         </div>
     </div>
 
-    <script>
-        const container = document.getElementById("container");
-        const formTitle = document.getElementById("formTitle");
-        const toggleBtn = document.getElementById("toggleBtn");
-        const img = document.getElementById("img")
-
-        let isLogin = true;
-
-        toggleBtn.addEventListener("click", () => {
-            isLogin = !isLogin;
-            if (isLogin) {
-                container.classList.add("login");
-                container.classList.remove("register");
-                formTitle.innerText = "Login";
-                toggleBtn.innerText = "Go to Register";
-                img.src = 'https://res.cloudinary.com/dd7vy0y6n/image/upload/f_auto,q_auto/v1755644602/back-login_vtle9y.jpg';
-            } else {
-                container.classList.add("register");
-                container.classList.remove("login");
-                formTitle.innerText = "Register";
-                toggleBtn.innerText = "Go to Login";
-                img.src = 'https://res.cloudinary.com/dd7vy0y6n/image/upload/f_auto,q_auto/v1755644601/back-register_uiimdr.jpg';
-            }
-        });
-    </script>
+<script type="module" src="../assets/js/auth.js"></script>
+<script type="module" src="../assets/js/login.js"></script>
+<script type="module" src="../assets/js/register.js"></script>
 </body>
 
 </html>
