@@ -31,7 +31,7 @@ CREATE TABLE users (
     document_number VARCHAR(20) NOT NULL,
     id_rol INT,
     id_document_type INT,
-    FOREIGN KEY (id_Rol) REFERENCES roles(id_Rol) ON DELETE SET NULL,
+    FOREIGN KEY (id_rol) REFERENCES roles(id_rol) ON DELETE SET NULL,
     FOREIGN KEY (id_document_type) REFERENCES document(id_document_type) ON DELETE SET NULL
 );
 
@@ -104,7 +104,7 @@ CREATE TABLE payments (
     payment_amount DECIMAL(10, 2) NOT NULL,
     payment_date DATETIME NOT NULL,
     FOREIGN KEY (id_order) REFERENCES user_order(id_order) ON DELETE CASCADE,
-    FOREIGN KEY (id_payment_option) REFERENCES payment_Options(id_Option) ON DELETE CASCADE
+    FOREIGN KEY (id_payment_option) REFERENCES payment_options(id_option) ON DELETE CASCADE
 );
 
 --create the table of the shipments
