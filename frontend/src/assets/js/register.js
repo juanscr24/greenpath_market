@@ -5,7 +5,7 @@ const $form = document.getElementById("form");
 
 $form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
+    // Get all elements by ID
     const user = {
         fullName: document.getElementById("fullName").value.trim(),
         userName: document.getElementById("userName").value.trim(),
@@ -18,14 +18,14 @@ $form.addEventListener("submit", async (e) => {
         role: document.getElementById("role").value,
     };
 
-    // Validación contraseñas
+    // Validated password
     if (user.password !== user.passwordAgain) {
         alert("Passwords do not match!");
         return;
     }
 
     try {
-        // Obtener usuarios existentes
+        // get exists users
         const { data: users } = await axios.get(endpointUsers);
 
         // Validaciones de duplicados
@@ -44,18 +44,18 @@ $form.addEventListener("submit", async (e) => {
             return;
         }
 
-        // Crear usuario
+        // Create User
         const { data: newUser } = await axios.post(endpointUsers, user);
 
         console.log("User registered:", newUser);
 
-        // Guardar en localStorage para dejarlo logeado
+        // Save in localStorage 
         localStorage.setItem("user", JSON.stringify(newUser));
 
         alert("User created and logged in!");
         $form.reset();
 
-        // Redirigir al dashboard
+        // Go to the Dashboard
         window.location.href = "/src/views/dashboard.html";
 
     } catch (error) {

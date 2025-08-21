@@ -1,9 +1,11 @@
+// Get all elements by ID
 const $container = document.getElementById("container");
 const $form = document.getElementById("form");
 const $formTitle = document.getElementById("formTitle");
 const $img = document.getElementById("img");
 const $containerToggle = document.getElementById("containerToggle");
 
+// Validate Login
 let isLogin = true;
 
 $containerToggle.addEventListener("click", (e) => {
@@ -11,10 +13,10 @@ $containerToggle.addEventListener("click", (e) => {
         toggleForm();
     }
 });
-
+// SPA for Register and Login
 function toggleForm() {
     isLogin = !isLogin;
-
+    // Login form
     if (isLogin) {
         $container.classList.add("login");
         $container.classList.remove("register");
@@ -31,6 +33,7 @@ function toggleForm() {
         $containerToggle.innerHTML = `
             <button id="toggleRegister">Go to Register</button>
         `;
+    // Register Form
     } else {
         $container.classList.add("register");
         $container.classList.remove("login");

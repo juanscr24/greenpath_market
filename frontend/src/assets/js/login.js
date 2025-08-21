@@ -1,7 +1,7 @@
 import axios from "axios";
 import { endpointUsers } from "./main.js"; // ajusta la ruta si es necesario
 
-// Función para login
+// Login Function 
 async function loginUser(userName, password) {
     const { data } = await axios.get(
         `${endpointUsers}?userName=${userName}&password=${password}`
@@ -15,12 +15,12 @@ async function loginUser(userName, password) {
     }
 }
 
-// Capturar elementos del DOM
+// Get Elements DOM
 const btnSign = document.getElementById("btnSign");
 const inputUser = document.getElementById("userName");
 const inputPass = document.getElementById("password");
 
-// Evento de login
+// Login Event
 btnSign.addEventListener("click", async () => {
     const username = inputUser.value.trim();
     const password = inputPass.value.trim();
@@ -32,7 +32,7 @@ btnSign.addEventListener("click", async () => {
 
     try {
         const user = await loginUser(username, password);
-        // ✅ Redirigir al dashboard.html en tu MPA
+        // Go to Dashboard
         window.location.href = "/src/views/dashboard.html";
     } catch (err) {
         alert("Credenciales incorrectas");
