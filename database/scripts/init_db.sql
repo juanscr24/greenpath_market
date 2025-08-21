@@ -26,6 +26,8 @@ CREATE TABLE categories (
     name_category VARCHAR(40) UNIQUE NOT NULL
 );
 
+insert into categories(name_category) values("technology"),("home");
+
 -- create the table of the users
 CREATE TABLE users (
     id_user INT AUTO_INCREMENT PRIMARY KEY,
@@ -120,3 +122,4 @@ CREATE TABLE shipments (
     FOREIGN KEY (id_order) REFERENCES user_orders(id_order) ON DELETE CASCADE,
     FOREIGN KEY (id_shipping_status) REFERENCES shipping_states(id_shipping_status) ON DELETE SET NULL
 );
+
