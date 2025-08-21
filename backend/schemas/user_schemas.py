@@ -1,11 +1,11 @@
-# Importamos BaseModel de Pydantic para validar datos
+# We import BaseModel from Pydantic to validate data
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 from datetime import datetime
 
-# Esquema para crear un nuevo usuario (lo que recibe la API)
+# Schema to create a new user (what the API receives)
 class UserCreate(BaseModel):
-    """Esquema para validar los datos al crear un usuario"""
+
     name: str = Field(..., min_length=2, max_length=100, description="Nombre del usuario")
     surname: str = Field(..., min_length=2, max_length=100, description="Apellido del usuario")
     url: Optional[str] = Field(None, max_length=255, description="URL personal (opcional)")
@@ -13,15 +13,14 @@ class UserCreate(BaseModel):
     email: EmailStr = Field(..., description="Email válido")
     password: str = Field(..., min_length=6, description="Contraseña (mínimo 6 caracteres)")
 
-# Esquema para login
+# Login scheme
 class UserLogin(BaseModel):
-    """Esquema para validar los datos de login"""
     email: EmailStr = Field(..., description="Email del usuario")
     password: str = Field(..., description="Contraseña del usuario")
 
-# Esquema para la respuesta de usuario (lo que devuelve la API)
+# Schema for the user response (what the API returns)
 class UserResponse(BaseModel):
-    """Esquema para formatear la respuesta de usuario"""
+    """Schema for formatting user response"""
     id: int
     name: str
     surname: str
@@ -30,13 +29,13 @@ class UserResponse(BaseModel):
     email: str
     created_at: datetime
     
-    # Configuración para que Pydantic trabaje con objetos SQLAlchemy
+    # Configuring Pydantic to work with SQLAlchemy objects
     class Config:
-        from_attributes = True  # Permite usar objetos SQLAlchemy directamente
+        from_attributes = True 
 
 # Esquema para actualizar un usuario
 class UserUpdate(BaseModel):
-    """Esquema para validar datos al actualizar un usuario"""
+    """Schema for validating data when updating a user"""
     name: Optional[str] = Field(None, min_length=2, max_length=100)
     surname: Optional[str] = Field(None, min_length=2, max_length=100)
     url: Optional[str] = Field(None, max_length=255)

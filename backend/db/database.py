@@ -1,24 +1,24 @@
-# Importaciones necesarias para SQLAlchemy
+# Imports needed for SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from config.config import SQLALCHEMY_DATABASE_URL, DATABASE_CONFIG
 
-# Motor de conexión MySQL
+# MySQL Connection Engine
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
     **DATABASE_CONFIG
 )
 
-# Fábrica de sesiones
+# Session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Clase base para modelos
+# Base class for models
 Base = declarative_base()
 
-# Dependencia de base de datos para FastAPI
+# Database dependency for FastAPI
 def get_db():
-    """Proporciona una sesión de base de datos"""
+    """Provides a database session"""
     db = SessionLocal()
     try:
         yield db

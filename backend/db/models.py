@@ -1,23 +1,23 @@
-# Importamos las herramientas necesarias de SQLAlchemy para definir modelos
+# We import the necessary tools from SQLAlchemy to define models
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.sql import func
-from db.database import Base  # Importamos la clase Base desde database.py
+from db.database import Base 
 
-# Definimos el modelo User que representa la tabla 'users' en la base de datos
+# We define the User model that represents the 'users' table in the databases
 class User(Base):
-    __tablename__ = "users"  # Nombre de la tabla en la base de datos
+    __tablename__ = "users"  
     
-    # Definimos las columnas de la tabla
-    id = Column(Integer, primary_key=True, index=True)  # ID único, clave primaria
-    name = Column(String(100), nullable=False)  # Nombre del usuario, no puede ser nulo
-    surname = Column(String(100), nullable=False)  # Apellido del usuario, no puede ser nulo
-    url = Column(String(255), nullable=True)  # URL personal, puede estar vacía
-    age = Column(Integer, nullable=False)  # Edad del usuario, no puede ser nula
-    email = Column(String(255), unique=True, index=True, nullable=False)  # Email único para cada usuario
-    password_hash = Column(String(255), nullable=False)  # Contraseña encriptada
+   # We define the table columns
+    id = Column(Integer, primary_key=True, index=True)  
+    name = Column(String(100), nullable=False)  
+    surname = Column(String(100), nullable=False)  
+    url = Column(String(255), nullable=True)  
+    age = Column(Integer, nullable=False)  
+    email = Column(String(255), unique=True, index=True, nullable=False)  
+    password_hash = Column(String(255), nullable=False)  
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     
     def __repr__(self):
-        """Representación en string del objeto User para debugging"""
+        """String representation of the User object for debugging"""
         return f"<User(id={self.id}, name={self.name}, email={self.email})>"

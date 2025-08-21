@@ -1,35 +1,34 @@
-# Importamos FastAPI (framework para crear APIs)
+# We import FastAPI (framework for creating APIs)
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# Importamos los routers desde la carpeta api
+# We import the routers from the api folder
 from api import login, register
 from db.database import Base, engine
 
-# Crear las tablas en la base de datos
+# Create the tables in the database
 Base.metadata.create_all(bind=engine)
 
-# Creamos la instancia principal de FastAPI
+# We create the main FastAPI instance
 app = FastAPI(
     title="GreenPath Market API",
     description="API para marketplace de productos sostenibles",
     version="1.0.0"
 )
 
-# Configurar CORS
+# Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # En producción, especifica los dominios permitidos
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# --- ROUTERS ---
-# Incluimos todos los routers de la carpeta api
-app.include_router(register.router)  # Ya tiene el prefix="/register" en el router
-app.include_router(login.router)     # Ya tiene el prefix="/login" en el router
+# We include all the routers in the api folder
+app.include_router(register.router) 
+app.include_router(login.router)     
 
-# --- RUTAS PRINCIPALES ---
+# --- MAIN ROUTES ---
 @app.get("/")
 async def root():
     return {"message": "GreenPath API - Backend con MySQL", "status": "running"}

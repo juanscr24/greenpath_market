@@ -1,10 +1,10 @@
-# Importamos las herramientas necesarias
+# We import the necessary tools
 from sqlalchemy.orm import Session
-from db.models import User  # Importamos el modelo User
-from schemas.user_schemas import UserCreate  # Importamos los esquemas
-from passlib.context import CryptContext  # Para encriptar contraseñas
+from db.models import User  
+from schemas.user_schemas import UserCreate  
+from passlib.context import CryptContext  
 
-# Configuramos el contexto de encriptación de contraseñas
+# We configure the password encryption context+6
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def get_password_hash(password: str) -> str:
@@ -15,15 +15,13 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     """Verificar contraseña"""
     return pwd_context.verify(plain_password, hashed_password)
 
-# --- Operaciones CRUD ---
+# --- CRUD Operations ---
 def create_user(db: Session, user: UserCreate):
-    """
-    Crear un nuevo usuario en la base de datos
-    """
-    # Encriptamos la contraseña antes de guardarla
+
+# We encrypt the password before saving it
     hashed_password = get_password_hash(user.password)
     
-    # Creamos el objeto User con los datos proporcionados
+    # We create the User object with the provided data
     db_user = User(
         name=user.name,
         surname=user.surname,
@@ -33,27 +31,27 @@ def create_user(db: Session, user: UserCreate):
         password_hash=hashed_password
     )
     
-    # Agregamos el usuario a la base de datos
+    # We add the user to the database
     db.add(db_user)
-    db.commit()  # Guardamos los cambios
-    db.refresh(db_user)  # Actualizamos el objeto con los datos de la BD
+    db.commit()  
+    db.refresh(db_user)  
     
     return db_user
 
 def get_user_by_email(db: Session, email: str):
     """
-    Buscar usuario por email
+    Search user by email
     """
     return db.query(User).filter(User.email == email).first()
 
 def get_user_by_id(db: Session, user_id: int):
     """
-    Buscar usuario por ID
+    Search user by ID
     """
     return db.query(User).filter(User.id == user_id).first()
 
 def get_users(db: Session, skip: int = 0, limit: int = 100):
     """
-    Obtener lista de usuarios con paginación
+    Get list of users with pagination
     """
     return db.query(User).offset(skip).limit(limit).all()
