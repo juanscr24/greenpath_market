@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_email (email),
     INDEX idx_name (name)
-);
+);z
 
 -- Mostrar las tablas creadas
 SHOW TABLES;

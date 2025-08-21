@@ -8,11 +8,18 @@ from passlib.context import CryptContext  # Para encriptar contraseñas
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def get_password_hash(password: str) -> str:
+    """Encriptar contraseña"""
     return pwd_context.hash(password)
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    """Verificar contraseña"""
+    return pwd_context.verify(plain_password, hashed_password)
 
 # --- Operaciones CRUD ---
 def create_user(db: Session, user: UserCreate):
-
+    """
+    Crear un nuevo usuario en la base de datos
+    """
     # Encriptamos la contraseña antes de guardarla
     hashed_password = get_password_hash(user.password)
     
@@ -34,4 +41,19 @@ def create_user(db: Session, user: UserCreate):
     return db_user
 
 def get_user_by_email(db: Session, email: str):
+    """
+    Buscar usuario por email
+    """
     return db.query(User).filter(User.email == email).first()
+
+def get_user_by_id(db: Session, user_id: int):
+    """
+    Buscar usuario por ID
+    """
+    return db.query(User).filter(User.id == user_id).first()
+
+def get_users(db: Session, skip: int = 0, limit: int = 100):
+    """
+    Obtener lista de usuarios con paginación
+    """
+    return db.query(User).offset(skip).limit(limit).all()
