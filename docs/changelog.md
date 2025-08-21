@@ -1,6 +1,7 @@
 ## Branches
 Project branch documentation, you will be able to see all the branches created in the project .md:
 ### Create new Branch
+feature, fix, bug
 ```bash 
 git checkout -b nameBranch
 ```
@@ -10,3 +11,11 @@ git checkout -b nameBranch
 -
 -
 -
+
+
+### Ejemplo de commit 
+
+fix, feat, doc, style
+```bash 
+git feat:number_done or WIP
+```
