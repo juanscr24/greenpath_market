@@ -1,10 +1,10 @@
 import axios from "axios";
-import { endpointUsers } from "./main.js"; // ajusta la ruta si es necesario
+import { endpointUsers } from "./main.js"; 
 
 // Login Function 
-async function loginUser(userName, password) {
+async function loginUser(email, password) {
     const { data } = await axios.get(
-        `${endpointUsers}?userName=${userName}&password=${password}`
+        `${endpointUsers}?email=${email}&user_password=${password}`
     );
 
     if (data.length > 0) {
@@ -15,27 +15,28 @@ async function loginUser(userName, password) {
     }
 }
 
+
 // Get Elements DOM
 const btnSign = document.getElementById("btnSign");
-const inputUser = document.getElementById("userName");
+const inputUser = document.getElementById("email");
 const inputPass = document.getElementById("password");
 
 // Login Event
 btnSign.addEventListener("click", async () => {
-    const username = inputUser.value.trim();
+    const email = inputUser.value.trim();
     const password = inputPass.value.trim();
 
-    if (!username || !password) {
-        alert("Por favor llena todos los campos");
+    if (!email || !password) {
+        alert("Please fill out the login");
         return;
     }
 
     try {
-        const user = await loginUser(username, password);
+        const user = await loginUser(email, password);
         // Go to Dashboard
         window.location.href = "/src/views/dashboard.html";
     } catch (err) {
-        alert("Credenciales incorrectas");
+        alert("Bad Credentials");
     }
 });
 

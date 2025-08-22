@@ -25,7 +25,7 @@ function toggleForm() {
             "https://res.cloudinary.com/dd7vy0y6n/image/upload/f_auto,q_auto/v1755644602/back-login_vtle9y.jpg";
 
         $form.innerHTML = `
-            <input id="userName" type="text" placeholder="EMAIL OR USERNAME">
+            <input id="userName" type="text" placeholder="EMAIL">
             <input id="password" type="password" placeholder="PASSWORD">
             <input id="btnSign" type="button" value="SIGN IN">
         `;
@@ -42,24 +42,23 @@ function toggleForm() {
             "https://res.cloudinary.com/dd7vy0y6n/image/upload/f_auto,q_auto/v1755644601/back-register_uiimdr.jpg";
 
         $form.innerHTML = `
-            <input id="fullName" type="text" placeholder="FULL NAME">
-            <input id="userName" type="text" placeholder="USERNAME">
+            <input id="userName" type="text" placeholder="FULL NAME">
             <input id="email" type="email" placeholder="EMAIL">
-            <input id="address" type="text" placeholder="ADDRESS">
+            <input id="phone" type="text" placeholder="PHONE">
             <select name="documentType" id="documentType" required>
                 <option value="" disabled selected>SELECT DOCUMENT TYPE...</option>
-                <option value="id">NATIONAL ID</option>
-                <option value="identityCard">IDENTITY CARD</option>
-                <option value="foreignId">FOREIGN ID</option>
-                <option value="passport">PASSPORT</option>
+                <option value="1">NATIONAL ID</option>
+                <option value="2">IDENTITY CARD</option>
+                <option value="3">FOREIGN ID</option>
+                <option value="4">PASSPORT</option>
             </select>
             <input id="documentNumber" type="text" placeholder="DOCUMENT NUMBER">
             <input id="password" type="password" placeholder="PASSWORD">
             <input id="passwordAgain" type="password" placeholder="PASSWORD AGAIN">
             <select name="role" id="role" required>
                 <option value="" disabled selected>WHAT DO YOU WANT TO DO?</option>
-                <option value="seller">BE A SELLER</option>
-                <option value="client">BE A CLIENT</option>
+                <option value="1">BE A CLIENT</option>
+                <option value="2">BE A SELLER</option>
             </select>
             <input id="btnUp" type="submit" value="REGISTER">
         `;

@@ -1,40 +1,14 @@
 {
-    "users": [
-        {
-            "id": "b31d",
-            "fullName": "Juan Cardona",
-            "userName": "juanscr",
-            "email": "juan@gmail.com",
-            "address": "cra 20 # 20 20",
-            "documentType": "id",
-            "documentNumber": "10000000",
-            "password": "12345",
-            "passwordAgain": "12345",
-            "role": "client"
-        },
-        {
-            "id": "594d",
-            "fullName": "juan cardona",
-            "userName": "juanscr1",
-            "email": "juan@hotmail.com",
-            "address": "cra 20 20 20",
-            "documentType": "id",
-            "documentNumber": "11000000",
-            "password": "12345",
-            "passwordAgain": "12345",
-            "role": "seller"
-        },
-        {
-            "id": "9f86",
-            "fullName": "juan",
-            "userName": "juan2",
-            "email": "juan2@gmail.com",
-            "address": "cra 20 20",
-            "documentType": "id",
-            "documentNumber": "231421",
-            "password": "12345",
-            "passwordAgain": "12345",
-            "role": "seller"
-        }
-    ]
+  "users": [
+    {
+      "id": "8635",
+      "user_name": "",
+      "email": "juan@gmail.com",
+      "phone": "30120000",
+      "id_document_type": 1,
+      "document_number": "100000",
+      "user_password": "12345",
+      "id_rol": 1
+    }
+  ]
 }

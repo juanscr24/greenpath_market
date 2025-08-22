@@ -5,57 +5,55 @@ const $form = document.getElementById("form");
 
 $form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    // Get all elements by ID
-    const user = {
-        fullName: document.getElementById("fullName").value.trim(),
-        userName: document.getElementById("userName").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        address: document.getElementById("address").value.trim(),
-        documentType: document.getElementById("documentType").value,
-        documentNumber: document.getElementById("documentNumber").value.trim(),
-        password: document.getElementById("password").value,
-        passwordAgain: document.getElementById("passwordAgain").value,
-        role: document.getElementById("role").value,
-    };
 
-    // Validated password
-    if (user.password !== user.passwordAgain) {
+    // Obtener valores
+    const password = document.getElementById("password").value;
+    const passwordAgain = document.getElementById("passwordAgain").value;
+
+    // Validar password
+    if (password !== passwordAgain) {
         alert("Passwords do not match!");
         return;
     }
 
+    const newUser = {
+        user_name: document.getElementById("userName").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        id_document_type: parseInt(document.getElementById("documentType").value),
+        document_number: document.getElementById("documentNumber").value.trim(),
+        user_password: password,
+        id_rol: parseInt(document.getElementById("role").value),
+    };
+
     try {
-        // get exists users
+        // traer usuarios existentes
         const { data: users } = await axios.get(endpointUsers);
 
-        // Validaciones de duplicados
-        if (users.some(u => u.userName === user.userName)) {
-            alert("Username already exists");
-            return;
-        }
-
-        if (users.some(u => u.email === user.email)) {
+        // Validaciones duplicados
+        if (users.some(u => u.email === newUser.email)) {
             alert("Email already exists");
             return;
         }
-
-        if (users.some(u => u.documentNumber === user.documentNumber)) {
+        if (users.some(u => u.phone === newUser.phone)) {
+            alert("Phone already exists");
+            return;
+        }
+        if (users.some(u => u.document_number === newUser.document_number)) {
             alert("Document number already exists");
             return;
         }
 
-        // Create User
-        const { data: newUser } = await axios.post(endpointUsers, user);
+        // Crear usuario
+        const { data: createdUser } = await axios.post(endpointUsers, newUser);
 
-        console.log("User registered:", newUser);
+        console.log("User registered:", createdUser);
 
-        // Save in localStorage 
-        localStorage.setItem("user", JSON.stringify(newUser));
-
+        localStorage.setItem("user", JSON.stringify(createdUser));
         alert("User created and logged in!");
         $form.reset();
 
-        // Go to the Dashboard
+        // redirigir
         window.location.href = "/src/views/dashboard.html";
 
     } catch (error) {
