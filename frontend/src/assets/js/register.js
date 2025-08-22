@@ -17,7 +17,7 @@ $form.addEventListener("submit", async (e) => {
     }
 
     const newUser = {
-        user_name: document.getElementById("userName").value.trim(),
+        full_name: document.getElementById("userName").value.trim(),
         email: document.getElementById("email").value.trim(),
         phone: document.getElementById("phone").value.trim(),
         id_document_type: parseInt(document.getElementById("documentType").value),

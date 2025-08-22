@@ -24,7 +24,7 @@ CREATE TABLE documents_types (
 -- Table: users
 CREATE TABLE users (
     id_user INT AUTO_INCREMENT PRIMARY KEY,
-    user_name VARCHAR(50) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
     phone VARCHAR(20) UNIQUE NOT NULL,
     id_document_type INT,
