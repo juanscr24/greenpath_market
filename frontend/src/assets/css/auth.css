@@ -172,13 +172,30 @@ body {
     background: linear-gradient(to right, #284827, #1DD317);
     background-size: 200% auto;
     background-position: left center;
-    transition: background-position 0.8s ease-in-out;
+    transition: background-position 0.8s ease-in-out, transform 0.3s ease, box-shadow 0.3s ease;
     padding: 14px 40px;
     outline: none;
     border: none;
     cursor: pointer;
     color: white;
     font-size: 16px;
+    overflow: hidden;
+}
+
+#toggleRegister::after,
+#toggleLogin::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.493) 0%,
+        rgba(255, 255, 255, 0) 80%
+    );
+    transform: skewX(-25deg);
 }
 
 #toggleLogin {
@@ -196,6 +213,14 @@ body {
 #toggleRegister:hover,
 #toggleLogin:hover {
     background-position: right center;
+    box-shadow: 0 8px 20px rgba(23, 173, 18, 0.26);
+}
+
+#toggleRegister:hover::after,
+#toggleLogin:hover::after
+{
+    left: 130%;
+    transition: left 0.6s ease;
 }
 
 #btnSign,
