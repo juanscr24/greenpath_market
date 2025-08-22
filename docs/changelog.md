@@ -15,7 +15,7 @@ git checkout -b nameBranch
 
 ### Ejemplo de commit 
 
-fix, feat, doc, style
+fix, feat, doc, styles
 ```bash 
 git feat:number_done or WIP
 ```
