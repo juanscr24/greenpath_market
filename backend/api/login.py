@@ -28,7 +28,7 @@ async def login_user(user_login: UserLogin, db: Session = Depends(get_db)):
             )
         
         # Verify password
-        if not verify_password(user_login.password, user.password_hash):
+        if not verify_password(user_login.password, user.user_password):
             raise HTTPException(
                 status_code=401,
                 detail="Email o contraseña incorrectos"
@@ -37,8 +37,8 @@ async def login_user(user_login: UserLogin, db: Session = Depends(get_db)):
 
         return {
             "message": "Login exitoso",
-            "user_id": user.id,
-            "user_name": user.name,
+            "user_id": user.id_user,
+            "user_name": user.full_name,
             "email": user.email
         }
     

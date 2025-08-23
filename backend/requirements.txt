@@ -1,14 +1,10 @@
-# Framework principal
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
 
 # Base de datos
 sqlalchemy==2.0.23
 pymysql==1.1.0
 
 # Validación de datos
-pydantic==2.5.0
-pydantic[email]==2.5.0
+pydantic>=2.7.0  # Solo especificar una versión de pydantic
 
 # Encriptación de contraseñas
 passlib[bcrypt]==1.7.4
@@ -18,4 +14,4 @@ python-dotenv==1.0.0
 
 # Dependencias adicionales necesarias
 python-multipart==0.0.6
-email-validator==2.1.0
+email-validator==2.1.0  # Esta sigue siendo válida, ya que `email-validator` es un requisito específico

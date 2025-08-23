@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 # We import the routers from the api folder
 from api import login, register
 from db.database import Base, engine
-
 # Create the tables in the database
 Base.metadata.create_all(bind=engine)
 
