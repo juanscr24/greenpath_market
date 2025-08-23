@@ -126,6 +126,7 @@ body {
     transform: translateX(0%);
 }
 
+#birthdate,
 #fullName,
 #documentNumber,
 #documentType,
@@ -146,6 +147,12 @@ body {
     color: white;
     font-size: 14px;
     line-height: 1.5;
+    /* text-transform: uppercase; */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+    color: white;
 }
 
 #documentType,
@@ -183,18 +190,16 @@ body {
 }
 
 #toggleRegister::after,
-#toggleLogin::after{
+#toggleLogin::after {
     content: "";
     position: absolute;
     top: 0;
     left: -75%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0.493) 0%,
-        rgba(255, 255, 255, 0) 80%
-    );
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0.493) 0%,
+            rgba(255, 255, 255, 0) 80%);
     transform: skewX(-25deg);
 }
 
@@ -217,8 +222,7 @@ body {
 }
 
 #toggleRegister:hover::after,
-#toggleLogin:hover::after
-{
+#toggleLogin:hover::after {
     left: 130%;
     transition: left 0.6s ease;
 }
