@@ -6,12 +6,13 @@ from datetime import datetime, date
 # Schema to create a new user (what the API receives)
 class UserCreate(BaseModel):
     full_name: str = Field(..., min_length=1, max_length=100, description="Nombre completo del usuario")
+    birthdate: date = Field(..., description="Fecha de nacimiento del usuario (formato: YYYY-MM-DD)")
     email: EmailStr = Field(..., description="Email válido")
     phone: str = Field(..., min_length=2, max_length=100, description="Teléfono del usuario")
     id_document_type: int = Field(..., description="Tipo de documento del usuario (ID o Cédula)")
     document_number: str = Field(..., description="Número de documento")
-    birthdate: date = Field(..., description="Fecha de nacimiento del usuario (formato: YYYY-MM-DD)")
     user_password: str = Field(..., min_length=6, description="Contraseña (mínimo 6 caracteres)")
+    user_address: str= Field(min_length=4, description="Direccion del usuario")
     id_rol: int = Field(..., description="Rol del usuario (1: cliente, 2: vendedor, 3: administrador)")
 
     class Config:
@@ -31,16 +32,17 @@ class UserLogin(BaseModel):
 class UserResponse(BaseModel):
     """Schema for formatting user response"""
     id_user: int
+    birthdate: date
     full_name: str
     email: str
     phone: str
-    birthdate: date
     id_document_type: int
     document_number: str
+    user_password: str
     id_rol: int
+    user_address: str
     created_at: datetime
     updated_at: datetime
-
     # Configuring Pydantic to work with SQLAlchemy objects
     class Config:
         from_attributes = True

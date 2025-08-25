@@ -8,13 +8,14 @@ class User(Base):
 
     id_user = Column(Integer, primary_key=True, index=True)
     full_name = Column(String(100))
+    birthdate = Column(Date, nullable=True)
     email = Column(String(50), unique=True)
     phone = Column(String(20), unique=True)
-    birthdate = Column(Date, nullable=True)
     id_document_type = Column(Integer, ForeignKey('documents_types.id_document_type'))
     document_number = Column(String(20))
     user_password = Column(String(255))
     id_rol = Column(Integer, ForeignKey('roles.id_rol'))
+    user_address = Column(String(255))
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
