@@ -2,10 +2,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 # We import the routers from the api folder
-from api import login, register
+from api import login, register, products
 from db.database import Base, engine
 # Create the tables in the database
 Base.metadata.create_all(bind=engine)
+
+from models.product import Product
 
 # We create the main FastAPI instance
 app = FastAPI(
@@ -26,6 +28,7 @@ app.add_middleware(
 # We include all the routers in the api folder
 app.include_router(register.router) 
 app.include_router(login.router)     
+app.include_router(products.router)
 
 # --- MAIN ROUTES ---
 @app.get("/")

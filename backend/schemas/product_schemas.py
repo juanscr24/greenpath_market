@@ -1,6 +1,6 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, Field
 from typing import Optional
-from datetime import datetime, date
+from datetime import datetime
 
 class ProductCreate(BaseModel):
     name_product: str = Field(..., max_length=100, description="Nombre del producto")
@@ -11,9 +11,9 @@ class ProductCreate(BaseModel):
     id_category: int = Field(..., description="Categoría del producto")
     
     class Config:
-        # Ensures compatibility with SQLAlchemy models (ORM support)
-        orm_mode = True
-        
+        from_attributes = True  # Cambié orm_mode por from_attributes para compatibilidad con SQLAlchemy
+
+
 class ProductResponse(BaseModel):
     id_product: int
     name_product: str
@@ -26,4 +26,16 @@ class ProductResponse(BaseModel):
     updated_at: datetime
 
     class Config:
-        from_attributes = True
+        from_attributes = True  # Cambié orm_mode por from_attributes para compatibilidad con SQLAlchemy
+
+
+class ProductUpdate(BaseModel):
+    name_product: Optional[str] = Field(None, max_length=100, description="Nombre del producto")
+    product_description: Optional[str] = Field(None, description="Descripción del producto")
+    price: Optional[float] = Field(None, gt=0, description="Precio del producto")
+    stock: Optional[int] = Field(None, ge=0, description="Cantidad en stock")
+    product_star_rate: Optional[float] = Field(None, ge=0, le=5, description="Calificación del producto")
+    id_category: Optional[int] = Field(None, description="Categoría del producto")
+
+    class Config:
+        from_attributes = True  # Cambié orm_mode por from_attributes para compatibilidad con SQLAlchemy
