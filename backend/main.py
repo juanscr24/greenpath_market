@@ -7,6 +7,22 @@ from db.database import Base, engine
 # Create the tables in the database
 Base.metadata.create_all(bind=engine)
 
+from models import (
+    Role,
+    DocumentType,
+    Category,
+    User,
+    Shop,
+    Product,
+    OrderStatus,
+    PaymentOption,
+    ShippingState,
+    UserOrder,
+    OrderDetail,
+    Payment,
+    Shipment,
+    ProductImage
+)
 # We create the main FastAPI instance
 app = FastAPI(
     title="GreenPath Market API",

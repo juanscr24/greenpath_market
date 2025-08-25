@@ -14,5 +14,6 @@ class Payment(Base):
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
+    user_order = relationship("UserOrder", back_populates="payments")
     order = relationship("UserOrder", back_populates="payments")
     payment_option = relationship("PaymentOption", back_populates="payments")

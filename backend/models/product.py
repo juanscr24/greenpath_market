@@ -20,3 +20,5 @@ class Product(Base):
     # Relaciones
     shop = relationship("Shop", back_populates="products")
     category = relationship("Category", back_populates="products")
+    order_details = relationship("OrderDetail", back_populates="product")
+    images = relationship("ProductImage", back_populates="product")

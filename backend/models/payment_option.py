@@ -10,3 +10,5 @@ class PaymentOption(Base):
     payment_option_name = Column(String(20), unique=True)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+
+    payments = relationship("Payment", back_populates="payment_option")

@@ -22,4 +22,4 @@ class User(Base):
     role = relationship("Role", back_populates="users")
     document_type = relationship("DocumentType", back_populates="users")
     shops = relationship("Shop", back_populates="user")
-    orders = relationship("UserOrder", back_populates="user")
+    orders = relationship("UserOrder", back_populates="user")  # Relación con UserOrder
