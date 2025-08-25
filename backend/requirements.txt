@@ -23,3 +23,6 @@ email-validator==2.2.0
 
 # Dependencias opcionales para mejor rendimiento
 greenlet==3.1.1
+
+# JWT para autenticación
+python-jose[cryptography]==3.3.0

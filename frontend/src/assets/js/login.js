@@ -1,18 +1,14 @@
 import axios from "axios";
-import { endpointUsers } from "./main.js"; 
+import { endpointLogin } from "./main.js"; 
 
-// Login Function 
 async function loginUser(email, password) {
-    const { data } = await axios.get(
-        `${endpointUsers}?email=${email}&user_password=${password}`
-    );
+    const { data } = await axios.post(endpointLogin, {
+        email: email,
+        password: password
+    });
 
-    if (data.length > 0) {
-        localStorage.setItem("user", JSON.stringify(data[0]));
-        return data[0];
-    } else {
-        throw new Error("Credenciales inválidas");
-    }
+    localStorage.setItem("user", JSON.stringify(data));
+    return data;
 }
 
 

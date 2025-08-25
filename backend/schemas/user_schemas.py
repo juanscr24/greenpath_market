@@ -28,6 +28,14 @@ class UserLogin(BaseModel):
         # Ensures compatibility with SQLAlchemy models (ORM support)
         from_attributes = True
 
+# Token schema
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+    class Config:
+        from_attributes = True
+
 # Schema for the user response (what the API returns)
 class UserResponse(BaseModel):
     """Schema for formatting user response"""
