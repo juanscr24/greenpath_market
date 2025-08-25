@@ -1,4 +1,4 @@
-import { endpointUsers } from "./main";
+import { endpointRegister} from "./main";
 import axios from "axios";
 
 const $form = document.getElementById("form");
@@ -29,7 +29,7 @@ $form.addEventListener("submit", async (e) => {
 
     try {
         // traer usuarios existentes
-        const { data: users } = await axios.get(endpointUsers);
+        const { data: users } = await axios.get(endpointRegister);
 
         // Validaciones duplicados
         if (users.some(u => u.email === newUser.email)) {
@@ -46,7 +46,7 @@ $form.addEventListener("submit", async (e) => {
         }
 
         // Crear usuario
-        const { data: createdUser } = await axios.post(endpointUsers, newUser);
+        const { data: createdUser } = await axios.post(endpointRegister, newUser);
 
         console.log("User registered:", createdUser);
 

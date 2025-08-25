@@ -17,3 +17,5 @@ class UserOrder(Base):
     user = relationship("User", back_populates="orders")
     order_status = relationship("OrderStatus", back_populates="user_orders")
     order_details = relationship("OrderDetail", back_populates="order")
+    payments = relationship("Payment", back_populates="user_order")
+    shipments = relationship("Shipment", back_populates="order")  

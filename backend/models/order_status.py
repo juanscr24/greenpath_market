@@ -10,3 +10,6 @@ class OrderStatus(Base):
     name_order_status = Column(String(30), unique=True)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+
+    # Relación bidireccional
+    user_orders = relationship("UserOrder", back_populates="order_status")

@@ -15,4 +15,4 @@ class Shipment(Base):
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
     order = relationship("UserOrder", back_populates="shipments")
-    shipping_status = relationship("ShippingState", back_populates="shipments")
+    shipping_state = relationship("ShippingState", back_populates="shipments")  # Relación con ShippingState
