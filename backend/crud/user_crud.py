@@ -23,13 +23,14 @@ def create_user(db: Session, user: UserCreate):
     # We create the User object with the provided data
     db_user = User(
         full_name=user.full_name,
+        birthdate=user.birthdate,
         email=user.email,
         phone=user.phone,
-        birthdate=user.birthdate,
         id_document_type=user.id_document_type,
         document_number=user.document_number,
         user_password=hashed_password,
-        id_rol=user.id_rol
+        id_rol=user.id_rol,
+        user_address=user.user_address
     )
     
     # We add the user to the database

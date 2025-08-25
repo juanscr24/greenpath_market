@@ -12,8 +12,8 @@ class UserCreate(BaseModel):
     id_document_type: int = Field(..., description="Tipo de documento del usuario (ID o Cédula)")
     document_number: str = Field(..., description="Número de documento")
     user_password: str = Field(..., min_length=6, description="Contraseña (mínimo 6 caracteres)")
-    user_address: str= Field(min_length=4, description="Direccion del usuario")
     id_rol: int = Field(..., description="Rol del usuario (1: cliente, 2: vendedor, 3: administrador)")
+    user_address: str= Field(min_length=4, description="Direccion del usuario")
 
     class Config:
         # Ensures compatibility with SQLAlchemy models (ORM support)
@@ -32,8 +32,8 @@ class UserLogin(BaseModel):
 class UserResponse(BaseModel):
     """Schema for formatting user response"""
     id_user: int
-    birthdate: date
     full_name: str
+    birthdate: date
     email: str
     phone: str
     id_document_type: int
@@ -51,13 +51,14 @@ class UserResponse(BaseModel):
 class UserUpdate(BaseModel):
     """Schema for validating data when updating a user"""
     full_name: Optional[str] = Field(None, min_length=2, max_length=100)
-    phone: Optional[str] = Field(None, min_length=2, max_length=100)
     birthdate: Optional[date] = None
+    phone: Optional[str] = Field(None, min_length=2, max_length=100)
     id_document_type: Optional[int] = None
     document_number: Optional[str] = None
     email: Optional[EmailStr] = None
     user_password: Optional[str] = Field(None, min_length=6)
     id_rol: Optional[int] = None
+    user_address: Optional[str]=None
 
     class Config:
         from_attributes = True
