@@ -21,10 +21,13 @@ CREATE TABLE documents_types (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+INSERT INTO documents_types(document_type, document_abbreviation)
+VALUES ("national id", "C.C"), ("identity card", "T.I"), ("foreign id", "C.E"), ("passport", "PA");
 -- Table: users
 CREATE TABLE users (
     id_user INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
+    birthdate DATE NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
     phone VARCHAR(20) UNIQUE NOT NULL,
     id_document_type INT,
@@ -38,8 +41,6 @@ CREATE TABLE users (
     FOREIGN KEY (id_document_type) REFERENCES documents_types(id_document_type) ON DELETE SET NULL
 );
 
-INSERT INTO documents_types(document_type, document_abbreviation)
-VALUES ("national id", "C.C"), ("identity card", "T.I"), ("foreign id", "C.E"), ("passport", "PA");
 
 -- Table: categories
 CREATE TABLE categories (
@@ -162,7 +163,7 @@ CREATE TABLE shipments (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_order) REFERENCES user_orders(id_order) ON DELETE CASCADE,
-    FOREIGN KEY (user_address) REFERENCES users(user_address),
+    FOREIGN KEY (user_address) REFERENCES users(id_user),
     FOREIGN KEY (id_shipping_status) REFERENCES shipping_states(id_shipping_status) ON DELETE SET NULL
 );
 
@@ -173,5 +174,14 @@ CREATE TABLE product_images (
     image_url VARCHAR(255) NOT NULL,
     alt_text VARCHAR(100),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_product) REFERENCES products(id_product) ON DELETE CASCADE
+);
+
+CREATE TABLE user_review(
+    id_review INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    id_product INt NOT NULL,
+    review TEXT,
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
     FOREIGN KEY (id_product) REFERENCES products(id_product) ON DELETE CASCADE
 );
