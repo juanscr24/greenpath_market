@@ -1,17 +1,20 @@
+# FastAPI y dependencias principales
+fastapi[standard]==0.115.6
+uvicorn[standard]==0.31.1
 
 # Base de datos
-sqlalchemy==2.0.23
-pymysql==1.1.0
+sqlalchemy==2.0.36
+pymysql==1.1.1
 
 # Validación de datos
-pydantic>=2.7.0  # Solo especificar una versión de pydantic
+pydantic==2.10.4
 
 # Encriptación de contraseñas
 passlib[bcrypt]==1.7.4
 
 # Variables de entorno
-python-dotenv==1.0.0
+python-dotenv==1.0.1
 
 # Dependencias adicionales necesarias
-python-multipart==0.0.6
-email-validator==2.1.0  # Esta sigue siendo válida, ya que `email-validator` es un requisito específico
+python-multipart==0.0.9
+email-validator==2.2.0

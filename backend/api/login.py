@@ -1,6 +1,7 @@
 # Required imports
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
+
 from db.database import get_db
 from schemas.user_schemas import UserLogin, UserResponse
 from crud.user_crud import get_user_by_email, verify_password

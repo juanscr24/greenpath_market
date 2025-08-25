@@ -1,6 +1,6 @@
 # We import the necessary tools
 from sqlalchemy.orm import Session
-from db.models import User  
+from models.user import User  
 from schemas.user_schemas import UserCreate  
 from passlib.context import CryptContext  
 
