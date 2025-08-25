@@ -22,6 +22,7 @@ $form.addEventListener("submit", async (e) => {
         phone: document.getElementById("phone").value.trim(),
         id_document_type: parseInt(document.getElementById("documentType").value),
         document_number: document.getElementById("documentNumber").value.trim(),
+        birthdate: document.getElementById('birthdate').value,
         user_password: password,
         id_rol: parseInt(document.getElementById("role").value),
     };
