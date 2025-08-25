@@ -1,0 +1,49 @@
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+# Virtual envs
+env/
+venv/
+.venv/
+
+# Archivos de configuración locales
+*.env
+.env.*
+
+# Logs
+*.log
+logs/
+*.pid
+
+# Archivos de compilación y cache
+*.egg-info/
+.eggs/
+*.egg
+build/
+dist/
+
+# Configuración de IDEs
+.vscode/
+.idea/
+*.swp
+
+# Archivos de pruebas
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Node / frontend
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
