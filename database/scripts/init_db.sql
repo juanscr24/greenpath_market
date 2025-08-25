@@ -1,4 +1,4 @@
-- Create database
+-- Create database
 CREATE DATABASE green_path;
 USE green_path;
 
@@ -163,7 +163,7 @@ CREATE TABLE shipments (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_order) REFERENCES user_orders(id_order) ON DELETE CASCADE,
-    FOREIGN KEY (user_address) REFERENCES users(user_address),
+    FOREIGN KEY (user_address) REFERENCES users(id_user),
     FOREIGN KEY (id_shipping_status) REFERENCES shipping_states(id_shipping_status) ON DELETE SET NULL
 );
 
@@ -174,5 +174,14 @@ CREATE TABLE product_images (
     image_url VARCHAR(255) NOT NULL,
     alt_text VARCHAR(100),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_product) REFERENCES products(id_product) ON DELETE CASCADE
+);
+
+CREATE TABLE user_review(
+    id_review INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    id_product INt NOT NULL,
+    review TEXT,
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
     FOREIGN KEY (id_product) REFERENCES products(id_product) ON DELETE CASCADE
 );
