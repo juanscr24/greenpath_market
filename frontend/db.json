@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": "0f3f",
+      "full_name": "qeqweqw",
+      "email": "qweqweqw@gmail.com",
+      "phone": "214124",
+      "id_document_type": 1,
+      "document_number": "qeqwe",
+      "birthdate": "2222-02-22",
+      "user_password": "123jJ",
+      "id_rol": 1
+    },
+    {
+      "id": "142d",
+      "full_name": "juan cardona",
+      "email": "juan@gmail.com",
+      "phone": "30120000",
+      "id_document_type": 1,
+      "document_number": "1110000",
+      "birthdate": "1998-04-24",
+      "user_password": "123j",
+      "id_rol": 2
+    }
+  ]
+}
