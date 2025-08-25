@@ -157,13 +157,11 @@ CREATE TABLE payments (
 CREATE TABLE shipments (
     id_shipments INT AUTO_INCREMENT PRIMARY KEY,
     id_order INT,
-    user_address VARCHAR(255),
     transporter VARCHAR(40),
     id_shipping_status INT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_order) REFERENCES user_orders(id_order) ON DELETE CASCADE,
-    FOREIGN KEY (user_address) REFERENCES users(id_user),
     FOREIGN KEY (id_shipping_status) REFERENCES shipping_states(id_shipping_status) ON DELETE SET NULL
 );
 

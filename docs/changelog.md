@@ -6,10 +6,10 @@ feature, fix, bug
 git checkout -b nameBranch
 ```
 ### Branches
-- frontend/feature/3148/JuanCardona
+- frontend/feature/3148-auth
 - frontend/feature/3157/ForlanOrdonez
-- frontend/fix/3148/JuanCardona
--
+- frontend/fix/3148-auth
+- backend/feature/3139-product-crud
 -
 
 
