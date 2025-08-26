@@ -21,6 +21,11 @@
       "birthdate": "1998-04-24",
       "user_password": "123j",
       "id_rol": 2
+    },
+    {
+      "id": "9324",
+      "email": "juan@gmail.com",
+      "password": "123j"
     }
   ]
 }

@@ -12,32 +12,31 @@ body {
     background: url(https://res.cloudinary.com/dd7vy0y6n/image/upload/v1756148663/comunidad-de-personas-que-trabajan-juntas-en-la-agricultura-para-cultivar-alimentos_hsftyh.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
     background-position: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 /* Header principal */
 header {
-    backdrop-filter: blur(9px);
-    border: 1px solid rgba(9, 58, 12, 0.089);
-    background: #0e920a;
+    backdrop-filter: blur(9px); /* Aplica el desenfoque al fondo */
+    background-color: rgba(14, 146, 10, 0.4); /* Verde semi-transparente */
+    border: 1px solid rgba(9, 58, 12, 0.2);
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .8rem 1rem;
+
+    padding: 0.8rem 1rem;
     margin: 1rem;
     border-radius: 60px;
-    position: fixed;
-    top: 0;
-    left: 40%; 
-    transform: translateX(-40%);
     width: 80%;
-    /* max-width: 1200px; */
+
     z-index: 1000;
 }
+
 
 /* Contenedor íconos + nav + search */
 .container-nav-search {
@@ -106,6 +105,12 @@ header {
 }
 
 /*fIN HEADER*/
+
+#card-section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
 
 
 

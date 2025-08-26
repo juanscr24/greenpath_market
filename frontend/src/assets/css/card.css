@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 /* Contenedor estilo tarjeta fullscreen */
 .card {
     position: relative;
-    width: 400px;
+    width: 100%;
     max-width: 17rem;
     min-height: 22rem;
     height: 400px;
@@ -30,6 +30,7 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     color: #fff;
+    padding: 5px
 }
 
 /* Imagen de fondo ahora como <img> */
