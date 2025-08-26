@@ -135,7 +135,8 @@ body {
 #password,
 #passwordAgain,
 #phone,
-#role {
+#role,
+#userAddress {
     text-decoration: none;
     padding: 10px;
     width: 70%;
