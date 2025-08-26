@@ -14,3 +14,11 @@ Registro de cambios entre versiones (Que features se agregaron, que bugs se corr
 
 user_stories.md
 Las historias de usuario que guian el desarrollo (ej: como comprador quiero filtrar productos por categoria para encontrar lo que necesito, ETC)
+
+Navbar -- ✅ profile - ✅ mis compras - ✅ carrito  - ✅ Searchbar - ✅ logo - about us 
+Sliders
+Las categorias mas vendidas
+proyecto con descuento 
+Ofertas
+productos 
+footer
