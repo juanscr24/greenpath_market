@@ -10,7 +10,7 @@ CREATE TABLE roles (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO roles(role_name) VALUES ("client"), ("seller"), ("admin");
+INSERT INTO roles(role_name) VALUES ("user"), ("admin");
 
 -- Table: documents_types
 CREATE TABLE documents_types (
