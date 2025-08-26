@@ -22,5 +22,16 @@
       "user_password": "123j",
       "id_rol": 2
     }
+  ],
+  "products": [
+    {
+      "id": "20fv",
+      "name_product": "papa",
+      "product_description": "wfqwrqw",
+      "price": 20,
+      "stock": 5,
+      "product_star_rate": 4,
+      "id_category": 1
+    }
   ]
 }

@@ -24,7 +24,8 @@ $form.addEventListener("submit", async (e) => {
         document_number: document.getElementById("documentNumber").value.trim(),
         birthdate: document.getElementById('birthdate').value,
         user_password: password,
-        id_rol: parseInt(document.getElementById("role").value),
+        user_address : document.getElementById('userAddress').value,
+        id_rol: 1, // user
     };
 
     try {
