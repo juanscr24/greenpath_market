@@ -1,4 +1,28 @@
-Tus dependencias 
-FastAPI 
-dotenv 
-Etc
+# FastAPI y dependencias principales
+fastapi[standard]==0.115.6
+uvicorn[standard]==0.31.1
+
+# Base de datos - VERSIONES MÁS RECIENTES
+sqlalchemy==2.0.43
+pymysql==1.1.1
+cryptography==43.0.3
+
+# Validación de datos
+pydantic==2.10.4
+
+# Encriptación de contraseñas - VERSIONES COMPATIBLES
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.0
+
+# Variables de entorno
+python-dotenv==1.0.1
+
+# Dependencias adicionales necesarias
+python-multipart==0.0.12
+email-validator==2.2.0
+
+# Dependencias opcionales para mejor rendimiento
+greenlet==3.1.1
+
+# JWT para autenticación
+python-jose[cryptography]==3.3.0
