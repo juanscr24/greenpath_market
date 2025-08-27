@@ -17,7 +17,7 @@ body {
 }
 
 header {
-    backdrop-filter: blur(9px); /* Aplica el desenfoque al fondo */
+    backdrop-filter: blur(10px); /* Aplica el desenfoque al fondo */
     background-color: rgba(14, 146, 10, 0.4); /* Verde semi-transparente */
     border: 1px solid rgba(9, 58, 12, 0.2);
     
@@ -25,12 +25,33 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 2rem;
     margin: 1rem;
-    border-radius: 60px;
-    width: 80%;
+    border-radius: 20px;
+    width: 77%;
 
     z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.navbar i {
+    color: white;
+    gap: 20px;
+    font-size: 20px;
+    transition: ease-in-out 0.5s;
+}
+
+.navbar i:hover {
+    color: lightgray;
+}
+
+#btnLogout {
+    cursor: pointer;
 }
 
 
@@ -40,13 +61,6 @@ header {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-}
-
-.container-nav-search nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    align-items: center;
 }
 
 /* Search Box */
@@ -66,7 +80,6 @@ header {
     border-radius: 50px;
     font-size: 16px;
     border: none;
-    box-shadow: 8px 6px 10px 1px rgba(0, 0, 0, 0.295);
     background: #dddddd;
     transition: width 0.5s ease;
 }
@@ -74,7 +87,7 @@ header {
 .container-search .btn {
     width: 40px;
     height: 40px;
-    background: #0e920a;
+    background: #1b561b;
     border-radius: 50%;
     display: flex;
     align-items: center;
