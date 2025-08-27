@@ -8,7 +8,7 @@
       "id_document_type": 1,
       "document_number": "qeqwe",
       "birthdate": "2222-02-22",
-      "user_password": "123jJ",
+      "user_password": "123j",
       "id_rol": 1
     },
     {
@@ -24,6 +24,16 @@
     },
     {
       "id": "9324",
+      "email": "juan@gmail.com",
+      "password": "123j"
+    },
+    {
+      "id": "d025",
+      "email": "juan@gmail.com",
+      "password": "123j"
+    },
+    {
+      "id": "1ea0",
       "email": "juan@gmail.com",
       "password": "123j"
     }
