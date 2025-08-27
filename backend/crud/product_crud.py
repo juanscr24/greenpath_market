@@ -1,13 +1,14 @@
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from sqlalchemy.exc import SQLAlchemyError
-from models import Product
-from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse
+from models import Product, Category, Shop
+from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse
 
 # ------------------------------
 # Crear un nuevo producto en la base de datos
 def create_product(db: Session, product: ProductCreate):
     # Crear el nuevo producto en la base de datos
     db_product = Product(
+        id_shop=product.id_shop,
         name_product=product.name_product,
         product_description=product.product_description,
         price=product.price,
@@ -100,3 +101,47 @@ def delete_product(db: Session, product_id: int) -> bool:
         db.rollback()  # Revertir cambios si algo sale mal
         print(f"Error eliminando el producto con ID {product_id}: {e}")
         return False
+
+# ------------------------------
+# Obtener productos filtrados por categoría con detalles completos
+# ------------------------------
+def get_products_by_category(db: Session, category_id: int, skip: int = 0, limit: int = 100) -> list[ProductWithDetailsResponse]:
+    try:
+        # Query para obtener productos con información de categoría y tienda
+        db_products = (
+            db.query(
+                Product,
+                Category.name_category.label('category_name'),
+                Shop.shop_name.label('shop_name')
+            )
+            .join(Category, Product.id_category == Category.id_category)
+            .join(Shop, Product.id_shop == Shop.id_shop)
+            .filter(Product.id_category == category_id)
+            .offset(skip)
+            .limit(limit)
+            .all()
+        )
+        
+        # Convertir resultados a la respuesta detallada
+        products_with_details = []
+        for product, category_name, shop_name in db_products:
+            products_with_details.append(
+                ProductWithDetailsResponse(
+                    id_product=product.id_product,
+                    name_product=product.name_product,
+                    product_description=product.product_description,
+                    price=float(product.price),
+                    stock=product.stock,
+                    product_star_rate=product.product_star_rate,
+                    category_name=category_name,
+                    shop_name=shop_name,
+                    created_at=product.created_at,
+                    updated_at=product.updated_at
+                )
+            )
+        
+        return products_with_details
+
+    except SQLAlchemyError as e:
+        print(f"Error obteniendo productos por categoría {category_id}: {e}")
+        return []
