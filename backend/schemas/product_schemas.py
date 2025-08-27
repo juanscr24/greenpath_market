@@ -27,3 +27,15 @@ class ProductResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class ProductUpdate(BaseModel):
+    name_product: Optional[str] = Field(None, max_length=100, description="Nombre del producto")
+    product_description: Optional[str] = Field(None, description="Descripción del producto")
+    price: Optional[float] = Field(None, gt=0, description="Precio del producto")
+    stock: Optional[int] = Field(None, ge=0, description="Cantidad en stock")
+    product_star_rate: Optional[float] = Field(None, ge=0, le=5, description="Calificación del producto")
+    id_category: Optional[int] = Field(None, description="Categoría del producto")
+
+    class Config:
+        from_attributes = True
