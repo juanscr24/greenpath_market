@@ -11,8 +11,7 @@ class ProductCreate(BaseModel):
     id_category: int = Field(..., description="Categoría del producto")
     
     class Config:
-        # Ensures compatibility with SQLAlchemy models (ORM support)
-        orm_mode = True
+        from_attributes = True
         
 class ProductResponse(BaseModel):
     id_product: int
