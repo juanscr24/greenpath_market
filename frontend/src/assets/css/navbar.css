@@ -6,29 +6,30 @@
 }
 
 body {
-    background: url(https://res.cloudinary.com/dd7vy0y6n/image/upload/v1756341679/fondo-de-textura-de-hoja-verde_1_pvcpge.jpg);
-    background-color: #000000c7;
+    background: 
+    linear-gradient(rgba(0, 0, 0, 0.4)),
+    url(https://res.cloudinary.com/dd7vy0y6n/image/upload/v1756420922/2148793006_1_zgoo43.jpg);
+    backdrop-filter: blur(10px);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100dvh;    
 }
 
+
 header {
-    backdrop-filter: blur(10px); /* Aplica el desenfoque al fondo */
-    background-color: rgba(14, 146, 10, 0.4); /* Verde semi-transparente */
-    border: 1px solid rgba(9, 58, 12, 0.2);
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding: 0.8rem 2rem;
-    margin: 1rem;
-    border-radius: 20px;
-    width: 77%;
+    padding: 1.5rem 14rem;
+    margin-bottom: 2rem;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 100%;
 
     z-index: 1000;
 }
