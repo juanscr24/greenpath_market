@@ -1,0 +1,30 @@
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+}
+
+.title_item {
+    display: flex;
+    gap: 20px;
+}
+
+section {
+    background: #ffff;
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+
+.item_section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#render_cart {
+    height: 60dvh;
+    background: lightgray;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}

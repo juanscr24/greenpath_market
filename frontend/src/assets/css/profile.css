@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #284827;
+    --secondary-color: #17AD12;
+    --accent-color: #1DD317;
+}
+
+body {
+    height: 100dvh;
+}
+
+main {
+    margin-top: 2rem;
+}
+
+.profile-container {
+    width: 100%;
+    max-width: 1400px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(14, 146, 10, 0.4); /* Verde semi-transparente */
+    border: 1px solid rgba(9, 58, 12, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: transparent; /* transparente pa’ que se vea el degradado */
+    color: #fff;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid rgba(9, 58, 12, 0.2);
+    object-fit: cover;
+}
+
+.sidebar h2 {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.menu button {
+    padding: 0.9rem 1rem;
+    background: linear-gradient(135deg, #267f23f3,#284827dc);
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-align: left;
+}
+
+.menu button:hover {
+    background: #329a2e;
+    transform: translateX(4px);
+}
+
+.logout-btn {
+    background: #ef4444 !important;
+}
+
+.logout-btn:hover {
+    background: #dc2626 !important;
+}
+
+/* Main content */
+.profile-content {
+    flex: 1;
+    background: transparent; /* transparente también */
+    padding: 2rem;
+    color: #284827; /* texto blanco pa’ contrastar con el degradado */
+    width: 600px;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    border-bottom: 3px solid rgba(9, 58, 12, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.settings-item {
+    padding: 1rem;
+    background: rgba(76, 71, 71, 0.15);
+    border: 1px solid rgba(9, 58, 12, 0.2);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.view-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(76, 71, 71, 0.15);
+    border: 1px solid rgba(9, 58, 12, 0.2);
+    border-radius: 12px;
+    min-height: 120px;
+    color: #fff;
+}

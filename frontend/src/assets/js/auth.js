@@ -1,5 +1,5 @@
 // It asks you before you exit or restart the page
-window.onbeforeunload = () => "Estas seguro de Salir?"
+// window.onbeforeunload = () => "Estas seguro de Salir?" 
 
 // Get all elements by ID
 const $container = document.getElementById("container");
@@ -59,11 +59,7 @@ function toggleForm() {
             <input type="date" name="birthdate" id="birthdate">
             <input id="password" type="password" placeholder="Password">
             <input id="passwordAgain" type="password" placeholder="Password Again">
-            <select name="role" id="role" required>
-                <option value="" disabled selected>What do you want to do?</option>
-                <option value="1">Be a Client</option>
-                <option value="2">Be a Seller</option>
-            </select>
+            <input id="userAddress" type="text" placeholder="Address">
             <input id="btnUp" type="submit" value="REGISTER">
         `;
 

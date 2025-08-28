@@ -1,3 +1,6 @@
 // EndPoints
-export const endpointLogin = 'http://127.0.0.1:8000/login/'
+export const endpointLogin = 'http://localhost:3000/users'
+// export const endpointLogin = 'http://127.0.0.1:8000/login/'
 export const endpointRegister = 'http://127.0.0.1:8000/register/'
+export const endpointSearch = 'http://127.0.0.1:8000/search/?keyword='
+

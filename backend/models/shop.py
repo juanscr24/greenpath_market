@@ -10,7 +10,7 @@ class Shop(Base):
     id_user = Column(Integer, ForeignKey('users.id_user'))
     shop_name = Column(String(100), unique=True)
     description = Column(Text)
-    address = Column(String(255))
+    shop_address = Column(String(255))
     logo_url = Column(String(255))
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=func.now())
