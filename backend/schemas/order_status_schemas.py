@@ -8,7 +8,7 @@ class OrderStatusCreate(BaseModel):
     
     class Config:
         # Ensures compatibility with SQLAlchemy models (ORM support)
-        orm_mode = True
+        from_attributes = True
         
 
 class OrderStatusResponse(BaseModel):
