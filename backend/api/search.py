@@ -11,7 +11,7 @@ router = APIRouter(
     prefix="/search",
     tags=["Search"],
     responses={404: {"message": "No encontrado"},
-               200: {"message": "Búsqueda exitosa"}}
+            200: {"message": "Búsqueda exitosa"}}
 )
 
 # GET route to search for products
