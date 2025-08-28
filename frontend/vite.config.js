@@ -10,7 +10,8 @@ export default defineConfig({
                 dashboard: resolve(__dirname, "./src/views/dashboard.html"),
                 ofers: resolve(__dirname, "./src/views/ofers.html"),
                 profile: resolve(__dirname, "./src/views/profile.html"),
-                shoppingCard: resolve(__dirname, "./src/views/shopping_card.html")
+                shoppingCard: resolve(__dirname, "./src/views/shopping_card.html"),
+                admin: resolve(__dirname, "./src/views/admin.html")
             },
         },
     },
