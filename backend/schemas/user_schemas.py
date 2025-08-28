@@ -13,7 +13,7 @@ class UserCreate(BaseModel):
     document_number: str = Field(..., description="Número de documento")
     user_password: str = Field(..., min_length=6, description="Contraseña (mínimo 6 caracteres)")
     id_rol: int = Field(..., description="Rol del usuario (1: cliente, 2: vendedor, 3: administrador)")
-    user_address: str= Field(min_length=4, description="Direccion del usuario")
+    user_address: Optional[str]= Field(min_length=4, description="Direccion del usuario")
 
     class Config:
         # Ensures compatibility with SQLAlchemy models (ORM support)
@@ -48,7 +48,7 @@ class UserResponse(BaseModel):
     document_number: str
     user_password: str
     id_rol: int
-    user_address: str
+    user_address: Optional[str]
     created_at: datetime
     updated_at: datetime
     # Configuring Pydantic to work with SQLAlchemy objects
