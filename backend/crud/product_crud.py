@@ -1,7 +1,8 @@
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from sqlalchemy.exc import SQLAlchemyError
 from typing import Optional
 from models import Product, Shop, Category
+
 from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse
 
 # ------------------------------
@@ -9,6 +10,7 @@ from schemas.product_schemas import ProductCreate, ProductUpdate, ProductRespons
 def create_product(db: Session, product: ProductCreate):
     # Crear el nuevo producto en la base de datos
     db_product = Product(
+        id_shop=product.id_shop,
         name_product=product.name_product,
         product_description=product.product_description,
         price=product.price,
@@ -101,7 +103,6 @@ def delete_product(db: Session, product_id: int) -> bool:
         print(f"Error eliminando el producto con ID {product_id}: {e}")
         return False
 
-
 # ------------------------------
 # Obtener productos filtrados por categoría con detalles completos
 # ------------------------------
@@ -178,3 +179,4 @@ def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] =
     except SQLAlchemyError as e:
         print(f"Error buscando productos con palabra clave '{keyword}': {e}")
         return []
+

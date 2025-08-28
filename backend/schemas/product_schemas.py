@@ -41,8 +41,7 @@ class ProductUpdate(BaseModel):
 
     class Config:
         from_attributes = True
-        
-        
+
 class ProductWithDetailsResponse(BaseModel):
     id_product: int
     name_product: str
@@ -56,4 +55,7 @@ class ProductWithDetailsResponse(BaseModel):
     updated_at: datetime
 
     class Config:
+
         from_attributes = True
+
+
