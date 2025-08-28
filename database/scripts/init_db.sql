@@ -70,6 +70,7 @@ CREATE TABLE shops (
 CREATE TABLE products (
     id_product INT AUTO_INCREMENT PRIMARY KEY,
     id_shop INT, 
+    image_url VARCHAR(255) NOT NULL,
     name_product VARCHAR(100) NOT NULL,
     product_description TEXT,
     price DECIMAL(10,2) NOT NULL CHECK (price >= 0),
@@ -79,7 +80,8 @@ CREATE TABLE products (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_shop) REFERENCES shops(id_shop) ON DELETE SET NULL,
-    FOREIGN KEY (id_category) REFERENCES categories(id_category) ON DELETE SET NULL
+    FOREIGN KEY (id_category) REFERENCES categories(id_category) ON DELETE SET NULL,
+    FOREIGN KEY (id_image) REFERENCES product_images(id_image)
 );
 
 -- Table: order_status
@@ -167,15 +169,6 @@ CREATE TABLE shipments (
     FOREIGN KEY (id_shipping_status) REFERENCES shipping_states(id_shipping_status) ON DELETE SET NULL
 );
 
--- Optional: product_images
-CREATE TABLE product_images (
-    id_image INT AUTO_INCREMENT PRIMARY KEY,
-    id_product INT NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
-    alt_text VARCHAR(100),
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_product) REFERENCES products(id_product) ON DELETE CASCADE
-);
 
 CREATE TABLE user_review(
     id_review INT AUTO_INCREMENT PRIMARY KEY,
