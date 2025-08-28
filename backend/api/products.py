@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from db.database import get_db  # Importamos la función para obtener la sesión de la DB
-from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse
-from crud.product_crud import create_product, get_product_by_id, get_products, update_product, delete_product, get_products_by_category
+from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse
+from crud.product_crud import create_product, get_product_by_id, get_products, update_product, delete_product
 
 router = APIRouter(
         prefix="/products",
