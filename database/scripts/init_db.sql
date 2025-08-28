@@ -70,7 +70,7 @@ CREATE TABLE shops (
 CREATE TABLE products (
     id_product INT AUTO_INCREMENT PRIMARY KEY,
     id_shop INT, 
-    id_image INT,
+    image_url VARCHAR(255) NOT NULL,
     name_product VARCHAR(100) NOT NULL,
     product_description TEXT,
     price DECIMAL(10,2) NOT NULL CHECK (price >= 0),
@@ -82,14 +82,6 @@ CREATE TABLE products (
     FOREIGN KEY (id_shop) REFERENCES shops(id_shop) ON DELETE SET NULL,
     FOREIGN KEY (id_category) REFERENCES categories(id_category) ON DELETE SET NULL,
     FOREIGN KEY (id_image) REFERENCES product_images(id_image)
-);
-
--- Optional: product_images
-CREATE TABLE product_images (
-    id_image INT AUTO_INCREMENT PRIMARY KEY,
-    image_url VARCHAR(255) NOT NULL,
-    alt_text VARCHAR(100),
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 );
 
 -- Table: order_status
