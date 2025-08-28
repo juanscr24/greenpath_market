@@ -28,9 +28,7 @@ header {
     padding: 0.8rem 2rem;
     margin: 1rem;
     border-radius: 20px;
-    width: 77%;
-
-    z-index: 1000;
+    width: 80%;
 }
 
 .navbar {
