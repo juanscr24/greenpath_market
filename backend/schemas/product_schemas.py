@@ -31,6 +31,7 @@ class ProductResponse(BaseModel):
         from_attributes = True
 
 
+
 class ProductUpdate(BaseModel):
     name_product: Optional[str] = Field(None, max_length=100, description="Nombre del producto")
     product_description: Optional[str] = Field(None, description="Descripción del producto")
@@ -55,7 +56,7 @@ class ProductWithDetailsResponse(BaseModel):
     updated_at: datetime
 
     class Config:
-
         from_attributes = True
+
 
 

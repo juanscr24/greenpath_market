@@ -3,6 +3,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from typing import Optional
 from models import Product, Shop, Category
 
+
 from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse
 
 # ------------------------------
@@ -150,6 +151,7 @@ def get_products_by_category(db: Session, category_id: int, skip: int = 0, limit
 
 
 
+
 # Buscar productos por palabra clave
 
 def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] = None, min_price: Optional[float] = None, max_price: Optional[float] = None) -> list[ProductResponse]:
@@ -179,4 +181,5 @@ def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] =
     except SQLAlchemyError as e:
         print(f"Error buscando productos con palabra clave '{keyword}': {e}")
         return []
+
 

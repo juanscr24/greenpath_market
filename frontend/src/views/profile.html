@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Charset y Viewport -->
     <meta charset="UTF-8">
@@ -27,9 +28,41 @@
         href="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755730260/1000251053_jyonaf.png"
         type="image/x-icon">
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <script src="https://kit.fontawesome.com/0b06eaa0c3.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <h1>Profile</h1>
+    <header>
+        <div class="icons">
+            <div class="logo">
+                <a href="./dashboard.html">
+                    <img src="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755732479/1000251390_brue4v.png"
+                        width="190" alt="logo">
+                </a>
+            </div>
+        </div>
+        <div class="container-nav-search">
+            <!-- Navbar -->
+            <nav class="navbar">
+                <a href="./admin.html"><i class="fa-solid fa-user-tie"></i></a>
+                <a href="./shopping_car.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="./offers.html"><i class="fa-solid fa-tag"></i></a>
+                <a href="./profile.html"><i class="fa-solid fa-user"></i></a>
+                <i id="btnLogout" class="fa-solid fa-right-from-bracket"></i>
+                <!-- Search -->
+                <div class="container-search">
+                    <input type="text" placeholder="Buscar">
+                    <div class="btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <script type="module" src="../assets/js/logout.js"></script>
 </body>
+
 </html>
