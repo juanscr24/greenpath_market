@@ -3,8 +3,14 @@
 #best-section {
     height: 400px;
     background-color: white;
-    margin-bottom: 1rem;
     border-radius: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
 }
 
 #card-section {
@@ -13,6 +19,18 @@
     gap: 20px;
 }
 
+#category-section {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.category {
+    height: 200px;
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+}
 
 
 
