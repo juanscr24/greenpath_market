@@ -80,8 +80,18 @@
     </header>
 
     <main>
+        <section>
+                <!-- Botón para mostrar el formulario -->
+            <button id="show-form-btn">Mostrar formulario para agregar productos</button>
+
+            <!-- Contenedor donde se generará el formulario -->
+            <div id="form-container"></div>
+
+            <!-- Lista de productos -->
+            <ul id="product-list"></ul>
+        </section>
         <!-- slide y demas cosas -->
-        <section id="card-section">
+        <section id="card-section" id="productform">
             <article class="card">
                 <!-- Imagen ahora en HTML -->
                 <img src="../assets/img/leche.jpg" alt="Producto" class="card-img">
@@ -164,6 +174,8 @@
                         <span>›</span><span>›</span>
                     </div>
                 </a>
+
+                
             </article>
         </section>
     </main>
@@ -172,6 +184,7 @@
 
     <script type="module" src="../assets/js/guard/dashboard.guard.js"></script>
     <script type="module" src="../assets/js/logout.js"></script>
+    <script type="module" src="../assets/js/addProduct.js"></script>
 </body>
 
 </html>

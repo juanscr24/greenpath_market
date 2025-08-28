@@ -23,30 +23,29 @@
       "id_rol": 2
     },
     {
-      "id": "9324",
+      "id": "b707",
       "email": "juan@gmail.com",
       "password": "123j"
     },
     {
-      "id": "d025",
-      "email": "juan@gmail.com",
-      "password": "123j"
-    },
-    {
-      "id": "1ea0",
-      "email": "juan@gmail.com",
-      "password": "123j"
+      "id": "4e30",
+      "email": "admin@admin.com",
+      "password": "1234"
     }
   ],
   "products": [
     {
-      "id": "20fv",
+      "id": "5638",
       "name_product": "papa",
-      "product_description": "wfqwrqw",
-      "price": 20,
-      "stock": 5,
-      "product_star_rate": 4,
-      "id_category": 1
+      "stock": 1,
+      "price": 3.4,
+      "product_description": "una papa",
+      "id_shop": null,
+      "id_image": null,
+      "product_star_rate": 0,
+      "id_category": null,
+      "created_at": "2025-08-27T22:38:39.732Z",
+      "updated_at": "2025-08-27T22:38:39.733Z"
     }
-  ]
+   ]
 }
