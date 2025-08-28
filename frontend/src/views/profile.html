@@ -61,6 +61,43 @@
             </nav>
         </div>
     </header>
+    <main>
+        <div class="profile-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <img src="./images.jpeg" alt="Foto de perfil" class="avatar">
+                <h2>Mi Perfil</h2>
+                <nav class="menu">
+                    <button data-view="pedidos">Pedidos</button>
+                    <button data-view="ayuda">Ayuda</button>
+                    <button data-view="metodo">Método de Pago</button>
+                    <button data-view="logout" class="logout-btn">Cerrar Sesión</button>
+                </nav>
+            </aside>
+    
+            <!-- Main Content -->
+            <section class="profile-content">
+                <h3 class="section-title">Configuración</h3>
+                <div class="settings">
+                    <div class="settings-item">
+                        <span><strong>Correo:</strong> usuario@example.com</span>
+                    </div>
+                    <div class="settings-item">
+                        <span><strong>Dirección:</strong> Calle Falsa 123, Barranquilla</span>
+                    </div>
+                    <div class="settings-item">
+                        <span><strong>Descripción:</strong> Usuario registrado desde 2025</span>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                </div>
+    
+                <!-- Contenedor dinámico -->
+                <div id="view-container" class="view-container"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../assets/js/profile.js"></script>
 
     <script type="module" src="../assets/js/logout.js"></script>
 </body>

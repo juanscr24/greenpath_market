@@ -6,13 +6,13 @@
 }
 
 body {
-    background: url(https://res.cloudinary.com/dd7vy0y6n/image/upload/v1756148663/comunidad-de-personas-que-trabajan-juntas-en-la-agricultura-para-cultivar-alimentos_hsftyh.jpg);
+    background: url(https://res.cloudinary.com/dd7vy0y6n/image/upload/v1756341679/fondo-de-textura-de-hoja-verde_1_pvcpge.jpg);
+    background-color: #000000c7;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
