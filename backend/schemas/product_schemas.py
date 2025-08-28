@@ -11,12 +11,13 @@ class ProductCreate(BaseModel):
     product_star_rate: float = Field(..., ge=0, le=5, description="Calificación del producto")
     id_category: int = Field(..., description="Categoría del producto")
     
+    
     class Config:
-        # Ensures compatibility with SQLAlchemy models (ORM support)
-        orm_mode = True
+        from_attributes = True
         
 class ProductResponse(BaseModel):
     id_product: int
+    id_shop: int
     name_product: str
     product_description: Optional[str]
     price: float
@@ -28,7 +29,7 @@ class ProductResponse(BaseModel):
 
     class Config:
         from_attributes = True
-        
+
 
 
 class ProductUpdate(BaseModel):
@@ -56,3 +57,6 @@ class ProductWithDetailsResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+

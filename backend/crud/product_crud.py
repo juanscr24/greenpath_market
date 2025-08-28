@@ -1,6 +1,9 @@
 from sqlalchemy.orm import Session, joinedload
 from sqlalchemy.exc import SQLAlchemyError
-from models import Product, Category, Shop
+from typing import Optional
+from models import Product, Shop, Category
+
+
 from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse
 
 # ------------------------------
@@ -56,9 +59,9 @@ def get_products(db: Session, skip: int = 0, limit: int = 100) -> list[ProductRe
         print(f"Error obteniendo los productos: {e}")
         return []
 
-# ------------------------------
+
 # Actualizar un producto existente
-# ------------------------------
+
 def update_product(db: Session, product_id: int, product_data: ProductUpdate) -> ProductResponse | None:
     try:
         db_product = db.query(Product).filter(Product.id_product == product_id).first()
@@ -81,9 +84,8 @@ def update_product(db: Session, product_id: int, product_data: ProductUpdate) ->
         print(f"Error actualizando el producto con ID {product_id}: {e}")
         return None
 
-# ------------------------------
 # Eliminar un producto
-# ------------------------------
+
 def delete_product(db: Session, product_id: int) -> bool:
     try:
         db_product = db.query(Product).filter(Product.id_product == product_id).first()
@@ -145,3 +147,39 @@ def get_products_by_category(db: Session, category_id: int, skip: int = 0, limit
     except SQLAlchemyError as e:
         print(f"Error obteniendo productos por categoría {category_id}: {e}")
         return []
+
+
+
+
+
+# Buscar productos por palabra clave
+
+def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] = None, min_price: Optional[float] = None, max_price: Optional[float] = None) -> list[ProductResponse]:
+    try:
+        # Construir la consulta base con filtro de palabra clave
+        query = db.query(Product).filter(
+            (Product.name_product.ilike(f"%{keyword}%")) | 
+            (Product.product_description.ilike(f"%{keyword}%"))
+        )
+        
+        # Aplicar filtros adicionales si se proporcionan
+        if category is not None:
+            query = query.filter(Product.id_category == category)
+        
+        if min_price is not None:
+            query = query.filter(Product.price >= min_price)
+        
+        if max_price is not None:
+            query = query.filter(Product.price <= max_price)
+        
+        # Ejecutar la consulta y obtener los productos
+        db_products = query.all()
+        
+        # Convertir la lista de productos a respuestas formateadas
+        return [ProductResponse.from_orm(product) for product in db_products]
+
+    except SQLAlchemyError as e:
+        print(f"Error buscando productos con palabra clave '{keyword}': {e}")
+        return []
+
+
