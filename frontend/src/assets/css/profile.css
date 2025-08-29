@@ -16,7 +16,7 @@ main {
     width: 100%;
     max-width: 1400px;
     backdrop-filter: blur(10px);
-    background-color: rgba(14, 146, 10, 0.4); /* Verde semi-transparente */
+    background-color: #37963d2d; /* Verde semi-transparente */
     border: 1px solid rgba(9, 58, 12, 0.2);
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -40,11 +40,12 @@ main {
     height: 120px;
     border-radius: 50%;
     margin-bottom: 1rem;
-    border: 3px solid rgba(9, 58, 12, 0.2);
+    border: 3px solid #284827;
     object-fit: cover;
 }
 
 .sidebar h2 {
+    color: #fff;
     margin-bottom: 2rem;
     font-size: 1.2rem;
 }
@@ -58,10 +59,11 @@ main {
 
 .menu button {
     padding: 0.9rem 1rem;
-    background: linear-gradient(135deg, #267f23f3,#284827dc);
+    background: linear-gradient(225deg, #284827,#329a2e);
     border-radius: 12px;
     border: none;
     color: #fff;
+    font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
@@ -69,20 +71,23 @@ main {
 }
 
 .menu button:hover {
-    background: #329a2e;
+    background: #329a2ed0;
     transform: translateX(4px);
 }
 
-.logout-btn {
-    background: #ef4444 !important;
+#logout-btn {
+    background: #c5c5c4 !important;
+    font-weight: 600;
+    color: #313131;
 }
 
-.logout-btn:hover {
-    background: #dc2626 !important;
+#logout-btn:hover {
+    background: #a0a09c !important;
 }
 
 /* Main content */
 .profile-content {
+    color: #fff;
     flex: 1;
     background: transparent; /* transparente también */
     padding: 2rem;
@@ -91,6 +96,7 @@ main {
 }
 
 .section-title {
+    color: #a0a09c;
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
     font-weight: bold;

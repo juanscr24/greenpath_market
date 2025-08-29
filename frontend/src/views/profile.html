@@ -49,7 +49,7 @@
                 <a href="./admin.html"><i class="fa-solid fa-user-tie"></i></a>
                 <a href="./shopping_car.html"><i class="fa-solid fa-cart-shopping"></i></a>
                 <a href="./offers.html"><i class="fa-solid fa-tag"></i></a>
-                <a href="./profile.html"><i class="fa-solid fa-user"></i></a>
+                <a><i class="fa-solid fa-user"></i></a>
                 <i id="btnLogout" class="fa-solid fa-right-from-bracket"></i>
                 <!-- Search -->
                 <div class="container-search">
@@ -71,7 +71,7 @@
                     <button data-view="pedidos">Pedidos</button>
                     <button data-view="ayuda">Ayuda</button>
                     <button data-view="metodo">Método de Pago</button>
-                    <button data-view="logout" class="logout-btn">Cerrar Sesión</button>
+                    <button data-view="logout" id="logout-btn">Cerrar Sesión</button>
                 </nav>
             </aside>
     
@@ -97,8 +97,8 @@
         </div>
     </main>
 
+    <script type="module" src="../assets/js/guard/dashboard.guard.js"></script>
     <script src="../assets/js/profile.js"></script>
-
     <script type="module" src="../assets/js/logout.js"></script>
 </body>
 
