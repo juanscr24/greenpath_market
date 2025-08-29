@@ -29,23 +29,6 @@ $form.addEventListener("submit", async (e) => {
     };
 
     try {
-        // traer usuarios existentes
-        const { data: users } = await axios.get(endpointRegister);
-
-        // Validaciones duplicados
-        if (users.some(u => u.email === newUser.email)) {
-            alert("Email already exists");
-            return;
-        }
-        if (users.some(u => u.phone === newUser.phone)) {
-            alert("Phone already exists");
-            return;
-        }
-        if (users.some(u => u.document_number === newUser.document_number)) {
-            alert("Document number already exists");
-            return;
-        }
-
         // Crear usuario
         const { data: createdUser } = await axios.post(endpointRegister, newUser);
 

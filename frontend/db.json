@@ -21,6 +21,26 @@
       "birthdate": "1998-04-24",
       "user_password": "123j",
       "id_rol": 2
+    },
+    {
+      "id": "1b0e",
+      "email": "juan@gmail.com",
+      "password": "123j"
+    },
+    {
+      "id": "5e49",
+      "email": "juan@gmail.com",
+      "password": "123j"
+    },
+    {
+      "id": "589e",
+      "email": "juan@gmail.com",
+      "password": "123j"
+    },
+    {
+      "id": "3e25",
+      "email": "juan@gmail.com",
+      "password": "123j"
     }
   ],
   "products": [

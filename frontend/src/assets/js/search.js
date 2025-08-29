@@ -1,3 +1,4 @@
+
 import axios from "./auth-interceptor.js";
 import { endpointSearch } from "./main";
 
@@ -182,3 +183,4 @@ window.buscar = buscar;
 
 // Exportar funciones para uso externo si es necesario
 export { buscar, mostrarResultados, setupSearchListeners };
+

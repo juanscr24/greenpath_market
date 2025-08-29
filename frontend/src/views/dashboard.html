@@ -7,27 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Título de la página -->
     <title>GreenPath - dashboard</title>
-    <!-- Descripción SEO -->
-    <meta name="description"
-        content="GreenPath Market is an innovative solution aimed at rural-area merchants. Its main goal is to strengthen the local economy by providing a digital space where producers can sell their goods directly, without intermediaries. All that's required is to create a seller account, through which they can list and offer their products on the platform.">
-    <meta name="keywords"
-        content="GreenPath Market, rural commerce, local economy, digital marketplace, JavaScript, CSS, seller platform, direct trade, producers, agro marketplace">
-    <!-- Información del sitio -->
-    <meta name="author" content="Juan Cardona, Forlan Ordoñez, Daniel Rojas, Camilo Parra, Wilson Delgado">
-    <meta name="designer" content="Forlan Ordoñez, Juan Cardona">
-    <meta name="organization" content="BugHunters">
-    <meta name="sitedomain" content="https://github.com/juanscr24/greenpath_market">
-    <meta name="copyright" content="© 2025 juanscr24. All rights reserved">
-    <!-- Robots y rastreadores -->
+    <meta name="description" content="GreenPath Market es una solución innovadora...">
+    <meta name="keywords" content="GreenPath Market, comercio rural...">
+    <meta name="author" content="Juan Cardona, Forlan Ordoñez...">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
-    <!-- Apariencia del navegador -->
     <meta name="theme-color" content="#ffffff">
-    <!-- Favicon -->
-    <link rel="shortcut icon"
-        href="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755730260/1000251053_jyonaf.png"
-        type="image/x-icon">
-    <!-- CSS -->
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dd7vy0y6n/image/upload/...">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/card.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
@@ -39,9 +25,8 @@
     <header>
         <div class="icons">
             <div class="logo">
-                <a href="./dashboard.html">
-                    <img src="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755732479/1000251390_brue4v.png"
-                    width="190" alt="logo">
+                <a>
+                    <img src="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755732479/1000251390_brue4v.png" width="190" alt="logo">
                 </a>
             </div>
         </div>
@@ -49,10 +34,10 @@
             <!-- Navbar -->
             <nav class="navbar">
                 <a href="./admin.html"><i class="fa-solid fa-user-tie"></i></a>
+                <a href="./my_shop.html"><i class="fa-solid fa-shop"></i></a>
                 <a href="./shopping_car.html"><i class="fa-solid fa-cart-shopping"></i></a>
                 <a href="./offers.html"><i class="fa-solid fa-tag"></i></a>
                 <a href="./profile.html"><i class="fa-solid fa-user"></i></a>
-                <i id="btnLogout" class="fa-solid fa-right-from-bracket"></i>
                 <!-- Search -->
                 <div class="container-search">
                     <input id="searchInput" type="text" placeholder="Buscar">
@@ -60,10 +45,13 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>
+                <i id="btnLogout" class="fa-solid fa-right-from-bracket"></i>
             </nav>
         </div>
     </header>
+
     <main>
+
         <div id="resultados" class="search-results"></div>
         <section id="best-section">
             
@@ -77,160 +65,18 @@
             <div class="category"></div>
             <div class="category"></div>
         </section>
-        <!-- slide y demas cosas -->
 
         <!-- Contenedor para resultados de búsqueda -->
 
         <h1>PRODUCTS</h1>
-        <section id="card-section" id="productform">
-            <article class="card">
-                <!-- Imagen ahora en HTML -->
-                <img src="../assets/img/leche.jpg" alt="Producto" class="card-img">
-
-                <!-- Degradado -->
-                <div class="overlay"></div>
-
-                <!-- Contenido -->
-                <div class="content">
-                    <h2>Queso</h2>
-                    <div class="price">
-                        <h3>20 L</h3>
-                        <h3>$39,970</h3>
-                    </div>
-                    <p>
-                        vendido por: <strong>Carulla</strong>
-                    </p>
-                </div>
-
-                <!-- Botón -->
-                <a href="#" class="swipe-btn">
-                    <span>Agrega al carrito</span>
-                    <div class="arrows">
-                        <span>›</span><span>›</span>
-                    </div>
-                </a>
-            </article>
-
-            <article class="card">
-                <!-- Imagen ahora en HTML -->
-                <img src="../assets/img/leche.jpg" alt="Producto" class="card-img">
-
-                <!-- Degradado -->
-                <div class="overlay"></div>
-
-                <!-- Contenido -->
-                <div class="content">
-                    <h2>Queso</h2>
-                    <div class="price">
-                        <h3>20 L</h3>
-                        <h3>$39,970</h3>
-                    </div>
-                    <p>
-                        vendido por: <strong>Carulla</strong>
-                    </p>
-                </div>
-
-                <!-- Botón -->
-                <a href="#" class="swipe-btn">
-                    <span>Agrega al carrito</span>
-                    <div class="arrows">
-                        <span>›</span><span>›</span>
-                    </div>
-                </a>
-            </article>
-
-            <article class="card">
-                <!-- Imagen ahora en HTML -->
-                <img src="../assets/img/leche.jpg" alt="Producto" class="card-img">
-
-                <!-- Degradado -->
-                <div class="overlay"></div>
-
-                <!-- Contenido -->
-                <div class="content">
-                    <h2>Queso</h2>
-                    <div class="price">
-                        <h3>20 L</h3>
-                        <h3>$39,970</h3>
-                    </div>
-                    <p>
-                        vendido por: <strong>Carulla</strong>
-                    </p>
-                </div>
-
-                <!-- Botón -->
-                <a href="#" class="swipe-btn">
-                    <span>Agrega al carrito</span>
-                    <div class="arrows">
-                        <span>›</span><span>›</span>
-                    </div>
-                </a>
-
-                
-            </article>
-            <article class="card">
-                <!-- Imagen ahora en HTML -->
-                <img src="../assets/img/leche.jpg" alt="Producto" class="card-img">
-
-                <!-- Degradado -->
-                <div class="overlay"></div>
-
-                <!-- Contenido -->
-                <div class="content">
-                    <h2>Queso</h2>
-                    <div class="price">
-                        <h3>20 L</h3>
-                        <h3>$39,970</h3>
-                    </div>
-                    <p>
-                        vendido por: <strong>Carulla</strong>
-                    </p>
-                </div>
-
-                <!-- Botón -->
-                <a href="#" class="swipe-btn">
-                    <span>Agrega al carrito</span>
-                    <div class="arrows">
-                        <span>›</span><span>›</span>
-                    </div>
-                </a>
-            </article>
-            <article class="card">
-                <!-- Imagen ahora en HTML -->
-                <img src="../assets/img/leche.jpg" alt="Producto" class="card-img">
-
-                <!-- Degradado -->
-                <div class="overlay"></div>
-
-                <!-- Contenido -->
-                <div class="content">
-                    <h2>Queso</h2>
-                    <div class="price">
-                        <h3>20 L</h3>
-                        <h3>$39,970</h3>
-                    </div>
-                    <p>
-                        vendido por: <strong>Carulla</strong>
-                    </p>
-                </div>
-
-                <!-- Botón -->
-                <a href="#" class="swipe-btn">
-                    <span>Agrega al carrito</span>
-                    <div class="arrows">
-                        <span>›</span><span>›</span>
-                    </div>
-                </a>
-            </article>
-        </section>
+        <section id="card-section" id="productform"></section>
     </main>
 
-    <!-- <button id="btnLogout">Cerrar sesión</button> -->
-
-    <script type="module" src="../assets/js/search.js"></script>
+    <script type="module" src="../assets/js/dashboard.js"></script>
     <script type="module" src="../assets/js/guard/dashboard.guard.js"></script>
+    <script type="module" src="../assets/js/search.js"></script>
     <script type="module" src="../assets/js/logout.js"></script>
-    <script type="module" src="../assets/js/addProduct.js"></script>
+
 </body>
 
 </html>
