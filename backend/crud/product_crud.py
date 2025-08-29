@@ -191,14 +191,23 @@ def get_products_by_category(db: Session, category_id: int, skip: int = 0, limit
 
 
 
-# Buscar productos por palabra clave
+# Buscar productos por palabra clave con detalles completos
 
-def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] = None, min_price: Optional[float] = None, max_price: Optional[float] = None) -> list[ProductResponse]:
+def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] = None, min_price: Optional[float] = None, max_price: Optional[float] = None) -> list[ProductWithDetailsResponse]:
     try:
-        # Construir la consulta base con filtro de palabra clave
-        query = db.query(Product).filter(
-            (Product.name_product.ilike(f"%{keyword}%")) | 
-            (Product.product_description.ilike(f"%{keyword}%"))
+        # Construir la consulta base con joins para obtener información de categoría y tienda
+        query = (
+            db.query(
+                Product,
+                Category.name_category.label('category_name'),
+                Shop.shop_name.label('shop_name')
+            )
+            .join(Category, Product.id_category == Category.id_category)
+            .join(Shop, Product.id_shop == Shop.id_shop)
+            .filter(
+                (Product.name_product.ilike(f"%{keyword}%")) | 
+                (Product.product_description.ilike(f"%{keyword}%"))
+            )
         )
         
         # Aplicar filtros adicionales si se proporcionan
@@ -212,10 +221,28 @@ def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] =
             query = query.filter(Product.price <= max_price)
         
         # Ejecutar la consulta y obtener los productos
-        db_products = query.all()
+        db_results = query.all()
         
-        # Convertir la lista de productos a respuestas formateadas
-        return [ProductResponse.from_orm(product) for product in db_products]
+        # Convertir resultados a la respuesta detallada
+        products_with_details = []
+        for product, category_name, shop_name in db_results:
+            products_with_details.append(
+                ProductWithDetailsResponse(
+                    id_product=product.id_product,
+                    name_product=product.name_product,
+                    product_description=product.product_description,
+                    price=float(product.price),
+                    stock=product.stock,
+                    product_star_rate=product.product_star_rate,
+                    category_name=category_name,
+                    shop_name=shop_name,
+                    image_url=product.image_url,
+                    created_at=product.created_at,
+                    updated_at=product.updated_at
+                )
+            )
+        
+        return products_with_details
 
     except SQLAlchemyError as e:
         print(f"Error buscando productos con palabra clave '{keyword}': {e}")
