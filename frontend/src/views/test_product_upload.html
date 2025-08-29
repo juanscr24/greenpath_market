@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Carga de Producto</title>
+    <link rel="stylesheet" href="../assets/css/test_upload.css">
+</head>
+<body>
+    <h1>Registrar Producto</h1>
+    <form id="productForm">
+        <label for="id_shop">ID de la Tienda:</label>
+        <input type="number" id="id_shop" name="id_shop" required><br>
+
+        <label for="name_product">Nombre del Producto:</label>
+        <input type="text" id="name_product" name="name_product" required><br>
+
+        <label for="product_description">Descripción del Producto:</label>
+        <textarea id="product_description" name="product_description"></textarea><br>
+
+        <label for="price">Precio:</label>
+        <input type="number" id="price" name="price" step="0.01" required><br>
+
+        <label for="stock">Cantidad en Stock:</label>
+        <input type="number" id="stock" name="stock" required><br>
+
+        <label for="product_star_rate">Calificación del Producto:</label>
+        <input type="number" id="product_star_rate" name="product_star_rate" min="0" max="5" step="0.1" required><br>
+
+        <label for="id_category">ID de la Categoría:</label>
+        <input type="number" id="id_category" name="id_category" required><br>
+
+        <label for="image">Imagen del Producto:</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br>
+
+        <button type="submit">Registrar Producto</button>
+    </form>
+
+    <div id="response"></div>
+
+    <script src="../assets/js/test_upload.js"></script>
+</body>
+</html>
