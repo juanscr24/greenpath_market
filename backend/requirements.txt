@@ -26,3 +26,6 @@ greenlet==3.1.1
 
 # JWT para autenticación
 python-jose[cryptography]==3.3.0
+
+# Cloudinary para manejo de imágenes
+cloudinary==1.44.1
