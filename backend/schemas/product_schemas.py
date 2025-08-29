@@ -17,7 +17,7 @@ class ProductCreate(BaseModel):
         
 class ProductResponse(BaseModel):
     id_product: int
-    id_shop: int
+    id_shop: Optional[int] = None
     name_product: str
     product_description: Optional[str]
     price: float
