@@ -7,9 +7,9 @@
 
 body {
     background: 
-    linear-gradient(rgba(0, 0, 0, 0.4)),
-    url(https://res.cloudinary.com/dd7vy0y6n/image/upload/v1756420922/2148793006_1_zgoo43.jpg);
-    backdrop-filter: blur(10px);
+    linear-gradient(rgba(0, 0, 0, 0.55)),
+    url(../img/bg.jpg);
+    backdrop-filter: blur(9px);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -88,7 +88,7 @@ header {
 .container-search .btn {
     width: 40px;
     height: 40px;
-    background: #1b561b;
+    background: #37963e;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -99,7 +99,7 @@ header {
 }
 
 .container-search .btn:hover {
-    background: rgba(10, 250, 22, 0.74);
+    background: #0c4b32;
 }
 
 /* Animación*/
