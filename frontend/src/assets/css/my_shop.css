@@ -1,0 +1,29 @@
+main {
+    width: 80%;
+}
+.container_shop {
+    display: flex;
+    gap: 20px;
+    margin-left: 50px;
+    align-items: center;
+}
+
+.container_shop h2 {
+    color: white;
+    font-style: oblique;
+}
+
+.container_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    width: 120px;
+    border-radius: 100%;
+    background-color: white;
+}
+
+.container_icon i {
+    color: #0c4b32;
+    font-size: 30px;
+}

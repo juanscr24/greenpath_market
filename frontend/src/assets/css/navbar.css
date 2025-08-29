@@ -75,7 +75,7 @@ header {
     font-family: "Poppins", sans-serif;
     outline: none;
     height: 40px;
-    width: 0;
+    width: 250px;
     padding: 0 20px;
     color: #383838;
     border-radius: 50px;
@@ -88,7 +88,7 @@ header {
 .container-search .btn {
     width: 40px;
     height: 40px;
-    background: #37963e;
+    background: #0c4b32;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -99,13 +99,7 @@ header {
 }
 
 .container-search .btn:hover {
-    background: #0c4b32;
-}
-
-/* Animación*/
-.container-search:hover input {
-    width: 330px;
-    margin-right: 0px;
+    background: #37963e;
 }
 
 .container-search i {
