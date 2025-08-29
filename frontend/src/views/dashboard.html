@@ -41,7 +41,7 @@
                 <!-- Search -->
                 <div class="container-search">
                     <input id="searchInput" type="text" placeholder="Buscar">
-                    <div class="btn">
+                    <div class="btn" onclick="window.buscar && window.buscar()">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>
@@ -51,11 +51,11 @@
     </header>
 
     <main>
-        <!-- Aquí se mostrarán los resultados de la búsqueda -->
-        <div id="results"></div>
 
-        <section id="best-section"></section>
-
+        <div id="resultados" class="search-results"></div>
+        <section id="best-section">
+            
+        </section>
         <h1>CATEGORIES</h1>
         <section id="category-section">
             <div class="category"></div>
@@ -65,6 +65,8 @@
             <div class="category"></div>
             <div class="category"></div>
         </section>
+
+        <!-- Contenedor para resultados de búsqueda -->
 
         <h1>PRODUCTS</h1>
         <section id="card-section" id="productform"></section>
