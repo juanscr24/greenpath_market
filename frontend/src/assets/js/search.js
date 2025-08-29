@@ -1,6 +1,7 @@
+import axios from "./auth-interceptor.js";
 import { endpointSearch } from "./main";
 
-function buscar() {
+async function buscar() {
     const query = document.getElementById('searchInput').value;  // Tomar el valor del input
     if (!query) {
         alert('Por favor ingrese algo para buscar.');
@@ -9,20 +10,12 @@ function buscar() {
 
     const endpoint = `${endpointSearch}${encodeURIComponent(query)}`; // Construir URL con el query
 
-    // Hacer el GET request
-    fetch(endpoint)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error en la búsqueda');
-            }
-            return response.json();  // Parsear respuesta JSON
-        })
-        .then(data => {
-            mostrarResultados(data);  // Mostrar resultados
-        })
-        .catch(error => {
-            console.error('Hubo un problema con la petición:', error);
-        });
+    try {
+        const response = await axios.get(endpoint);
+        mostrarResultados(response.data);
+    } catch (error) {
+        console.error('Hubo un problema con la petición:', error);
+    }
 }
 
 function mostrarResultados(data) {

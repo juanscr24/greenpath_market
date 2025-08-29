@@ -12,7 +12,8 @@
 
 
 
-const API_URL = 'http://localhost:3000/products';
+import axios from "./auth-interceptor.js";
+
 
 const $showFormBtn = document.getElementById('show-form-btn');
 const $formContainer = document.getElementById('form-container');
@@ -48,13 +49,13 @@ $showFormBtn.addEventListener('click', () => {
 
 // Obtener y mostrar productos en el ul#product-list
 async function fetchProducts() {
-  const res = await fetch(API_URL);
-  const products = await res.json();
+  const res = await axios.get(endpointProducts);
+  const products = res.data;
   renderList(products);
 }
 
 function renderList(products) {
-  $productList.innerHTML = ''; // Limpiar lista antes de agregar
+  $productList.innerHTML = ''; 
 
   products.forEach((p) => {
     const li = document.createElement('li');
@@ -117,21 +118,11 @@ async function submitForm() {
   try {
     if (editingId) {
       // Actualizar producto
-      const res = await fetch(`${API_URL}/${editingId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(productData),
-      });
-      if (!res.ok) throw new Error('Error actualizando el producto');
+      const res = await axios.put(`${API_URL}/${editingId}`, productData);
       editingId = null;
     } else {
       // Agregar producto
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(productData),
-      });
-      if (!res.ok) throw new Error('Error agregando el producto');
+      const res = await axios.post(API_URL, productData);
     }
 
     // Limpiar y esconder formulario
@@ -146,9 +137,8 @@ async function submitForm() {
 
 async function editProduct(id) {
   try {
-    const res = await fetch(`${API_URL}/${id}`);
-    if (!res.ok) throw new Error('Producto no encontrado');
-    const product = await res.json();
+    const res = await axios.get(`${API_URL}/${id}`);
+    const product = res.data;
     editingId = id;
     renderForm(product);
     $showFormBtn.style.display = 'none';
@@ -161,10 +151,7 @@ async function deleteProduct(id) {
   if (!confirm('¿Estás seguro de eliminar este producto?')) return;
 
   try {
-    const res = await fetch(`${API_URL}/${id}`, {
-      method: 'DELETE',
-    });
-    if (!res.ok) throw new Error('Error eliminando el producto');
+    const res = await axios.delete(`${API_URL}/${id}`);
     fetchProducts();
   } catch (error) {
     alert(error.message);
