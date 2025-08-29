@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 # We import the routers from the api folder
-from api import login, register, products, payments, search, users
+from api import login, register, products, payments, search, users, shop
 from db.database import Base, engine
 # Create the tables in the database
 Base.metadata.create_all(bind=engine)
@@ -45,6 +45,7 @@ app.include_router(products.router)
 app.include_router(payments.router)
 app.include_router(search.router)
 app.include_router(users.router)
+app.include_router(shop.router)
 
 
 # --- MAIN ROUTES ---

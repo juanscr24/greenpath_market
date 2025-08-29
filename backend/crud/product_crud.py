@@ -77,7 +77,11 @@ def get_product_by_id(db: Session, product_id: int) -> ProductResponse | None:
             print(f"Producto con ID {product_id} no encontrado.")
             return None
 
-        return ProductResponse.from_orm(db_product)
+        product_data = ProductResponse.from_orm(db_product)
+        # Si id_shop es None, establecerlo a 0
+        if product_data.id_shop is None:
+            product_data.id_shop = 0
+        return product_data
 
     except SQLAlchemyError as e:
         print(f"Error obteniendo el producto con ID {product_id}: {e}")
@@ -91,7 +95,15 @@ def get_products(db: Session, skip: int = 0, limit: int = 100) -> list[ProductRe
         db_products = db.query(Product).offset(skip).limit(limit).all()
         
         # Convertir la lista de productos a respuestas formateadas
-        return [ProductResponse.from_orm(product) for product in db_products]
+        products_response = []
+        for product in db_products:
+            product_data = ProductResponse.from_orm(product)
+            # Si id_shop es None, establecerlo a 0
+            if product_data.id_shop is None:
+                product_data.id_shop = 0
+            products_response.append(product_data)
+        
+        return products_response
 
     except SQLAlchemyError as e:
         print(f"Error obteniendo los productos: {e}")
@@ -115,7 +127,11 @@ def update_product(db: Session, product_id: int, product_data: ProductUpdate) ->
         db.commit()  # Guardar cambios en la base de datos
         db.refresh(db_product)  # Refrescar objeto para obtener los datos más recientes
 
-        return ProductResponse.from_orm(db_product)
+        updated_product = ProductResponse.from_orm(db_product)
+        # Si id_shop es None, establecerlo a 0
+        if updated_product.id_shop is None:
+            updated_product.id_shop = 0
+        return updated_product
 
     except SQLAlchemyError as e:
         db.rollback()  # Revertir los cambios si algo falla
@@ -215,7 +231,15 @@ def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] =
         db_products = query.all()
         
         # Convertir la lista de productos a respuestas formateadas
-        return [ProductResponse.from_orm(product) for product in db_products]
+        products_response = []
+        for product in db_products:
+            product_data = ProductResponse.from_orm(product)
+            # Si id_shop es None, establecerlo a 0
+            if product_data.id_shop is None:
+                product_data.id_shop = 0
+            products_response.append(product_data)
+        
+        return products_response
 
     except SQLAlchemyError as e:
         print(f"Error buscando productos con palabra clave '{keyword}': {e}")
