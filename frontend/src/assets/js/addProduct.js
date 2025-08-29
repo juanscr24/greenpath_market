@@ -13,6 +13,7 @@
 
 
 import axios from "./auth-interceptor.js";
+import { endpointProducts } from "./main.js";
 
 
 const $showFormBtn = document.getElementById('show-form-btn');
@@ -49,7 +50,8 @@ $showFormBtn.addEventListener('click', () => {
 
 // Obtener y mostrar productos en el ul#product-list
 async function fetchProducts() {
-  const res = await axios.get(endpointProducts);
+  const res = await axios.get( endpointProducts = 'http://localhost:3000/products'
+);
   const products = res.data;
   renderList(products);
 }
