@@ -2,9 +2,11 @@ from sqlalchemy.orm import Session, joinedload
 from sqlalchemy.exc import SQLAlchemyError
 from typing import Optional
 from models import Product, Shop, Category
+from service.cloudinary import upload_image
+from fastapi import HTTPException
+import io
 
-
-from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse
+from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse, ProductCreateWithImage
 
 # ------------------------------
 # Crear un nuevo producto en la base de datos
@@ -12,6 +14,7 @@ def create_product(db: Session, product: ProductCreate):
     # Crear el nuevo producto en la base de datos
     db_product = Product(
         id_shop=product.id_shop,
+        image_url=product.image_url,
         name_product=product.name_product,
         product_description=product.product_description,
         price=product.price,
@@ -26,7 +29,42 @@ def create_product(db: Session, product: ProductCreate):
     db.refresh(db_product)  # Refrescar para obtener los valores generados (como created_at)
 
     return db_product  # Devolver el producto recién creado
- # Retornar la respuesta formateada
+
+# ------------------------------
+# Crear un nuevo producto con upload de imagen
+def create_product_with_image(db: Session, product_data: ProductCreateWithImage, image_file):
+    try:
+        # Leer el contenido del archivo
+        image_content = image_file.file.read()
+        
+        # Subir imagen a Cloudinary
+        image_url = upload_image(image_content)
+        
+        # Crear el nuevo producto en la base de datos
+        db_product = Product(
+            id_shop=product_data.id_shop,
+            name_product=product_data.name_product,
+            product_description=product_data.product_description,
+            price=product_data.price,
+            stock=product_data.stock,
+            product_star_rate=product_data.product_star_rate,
+            id_category=product_data.id_category,
+            image_url=image_url
+        )
+        
+        # Agregar el producto a la sesión
+        db.add(db_product)
+        db.commit()  # Confirmar la transacción
+        db.refresh(db_product)  # Refrescar para obtener los valores generados
+
+        return db_product  # Devolver el producto recién creado
+    
+    except HTTPException as e:
+        db.rollback()
+        raise e
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"Error al crear el producto: {str(e)}")
 
 # ------------------------------
 # Obtener un producto por su ID
@@ -39,7 +77,11 @@ def get_product_by_id(db: Session, product_id: int) -> ProductResponse | None:
             print(f"Producto con ID {product_id} no encontrado.")
             return None
 
-        return ProductResponse.from_orm(db_product)
+        product_data = ProductResponse.from_orm(db_product)
+        # Si id_shop es None, establecerlo a 0
+        if product_data.id_shop is None:
+            product_data.id_shop = 0
+        return product_data
 
     except SQLAlchemyError as e:
         print(f"Error obteniendo el producto con ID {product_id}: {e}")
@@ -53,7 +95,15 @@ def get_products(db: Session, skip: int = 0, limit: int = 100) -> list[ProductRe
         db_products = db.query(Product).offset(skip).limit(limit).all()
         
         # Convertir la lista de productos a respuestas formateadas
-        return [ProductResponse.from_orm(product) for product in db_products]
+        products_response = []
+        for product in db_products:
+            product_data = ProductResponse.from_orm(product)
+            # Si id_shop es None, establecerlo a 0
+            if product_data.id_shop is None:
+                product_data.id_shop = 0
+            products_response.append(product_data)
+        
+        return products_response
 
     except SQLAlchemyError as e:
         print(f"Error obteniendo los productos: {e}")
@@ -77,7 +127,11 @@ def update_product(db: Session, product_id: int, product_data: ProductUpdate) ->
         db.commit()  # Guardar cambios en la base de datos
         db.refresh(db_product)  # Refrescar objeto para obtener los datos más recientes
 
-        return ProductResponse.from_orm(db_product)
+        updated_product = ProductResponse.from_orm(db_product)
+        # Si id_shop es None, establecerlo a 0
+        if updated_product.id_shop is None:
+            updated_product.id_shop = 0
+        return updated_product
 
     except SQLAlchemyError as e:
         db.rollback()  # Revertir los cambios si algo falla
@@ -137,6 +191,7 @@ def get_products_by_category(db: Session, category_id: int, skip: int = 0, limit
                     product_star_rate=product.product_star_rate,
                     category_name=category_name,
                     shop_name=shop_name,
+                    image_url=product.image_url,
                     created_at=product.created_at,
                     updated_at=product.updated_at
                 )
@@ -176,7 +231,15 @@ def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] =
         db_products = query.all()
         
         # Convertir la lista de productos a respuestas formateadas
-        return [ProductResponse.from_orm(product) for product in db_products]
+        products_response = []
+        for product in db_products:
+            product_data = ProductResponse.from_orm(product)
+            # Si id_shop es None, establecerlo a 0
+            if product_data.id_shop is None:
+                product_data.id_shop = 0
+            products_response.append(product_data)
+        
+        return products_response
 
     except SQLAlchemyError as e:
         print(f"Error buscando productos con palabra clave '{keyword}': {e}")

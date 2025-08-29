@@ -16,7 +16,7 @@ router = APIRouter(
 @router.post("/", response_model=UserResponse, status_code=201)
 async def register_user(user: UserCreate, db: Session = Depends(get_db)):
     try:
-       # We check if the email already exists in the database
+        # We check if the email already exists in the database
         db_user = get_user_by_email(db, email=user.email)
         if db_user:
             # If the email already exists, we return a 409 error (conflict)
