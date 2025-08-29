@@ -8,6 +8,7 @@ class Product(Base):
     
     id_product = Column(Integer, primary_key=True, autoincrement=True)
     id_shop = Column(Integer, ForeignKey('shops.id_shop', ondelete='SET NULL'))
+    image_url = Column(String(255))
     name_product = Column(String(100), nullable=False)
     product_description = Column(Text)
     price = Column(DECIMAL(10, 2), nullable=False)
@@ -21,4 +22,3 @@ class Product(Base):
     shop = relationship("Shop", back_populates="products")
     category = relationship("Category", back_populates="products")
     order_details = relationship("OrderDetail", back_populates="product")
-    images = relationship("ProductImage", back_populates="product")

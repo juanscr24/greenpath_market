@@ -20,8 +20,7 @@ from models import (
     UserOrder,
     OrderDetail,
     Payment,
-    Shipment,
-    ProductImage
+    Shipment
 )
 # We create the main FastAPI instance
 app = FastAPI(
