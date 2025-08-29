@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, File, UploadFile, Form
 from sqlalchemy.orm import Session
 from db.database import get_db  # Importamos la función para obtener la sesión de la DB
-from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse
-from crud.product_crud import create_product, get_product_by_id, get_products, update_product, delete_product, get_products_by_category
+from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse, ProductCreateWithImage
+from crud.product_crud import create_product, get_product_by_id, get_products, update_product, delete_product, get_products_by_category, create_product_with_image
 
 router = APIRouter(
         prefix="/products",
@@ -17,6 +17,47 @@ def create_new_product(product: ProductCreate, db: Session = Depends(get_db)):
         return create_product(db=db, product=product)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+# Endpoint para crear un producto con upload de imagen
+@router.post("/upload", response_model=ProductResponse)
+async def create_product_with_image_upload(
+    id_shop: int = Form(...),
+    name_product: str = Form(...),
+    product_description: str = Form(None),
+    price: float = Form(...),
+    stock: int = Form(...),
+    product_star_rate: float = Form(...),
+    id_category: int = Form(...),
+    image: UploadFile = File(...),
+    db: Session = Depends(get_db)
+):
+    """
+    Crea un nuevo producto subiendo una imagen a Cloudinary.
+    """
+    try:
+        # Validar que el archivo sea una imagen
+        if not image.content_type.startswith('image/'):
+            raise HTTPException(status_code=400, detail="El archivo debe ser una imagen")
+        
+        # Crear objeto con los datos del formulario
+        product_data = ProductCreateWithImage(
+            id_shop=id_shop,
+            name_product=name_product,
+            product_description=product_description,
+            price=price,
+            stock=stock,
+            product_star_rate=product_star_rate,
+            id_category=id_category,
+            image=image
+        )
+        
+        # Crear producto con imagen
+        return create_product_with_image(db, product_data, image)
+        
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
 
 
 # Endpoint para obtener un producto por su ID
