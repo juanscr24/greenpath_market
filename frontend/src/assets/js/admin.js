@@ -4,6 +4,35 @@ import { endpointShops, endpointDeleteShop, endpointUpdateShop } from './main.js
 
 document.addEventListener('DOMContentLoaded', () => {
     loadShops();
+
+    // Modal event listeners
+    const modal = document.getElementById('editModal');
+    const closeBtn = document.querySelector('.close');
+    const cancelBtn = document.querySelector('.cancel-btn');
+    const editForm = document.getElementById('editForm');
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    }
+
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    }
+
+    if (editForm) {
+        editForm.addEventListener('submit', handleFormSubmit);
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 });
 
 function getAuthHeaders() {
@@ -95,13 +124,61 @@ async function handleDeleteShop(event) {
 function handleEditShop(event) {
     const shopId = event.target.getAttribute('data-id');
     if (!shopId) return;
-    // For simplicity, prompt for new shop name and description
-    const newName = prompt('Ingrese el nuevo nombre de la tienda:');
-    if (newName === null) return; // Cancelled
-    const newDescription = prompt('Ingrese la nueva descripción de la tienda:');
-    if (newDescription === null) return; // Cancelled
 
-    updateShop(shopId, { shop_name: newName, description: newDescription });
+    // Find the shop data from the current shops list
+    const shop = getCurrentShopData(shopId);
+    if (!shop) return;
+
+    // Populate the form with current data
+    document.getElementById('editShopName').value = shop.shop_name || '';
+    document.getElementById('editDescription').value = shop.description || '';
+    document.getElementById('editAddress').value = shop.shop_address || '';
+
+    // Store the shop ID for the form submission
+    document.getElementById('editForm').setAttribute('data-shop-id', shopId);
+
+    // Show the modal
+    document.getElementById('editModal').style.display = 'block';
+}
+
+function getCurrentShopData(shopId) {
+    // This is a simple way to get the current shop data
+    // In a real app, you might want to store the shops data globally
+    const shopCards = document.querySelectorAll('.shop-card');
+    for (let card of shopCards) {
+        const editBtn = card.querySelector('.edit-btn');
+        if (editBtn && editBtn.getAttribute('data-id') === shopId) {
+            const h3 = card.querySelector('h3');
+            const pTags = card.querySelectorAll('p');
+            return {
+                shop_name: h3 ? h3.textContent : '',
+                description: pTags[0] ? pTags[0].textContent : '',
+                shop_address: pTags[1] ? pTags[1].textContent.replace('Address: ', '') : ''
+            };
+        }
+    }
+    return null;
+}
+
+async function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const shopId = form.getAttribute('data-shop-id');
+    if (!shopId) return;
+
+    const formData = new FormData(form);
+    const data = {
+        shop_name: formData.get('shop_name') || document.getElementById('editShopName').value,
+        description: formData.get('description') || document.getElementById('editDescription').value,
+        shop_address: formData.get('shop_address') || document.getElementById('editAddress').value
+    };
+
+    // Close the modal
+    document.getElementById('editModal').style.display = 'none';
+
+    // Update the shop
+    await updateShop(shopId, data);
 }
 
 async function updateShop(shopId, data) {

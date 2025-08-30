@@ -8,4 +8,6 @@
 - [x] Add logo image display in shop cards
 - [x] Improve error handling for better error messages
 - [x] Fix shop ID field name (id_shop instead of id)
+- [x] Set shop logo dimensions to 160px x 160px
+- [x] Replace prompt alerts with proper edit form modal
 - [ ] Test the functionality in the browser (run backend server and open admin.html)

@@ -1,5 +1,13 @@
 # GreenPath Market - Frontend
 
+## Team
+
+- **Juan Cardona** - Development & Design
+- **Forlan Ordoñez** - Development & Design
+- **Daniel Rojas** - Development
+- **Camilo Parra** - Development
+- **Wilson Delgado** - Development
+
 A modern, responsive marketplace frontend built with vanilla JavaScript, HTML, and CSS, designed to connect rural producers with consumers through a direct digital marketplace.
 
 ## Project Overview
@@ -212,14 +220,6 @@ async function loginUser(email, password) {
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Team
-
-- **Juan Cardona** - Development & Design
-- **Forlan Ordoñez** - Development & Design
-- **Daniel Rojas** - Development
-- **Camilo Parra** - Development
-- **Wilson Delgado** - Development
-
 ## Support
 
 For support or questions, please create an issue in the GitHub repository or contact the development team.
@@ -227,3 +227,8 @@ For support or questions, please create an issue in the GitHub repository or con
 ---
 
 **GreenPath Market** - Connecting rural producers with consumers since 2025 🌱
+
+
+- [General Documentation](../README.md)
+- [Backend Documentation](backend/README.md)
+- [Database Documentation](database/README.md)
