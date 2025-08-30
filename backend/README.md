@@ -206,12 +206,18 @@ curl -X GET "http://localhost:8000/search/sustainable"
 
 1. Create virtual enviroment
 ```bash
+python -m venv .venv 
+or
 python3 -m venv .venv 
 ```
 
 2. Run virtual envirooment
 ```bash
+ubuntu
 source .venv/bin/activate
+
+windows
+source .venv/Scripts/activate
 ```
 
 3. Install dependencies:

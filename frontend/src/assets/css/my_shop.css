@@ -27,3 +27,67 @@ main {
     color: #0c4b32;
     font-size: 30px;
 }
+
+.shop-container {
+    margin: 50px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shop-container h3 {
+    color: #0c4b32;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.shop-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.shop-container label {
+    font-weight: bold;
+    color: #0c4b32;
+    margin-bottom: 5px;
+}
+
+.shop-container input,
+.shop-container textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.shop-container input:focus,
+.shop-container textarea:focus {
+    outline: none;
+    border-color: #0c4b32;
+}
+
+.shop-container textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.shop-container button {
+    padding: 12px 20px;
+    background-color: #0c4b32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.shop-container button:hover {
+    background-color: #0a3d28;
+}

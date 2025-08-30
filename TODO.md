@@ -1,38 +1,29 @@
-# Implementación de Guardián Global - Progreso
+# TODO - My Shop Page Implementation
 
-## ✅ Pasos Completados
+## Completed Tasks
+- [x] Created frontend/src/assets/js/my_shop.js with shop management functionality
+- [x] Updated frontend/src/views/my_shop.html to include shop container and script
+- [x] Extended frontend/src/assets/css/my_shop.css with form styling
+- [x] Implemented shop creation and editing functionality
+- [x] Added authentication integration using existing auth-interceptor.js
+- [x] Enforced one shop per user logic
+- [x] Integrated with backend API endpoints (/shops)
+- [x] Styled form consistent with existing design (green color scheme #0c4b32)
 
-### 1. Creación del Guardián Global
-- [x] `frontend/src/assets/js/guard/global.guard.js` - Creado
-  - Verifica autenticación en todas las vistas
-  - Excluye auth.html de la verificación
-  - Redirige a auth.html si no está autenticado
+## Features Implemented
+- [x] Fetch current user's shop on page load
+- [x] Display shop details if shop exists
+- [x] Show creation form if no shop exists
+- [x] Allow editing existing shop
+- [x] Allow creating new shop
+- [x] Form validation and error handling
+- [x] Success/error messages
+- [x] Responsive design
 
-### 2. Modificación de Vistas Protegidas
-- [x] `frontend/src/views/dashboard.html` - Guard global añadido
-- [x] `frontend/src/views/profile.html` - Guard global añadido  
-- [x] `frontend/src/views/my_shop.html` - Guard global añadido
-- [x] `frontend/src/views/offers.html` - Guard global añadido
-- [x] `frontend/src/views/shopping_car.html` - Guard global añadido
-- [x] `frontend/src/views/admin.html` - Guard global añadido
-
-### 3. Vista de Autenticación
-- [x] `frontend/src/views/auth.html` - Sin guard global (correcto)
-
-## 🔄 Próximos Pasos
-
-1. **Verificar funcionamiento**: Probar que el guardián redirige correctamente
-2. **Testing**: Asegurar que usuarios autenticados puedan acceder a las vistas
-3. **Manejo de errores**: Verificar que los tokens inválidos sean manejados apropiadamente
-
-## 📋 Funcionalidad del Guardián
-
-El guardián global:
-- Se ejecuta en todas las vistas excepto auth.html
-- Verifica la presencia del token JWT en localStorage
-- Redirige a /src/views/auth.html si no está autenticado
-- Maneja tokens inválidos o corruptos
-- Mantiene los guards específicos existentes (dashboard.guard.js)
-
-## 🎯 Estado Actual
-**Implementación completada** - Todas las vistas protegidas tienen el guardián global
+## Potential Follow-up Tasks
+- [ ] Test the page with running backend server
+- [ ] Verify token structure and user ID extraction
+- [ ] Add logo upload functionality if needed
+- [ ] Add shop status display (active/inactive)
+- [ ] Consider adding shop deletion functionality
+- [ ] Add loading states and better UX feedback
