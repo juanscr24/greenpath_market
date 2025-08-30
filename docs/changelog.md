@@ -19,7 +19,8 @@ git checkout -b nameBranch
 - backend/feature/3170/user-crud
 - backend/feature/3439/payment-and-automation
 - backend/feature/3432/connecting-database
-- frontend/feature/3161/show_review
+- frontend/feature/3161/show-review
+- frontend/feature/3174/views_javascript
 
 ### Ejemplo de commit 
 
