@@ -62,6 +62,12 @@ main {
     font-size: 30px;
 }
 
+.container_icon img {
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+}
+
 .shop-container {
     margin: 60px auto;
     margin-top: 0px;

@@ -62,7 +62,7 @@ class MyShop {
             container.innerHTML = `
             <div class="container_shop">
             <div class="container_icon">
-                ${this.shop.logo_url ? `<img src="${this.shop.logo_url}" alt="Logo de la tienda" style="max-width: 100px; max-height: 100px;">` : 'No disponible'}</p>
+                ${this.shop.logo_url ? `<img src="${this.shop.logo_url}" alt="Logo de la tienda">` : 'No disponible'}</p>
             </div>
             <h2>${this.shop.shop_name}</h2>
             </div>
@@ -72,7 +72,7 @@ class MyShop {
                     <button id="editShopBtn">Editar</button>
                 </div>
                 <div id="shopFormContainer" style="display:none;">
-                    <form id="shopForm">
+                    <form id="shopForm" enctype="multipart/form-data">
                         <label for="shop_name">Nombre de la tienda:</label>
                         <input type="text" id="shop_name" name="shop_name" value="${this.shop.shop_name}" required>
 
@@ -82,8 +82,8 @@ class MyShop {
                         <label for="shop_address">Dirección:</label>
                         <input type="text" id="shop_address" name="shop_address" value="${this.shop.shop_address || ''}">
 
-                        <label for="logo_url">URL del logo:</label>
-                        <input type="url" id="logo_url" name="logo_url" value="${this.shop.logo_url || ''}">
+                        <label for="logo">Logo de la tienda (opcional - deja vacío para mantener el actual):</label>
+                        <input type="file" id="logo" name="logo" accept="image/*">
 
                         <button type="submit">Actualizar Tienda</button>
                         <button type="button" id="cancelEditBtn">Cancelar</button>
@@ -106,7 +106,7 @@ class MyShop {
             // Show form to create shop
             container.innerHTML = `
                 <h3>Crear Tienda</h3>
-                <form id="shopForm">
+                <form id="shopForm" enctype="multipart/form-data">
                     <label for="shop_name">Nombre de la tienda:</label>
                     <input type="text" id="shop_name" name="shop_name" required>
 
@@ -116,8 +116,8 @@ class MyShop {
                     <label for="shop_address">Dirección:</label>
                     <input type="text" id="shop_address" name="shop_address">
 
-                    <label for="logo_url">URL del logo:</label>
-                    <input type="url" id="logo_url" name="logo_url">
+                    <label for="logo">Logo de la tienda:</label>
+                    <input type="file" id="logo" name="logo" accept="image/*" required>
 
                     <button type="submit">Crear Tienda</button>
                 </form>
@@ -153,31 +153,61 @@ class MyShop {
             alert('La dirección debe tener al menos 2 caracteres si se proporciona.');
             return;
         }
-        let logo_url = formData.get('logo_url')?.trim();
-        if (logo_url && logo_url.length > 255) {
-            alert('La URL del logo no puede exceder 255 caracteres.');
-            return;
-        }
-        // Prepare data object
-        const shopData = {
-            id_user: Number(this.userId) || 0,
-            shop_name: shop_name,
-            description: description,
-            shop_address: shop_address || null,
-            logo_url: logo_url || null,
-            is_active: true
-        };
-
-        console.log('Sending shop data:', shopData);
 
         try {
             let response;
+            const logo_file = formData.get('logo');
+
             if (this.shop) {
                 // Update existing shop
-                response = await axios.put(`${API_BASE_URL}/shops/${this.shop.id_shop}`, shopData);
+                if (logo_file) {
+                    // Update with new logo file
+                    const uploadFormData = new FormData();
+                    uploadFormData.append('id_user', Number(this.userId) || 0);
+                    uploadFormData.append('shop_name', shop_name);
+                    uploadFormData.append('description', description);
+                    uploadFormData.append('shop_address', shop_address || '');
+                    uploadFormData.append('is_active', true);
+                    uploadFormData.append('logo', logo_file);
+
+                    response = await axios.put(`${API_BASE_URL}/shops/upload/${this.shop.id_shop}`, uploadFormData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        },
+                    });
+                } else {
+                    // Update without changing logo
+                    const shopData = {
+                        id_user: Number(this.userId) || 0,
+                        shop_name: shop_name,
+                        description: description,
+                        shop_address: shop_address || null,
+                        logo_url: this.shop.logo_url, // Keep existing logo
+                        is_active: true
+                    };
+                    response = await axios.put(`${API_BASE_URL}/shops/${this.shop.id_shop}`, shopData);
+                }
             } else {
-                // Create new shop
-                response = await axios.post(`${API_BASE_URL}/shops/`, shopData);
+                // Create new shop with file upload
+                if (!logo_file) {
+                    alert('Por favor selecciona un archivo de imagen para el logo.');
+                    return;
+                }
+
+                // Create FormData for file upload
+                const uploadFormData = new FormData();
+                uploadFormData.append('id_user', Number(this.userId) || 0);
+                uploadFormData.append('shop_name', shop_name);
+                uploadFormData.append('description', description);
+                uploadFormData.append('shop_address', shop_address || '');
+                uploadFormData.append('is_active', true);
+                uploadFormData.append('logo', logo_file);
+
+                response = await axios.post(`${API_BASE_URL}/shops/upload`, uploadFormData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
             }
 
             if (!response || (response.status !== 200 && response.status !== 201)) {
@@ -196,7 +226,7 @@ class MyShop {
             }
         } catch (error) {
             console.error('Error saving shop:', error);
-            alert('Error al guardar la tienda');
+            alert(error.response?.data?.detail || 'Error al guardar la tienda');
         }
     }
 }
