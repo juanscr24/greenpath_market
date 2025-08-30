@@ -52,12 +52,15 @@ class MyShop {
         if (this.shop) {
             // Display shop details in read-only mode with edit button
             container.innerHTML = `
-                <h3>Tu Tienda</h3>
+            <div class="container_shop">
+            <div class="container_icon">
+                ${this.shop.logo_url ? `<img src="${this.shop.logo_url}" alt="Logo de la tienda" style="max-width: 100px; max-height: 100px;">` : 'No disponible'}</p>
+            </div>
+            <h2>${this.shop.shop_name}</h2>
+            </div>
                 <div id="shopDisplay">
-                    <p><strong>Nombre de la tienda:</strong> ${this.shop.shop_name}</p>
                     <p><strong>Descripción:</strong> ${this.shop.description || ''}</p>
                     <p><strong>Dirección:</strong> ${this.shop.shop_address || ''}</p>
-                    <p><strong>Logo:</strong> ${this.shop.logo_url ? `<img src="${this.shop.logo_url}" alt="Logo de la tienda" style="max-width: 200px; max-height: 200px;">` : 'No disponible'}</p>
                     <button id="editShopBtn">Editar</button>
                 </div>
                 <div id="shopFormContainer" style="display:none;">
