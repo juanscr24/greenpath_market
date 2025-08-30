@@ -8,30 +8,37 @@ main {
     gap:  5px;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    width: 350px;
     backdrop-filter: blur(10px);
     background-color: #37963d2d;
     color: white;
 }
 
 #shopFormContainer {
-    width: 100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #shopForm {
-    width: 80%;
+    width: 100%;
+    padding: 0px 10px;
 }
 
 #shopDisplay {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
 }
 
 .container_shop {
     display: flex;
+    width: 100%;
     gap: 20px;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
