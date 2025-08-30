@@ -11,7 +11,8 @@ export default defineConfig({
                 ofers: resolve(__dirname, "./src/views/ofers.html"),
                 profile: resolve(__dirname, "./src/views/profile.html"),
                 shoppingCard: resolve(__dirname, "./src/views/shopping_card.html"),
-                admin: resolve(__dirname, "./src/views/admin.html")
+                admin: resolve(__dirname, "./src/views/admin.html"),
+                myShop: resolve(__dirname, "./src/views/my_shop.html")
             },
         },
     },

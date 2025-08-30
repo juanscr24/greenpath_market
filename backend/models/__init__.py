@@ -11,4 +11,3 @@ from .user_order import UserOrder
 from .order_detail import OrderDetail
 from .payment import Payment
 from .shipment import Shipment
-from .product_image import ProductImage

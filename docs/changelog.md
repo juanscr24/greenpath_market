@@ -6,13 +6,20 @@ feature, fix, bug
 git checkout -b nameBranch
 ```
 ### Branches
-- frontend/feature/3148/auth
-- frontend/feature/3157/view-pages
-- frontend/fix/3148/auth
 - backend/feature/3139-product-crud
+- backend/feature/3145/order-managment
+- frontend/feature/3148/auth
+- frontend/fix/3148/auth
+- frontend/feature/3150/review
 - frontend/feature/3151/validate-data
 - frontend/feature/3155/view-management
--
+- frontend/feature/3157/view-pages
+- frontend/feature/3162/profile-view
+- backend/feature/3167/navbar-funcionality
+- backend/feature/3170/user-crud
+- backend/feature/3439/payment-and-automation
+- backend/feature/3432/connecting-database
+- 
 
 ### Ejemplo de commit 
 

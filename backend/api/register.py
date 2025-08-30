@@ -19,7 +19,7 @@ async def register_user(user: UserCreate, db: Session = Depends(get_db)):
     Register a new user with email validation to prevent duplicates
     """
     try:
-        # Check if email already exists in the database
+        # We check if the email already exists in the database
         db_user = get_user_by_email(db, email=user.email)
         if db_user:
             # Return 409 conflict error if email is already registered

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Título de la página -->
-    <title>GreenPath - admin</title>
+    <title>GreenPath - dashboard</title>
     <!-- Descripción SEO -->
     <meta name="description"
         content="GreenPath Market is an innovative solution aimed at rural-area merchants. Its main goal is to strengthen the local economy by providing a digital space where producers can sell their goods directly, without intermediaries. All that's required is to create a seller account, through which they can list and offer their products on the platform.">
@@ -28,8 +28,8 @@
         type="image/x-icon">
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/">
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/my_shop.css">
+    <link rel="stylesheet" href="../assets/css/card.css">
     <script src="https://kit.fontawesome.com/0b06eaa0c3.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -45,14 +45,14 @@
         <div class="container-nav-search">
             <!-- Navbar -->
             <nav class="navbar">
-                <a><i class="fa-solid fa-user-tie"></i></a>
-                <a href="./my_shop.html"><i class="fa-solid fa-shop"></i></a>
+                <a href="./admin.html"><i class="fa-solid fa-user-tie"></i></a>
+                <a><i class="fa-solid fa-shop"></i></a>
                 <a href="./shopping_car.html"><i class="fa-solid fa-cart-shopping"></i></a>
                 <a href="./offers.html"><i class="fa-solid fa-tag"></i></a>
                 <a href="./profile.html"><i class="fa-solid fa-user"></i></a>
                 <!-- Search -->
                 <div class="container-search">
-                    <input type="text" placeholder="Buscar">
+                    <input id="searchInput" type="text" placeholder="Buscar">
                     <div class="btn">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
@@ -62,10 +62,12 @@
         </div>
     </header>
     <main>
-        <h1>ADMIN</h1>
+        <div class="container_shop">
+            <div class="container_icon">
+                <i class="fa-solid fa-shop"></i>
+            </div>
+            <h2>MY SHOP</h2>
+        </div>
     </main>
-
-    <script type="module" src="../assets/js/guard/dashboard.guard.js"></script>
-    <script type="module" src="../assets/js/admin.js"></script>
 </body>
 </html>
