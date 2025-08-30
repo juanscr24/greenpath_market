@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, File, UploadFile, Form
 from sqlalchemy.orm import Session
 from db.database import get_db  # Importamos la función para obtener la sesión de la DB
 from schemas.product_schemas import ProductCreate, ProductUpdate, ProductResponse, ProductWithDetailsResponse, ProductCreateWithImage
-from crud.product_crud import create_product, get_product_by_id, get_products, update_product, delete_product, get_products_by_category, create_product_with_image
+from crud.product_crud import create_product, get_product_by_id, get_products, update_product, delete_product, get_products_by_category, create_product_with_image, get_products_by_shop
 from middleware.auth import get_current_user
 
 router = APIRouter(
@@ -75,6 +75,12 @@ def get_products_by_category_endpoint(category_id: int, skip: int = 0, limit: in
     products = get_products_by_category(db, category_id, skip=skip, limit=limit)
     if not products:
         raise HTTPException(status_code=404, detail="No se encontraron productos para esta categoría")
+    return products
+
+# Endpoint para obtener productos por tienda
+@router.get("/shop/{shop_id}", response_model=list[ProductResponse])
+def get_products_by_shop_endpoint(shop_id: int, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    products = get_products_by_shop(db, shop_id, skip=skip, limit=limit)
     return products
 
 # Endpoint para obtener todos los productos con paginación (público)

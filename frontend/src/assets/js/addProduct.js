@@ -1,20 +1,5 @@
-//<section>
-//            <!--seccion para el renderizado de la introduccion de productos-->
-//                <!-- Botón para mostrar el formulario -->
-//            <button id="show-form-btn">Mostrar formulario para agregar productos</button>
-
-//            <!-- Contenedor donde se generará el formulario -->
-//            <div id="form-container"></div>
-
-        //     <!-- Lista de productos -->
-        //     <ul id="product-list" id="card-section"></ul>
-        // </section>
-
-
-
 import axios from "./auth-interceptor.js";
 import { endpointProducts } from "./main.js";
-
 
 const $showFormBtn = document.getElementById('show-form-btn');
 const $formContainer = document.getElementById('form-container');
@@ -29,7 +14,8 @@ function renderForm(product = {}) {
     <input type="number" id="stock" placeholder="Cantidad del producto" value="${product.stock || ''}" min="0" required>
     <input type="number" step="0.01" id="price" placeholder="Valor unitario" value="${product.price || ''}" min="0" required>
     <input type="text" id="product_description" placeholder="Descripción (opcional)" value="${product.product_description || ''}">
-    <input type="text" id="url_img" placeholder="Url de la imagen" value="${product.image_url || ''}">
+    <input type="file" id="image_file" accept="image/*" ${editingId ? 'disabled' : ''}>
+    <input type="number" id="id_category" placeholder="ID de categoría" value="${product.id_category || ''}" required>
     <button id="submitBtn">${editingId ? 'Actualizar' : 'Agregar'}</button>
     <button id="cancelBtn" style="display: ${editingId ? 'inline' : 'none'};">Cancelar</button>
   `;
@@ -50,46 +36,48 @@ $showFormBtn.addEventListener('click', () => {
 
 // Obtener y mostrar productos en el ul#product-list
 async function fetchProducts() {
-  const res = await axios.get( endpointProducts = 'http://localhost:3000/products'
-);
+  if (!window.currentShopId) {
+    console.log('Shop not loaded yet, skipping fetchProducts');
+    return;
+  }
+  const url = `${endpointProducts}/shop/${window.currentShopId}`;
+  const res = await axios.get(url);
   const products = res.data;
   renderList(products);
 }
 
+// Make fetchProducts global so it can be called from my_shop.js
+window.fetchProducts = fetchProducts;
+
 function renderList(products) {
-  $productList.innerHTML = ''; 
+  $productList.innerHTML = '';
 
   products.forEach((p) => {
-    const li = document.createElement('li');
-    li.classList.add('card');
+    const article = document.createElement('article');
+    article.classList.add('card');
 
-    // Crear div para imagen con fondo
-    const imgDiv = document.createElement('div');
-    imgDiv.classList.add('card-img');
-    if (p.image_url) {
-      imgDiv.style.backgroundImage = `url('${p.image_url}')`;
-    }
-
-    // Crear div para contenido y botones
-    const contentDiv = document.createElement('div');
-    contentDiv.classList.add('content', 'overlay');
-    contentDiv.innerHTML = `
-      <strong>${p.name_product}</strong>
-      <br class="price">Cantidad: ${p.stock} - Precio: $${p.price.toFixed(2)}<br> 
-      <em>${p.product_description || ''}</em><br>
-      <button data-id="${p.id}" class="editBtn swipe-btn">Editar</button>
-      <button data-id="${p.id}" class="deleteBtn swipe-btn">Eliminar</button>
+    article.innerHTML = `
+      <img src="${p.image_url || ''}" alt="${p.name_product}" class="card-img">
+      <div class="overlay"></div>
+      <div class="content">
+        <h2>${p.name_product}</h2>
+        <div class="price">
+          <h3>${p.stock} L</h3>
+          <h3>$${p.price.toLocaleString()}</h3>
+        </div>
+        <p>vendido por: <strong>${window.currentShopName || 'Mi Tienda'}</strong></p>
+      </div>
+      <div class="buttons">
+        <button data-id="${p.id_product}" class="editBtn">Editar</button>
+        <button data-id="${p.id_product}" class="deleteBtn">Eliminar</button>
+      </div>
     `;
 
     // Asignar eventos a botones
-    contentDiv.querySelector('.editBtn').onclick = () => editProduct(p.id);
-    contentDiv.querySelector('.deleteBtn').onclick = () => deleteProduct(p.id);
+    article.querySelector('.editBtn').onclick = () => editProduct(p.id_product);
+    article.querySelector('.deleteBtn').onclick = () => deleteProduct(p.id_product);
 
-    // Agregar imagen y contenido al li
-    li.appendChild(imgDiv);
-    li.appendChild(contentDiv);
-
-    $productList.appendChild(li);
+    $productList.appendChild(article);
   });
 }
 
@@ -98,33 +86,67 @@ async function submitForm() {
   const stock = parseInt(document.getElementById('stock').value);
   const price = parseFloat(document.getElementById('price').value);
   const product_description = document.getElementById('product_description').value.trim();
-  const image_url = document.getElementById('url_img').value.trim();
-  if (!name_product || isNaN(stock) || stock < 0 || isNaN(price) || price < 0) {
+  const image_file = document.getElementById('image_file').files[0];
+  const id_category = parseInt(document.getElementById('id_category').value);
+
+  if (!name_product || isNaN(stock) || stock < 0 || isNaN(price) || price < 0 || isNaN(id_category)) {
     alert('Por favor, completa correctamente todos los campos requeridos.');
     return;
   }
 
-  const productData = {
-    name_product,
-    stock,
-    price,
-    product_description,
-    id_shop: null,
-    image_url,
-    product_star_rate: 0,
-    id_category: null,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  };
+  // Get shop id from window
+  if (!window.currentShopId) {
+    alert('Tienda no cargada, por favor recarga la página');
+    return;
+  }
+  const id_shop = window.currentShopId;
 
   try {
     if (editingId) {
-      // Actualizar producto
-      const res = await axios.put(`${API_URL}/${editingId}`, productData);
+      // For update, use JSON to /products/{id}
+      const productData = {
+        name_product,
+        stock,
+        price,
+        product_description,
+        id_shop,
+        product_star_rate: 0,
+        id_category,
+      };
+      const res = await axios.put(`${endpointProducts}/${editingId}`, productData);
       editingId = null;
     } else {
-      // Agregar producto
-      const res = await axios.post(API_URL, productData);
+      if (image_file) {
+        // Use FormData for file upload to /products/upload
+        const formData = new FormData();
+        formData.append('id_shop', id_shop);
+        formData.append('name_product', name_product);
+        formData.append('product_description', product_description || '');
+        formData.append('price', price);
+        formData.append('stock', stock);
+        formData.append('product_star_rate', 0);
+        formData.append('id_category', id_category);
+        formData.append('image', image_file);
+
+        const res = await axios.post(`${endpointProducts}/upload`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+      } else {
+        // No file, use JSON to /products/
+        const productData = {
+          name_product,
+          stock,
+          price,
+          product_description,
+          id_shop,
+          image_url: '',
+          product_star_rate: 0,
+          id_category,
+        };
+        const res = await axios.post(endpointProducts, productData);
+      }
     }
 
     // Limpiar y esconder formulario
@@ -133,13 +155,13 @@ async function submitForm() {
 
     fetchProducts();
   } catch (error) {
-    alert(error.message);
+    alert(error.response?.data?.detail || error.message);
   }
 }
 
 async function editProduct(id) {
   try {
-    const res = await axios.get(`${API_URL}/${id}`);
+    const res = await axios.get(`${endpointProducts}/${id}`);
     const product = res.data;
     editingId = id;
     renderForm(product);
@@ -153,12 +175,11 @@ async function deleteProduct(id) {
   if (!confirm('¿Estás seguro de eliminar este producto?')) return;
 
   try {
-    const res = await axios.delete(`${API_URL}/${id}`);
+    const res = await axios.delete(`${endpointProducts}/${id}`);
     fetchProducts();
   } catch (error) {
     alert(error.message);
   }
 }
 
-// Carga inicial de productos
-fetchProducts();
+// No need to call fetchProducts here, it's called from my_shop.js after shop is loaded

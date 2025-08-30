@@ -63,6 +63,33 @@
     </header>
     <main>
         <h1>ADMIN</h1>
+        <div id="shopsContainer" class="shops-container">
+            <!-- Shops will be loaded here -->
+        </div>
+
+        <!-- Edit Shop Modal -->
+        <div id="editModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Editar Tienda</h2>
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="editShopName">Nombre de la tienda:</label>
+                        <input type="text" id="editShopName" name="shop_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDescription">Descripción:</label>
+                        <textarea id="editDescription" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAddress">Dirección:</label>
+                        <input type="text" id="editAddress" name="shop_address">
+                    </div>
+                    <button type="submit" class="save-btn">Guardar Cambios</button>
+                    <button type="button" class="cancel-btn">Cancelar</button>
+                </form>
+            </div>
+        </div>
     </main>
 
     <script type="module" src="../assets/js/guard/global.guard.js"></script>

@@ -2,7 +2,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from typing import Optional
 from models.shop import Shop
-from schemas.shop_schemas import ShopCreate, ShopUpdate, ShopResponse
+from schemas.shop_schemas import ShopCreate, ShopUpdate, ShopResponse, ShopCreateWithImage
+from service.cloudinary import upload_image
 
 def create_shop(db: Session, shop: ShopCreate) -> Shop:
     db_shop = Shop(
@@ -71,3 +72,34 @@ def delete_shop(db: Session, shop_id: int) -> bool:
         db.rollback()
         print(f"Error eliminando la tienda con ID {shop_id}: {e}")
         return False
+
+def create_shop_with_image(db: Session, shop_data: ShopCreateWithImage, logo_file) -> Shop:
+    """
+    Crea una tienda subiendo el logo a Cloudinary
+    """
+    try:
+        # Subir imagen a Cloudinary
+        logo_url = upload_image(logo_file.file.read(), folder="greenpath/shops")
+
+        # Crear tienda con la URL del logo
+        db_shop = Shop(
+            id_user=shop_data.id_user,
+            shop_name=shop_data.shop_name,
+            description=shop_data.description,
+            shop_address=shop_data.shop_address,
+            logo_url=logo_url,
+            is_active=shop_data.is_active
+        )
+
+        db.add(db_shop)
+        db.commit()
+        db.refresh(db_shop)
+        return db_shop
+    except SQLAlchemyError as e:
+        db.rollback()
+        print(f"Error creando la tienda con imagen: {e}")
+        return None
+    except Exception as e:
+        db.rollback()
+        print(f"Error subiendo imagen o creando tienda: {e}")
+        return None

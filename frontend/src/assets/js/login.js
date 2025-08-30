@@ -7,6 +7,8 @@ async function loginUser(email, password) {
         password: password
     });
 
+    console.log('Login response data:', data); // Added for debugging user data structure
+
     localStorage.setItem("user", JSON.stringify(data));
     return data;
 }

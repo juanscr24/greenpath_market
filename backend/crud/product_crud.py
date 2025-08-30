@@ -109,6 +109,26 @@ def get_products(db: Session, skip: int = 0, limit: int = 100) -> list[ProductRe
         print(f"Error obteniendo los productos: {e}")
         return []
 
+# ------------------------------
+# Obtener productos por tienda
+# ------------------------------
+def get_products_by_shop(db: Session, shop_id: int, skip: int = 0, limit: int = 100) -> list[ProductResponse]:
+    try:
+        db_products = db.query(Product).filter(Product.id_shop == shop_id).offset(skip).limit(limit).all()
+        
+        products_response = []
+        for product in db_products:
+            product_data = ProductResponse.from_orm(product)
+            if product_data.id_shop is None:
+                product_data.id_shop = 0
+            products_response.append(product_data)
+        
+        return products_response
+
+    except SQLAlchemyError as e:
+        print(f"Error obteniendo productos para la tienda {shop_id}: {e}")
+        return []
+
 
 # Actualizar un producto existente
 

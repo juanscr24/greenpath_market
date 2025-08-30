@@ -67,7 +67,15 @@
             <!-- Sidebar -->
             <aside class="sidebar">
                 <img src="https://res.cloudinary.com/dd7vy0y6n/image/upload/v1756505801/photo-profile_1_oazfvi.jpg" alt="Foto de perfil" class="avatar">
-                <h2>Mi Perfil</h2>
+                <div class="container_name">
+                    <h2 id="profile-name-display">Mi Perfil</h2>
+                    <button class="edit-btn edit-name-btn" data-field="name"><i class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+                    <input type="text" id="profile-name-input" style="display: none;" placeholder="Nombre completo">
+                <div>
+                    <button class="cancel-btn cancel-name-btn" data-field="name" style="display: none;">Cancelar</button>
+                    <button class="save-btn save-name-btn" data-field="name" style="display: none;">Guardar</button>
+                </div>
                 <nav class="menu">
                     <button data-view="pedidos">Pedidos</button>
                     <button data-view="ayuda">Ayuda</button>
@@ -81,14 +89,22 @@
                 <h3 class="section-title">Configuración</h3>
                 <div id="settings-section" class="settings">
                     <div class="settings-item">
-                        <span><strong>Correo:</strong> usuario@example.com</span>
+                        <span id="user-email-display"><strong>Correo:</strong> usuario@example.com</span>
+                        <input type="email" id="user-email-input" style="display: none;" placeholder="Correo electrónico">
                     </div>
                     <div class="settings-item">
-                        <span><strong>Dirección:</strong> Calle Falsa 123, Barranquilla</span>
+                        <span id="user-address-display"><strong>Dirección:</strong> Calle Falsa 123, Barranquilla</span>
+                        <input type="text" id="user-address-input" style="display: none;" placeholder="Dirección">
+                        <button class="edit-btn" data-field="address"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="save-btn" data-field="address" style="display: none;">Guardar</button>
+                        <button class="cancel-btn" data-field="address" style="display: none;">Cancelar</button>
                     </div>
                     <div class="settings-item">
-                        <span><strong>Descripción:</strong> Usuario registrado desde 2025</span>
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span id="user-description-display"><strong>Descripción:</strong> Usuario registrado desde 2025</span>
+                        <textarea id="user-description-input" style="display: none;" placeholder="Descripción" rows="2"></textarea>
+                        <button class="edit-btn" data-field="description"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="save-btn" data-field="description" style="display: none;">Guardar</button>
+                        <button class="cancel-btn" data-field="description" style="display: none;">Cancelar</button>
                     </div>
                 </div>
 
@@ -100,7 +116,8 @@
 
     <script type="module" src="../assets/js/guard/global.guard.js"></script>
     <script type="module" src="../assets/js/guard/dashboard.guard.js"></script>
-    <script src="../assets/js/profile.js"></script>
+    <script type="module" src="../assets/js/auth-interceptor.js"></script>
+    <script type="module" src="../assets/js/profile.js"></script>
     <script type="module" src="../assets/js/logout.js"></script>
 </body>
 
