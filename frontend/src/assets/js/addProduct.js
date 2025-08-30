@@ -36,14 +36,18 @@ $showFormBtn.addEventListener('click', () => {
 
 // Obtener y mostrar productos en el ul#product-list
 async function fetchProducts() {
-  const res = await axios.get( endpointProducts);
-  let products = res.data;
-  // Filter products by current shop
-  if (window.currentShopId) {
-    products = products.filter(p => p.id_shop === window.currentShopId);
+  if (!window.currentShopId) {
+    console.log('Shop not loaded yet, skipping fetchProducts');
+    return;
   }
+  const url = `${endpointProducts}/shop/${window.currentShopId}`;
+  const res = await axios.get(url);
+  const products = res.data;
   renderList(products);
 }
+
+// Make fetchProducts global so it can be called from my_shop.js
+window.fetchProducts = fetchProducts;
 
 function renderList(products) {
   $productList.innerHTML = '';
@@ -90,10 +94,12 @@ async function submitForm() {
     return;
   }
 
-  // Get shop id from window or localStorage
-  const userData = JSON.parse(localStorage.getItem('user') || '{}');
-  const userId = userData.user_id;
-  const id_shop = window.currentShopId || userId;
+  // Get shop id from window
+  if (!window.currentShopId) {
+    alert('Tienda no cargada, por favor recarga la página');
+    return;
+  }
+  const id_shop = window.currentShopId;
 
   try {
     if (editingId) {
@@ -176,5 +182,4 @@ async function deleteProduct(id) {
   }
 }
 
-// Carga inicial de productos
-fetchProducts();
+// No need to call fetchProducts here, it's called from my_shop.js after shop is loaded

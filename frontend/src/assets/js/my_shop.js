@@ -41,6 +41,10 @@ class MyShop {
             if (this.shop) {
                 window.currentShopId = this.shop.id_shop;
                 window.currentShopName = this.shop.shop_name;
+                // Call fetchProducts after shop is loaded
+                if (window.fetchProducts) {
+                    window.fetchProducts();
+                }
             }
             this.renderShop();
         } catch (error) {
@@ -186,6 +190,10 @@ class MyShop {
             window.currentShopName = this.shop.shop_name;
             alert('Tienda guardada exitosamente');
             this.renderShop();
+            // Call fetchProducts after shop is created/updated
+            if (window.fetchProducts) {
+                window.fetchProducts();
+            }
         } catch (error) {
             console.error('Error saving shop:', error);
             alert('Error al guardar la tienda');
