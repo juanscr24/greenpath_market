@@ -15,7 +15,11 @@ main {
 }
 
 #shopFormContainer {
-    width: 90%;
+    width: 100%;
+}
+
+#shopForm {
+    width: 80%;
 }
 
 #shopDisplay {
@@ -61,6 +65,20 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: white;
 }
+#show-form-btn{
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#show-form-btn i {
+    font-size: 18px;
+}
 
 .shop-container form {
     display: flex;
@@ -94,17 +112,27 @@ main {
 }
 
 .shop-container button {
-    padding: 12px 20px;
-    background-color: #0c4b32;
-    color: white;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
     margin-top: 10px;
 }
 
 .shop-container button:hover {
-    background-color: #0a3d28;
+    background: rgba(0, 255, 0, 0.2);
+}
+
+/* Product list styling */
+.card-section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin: 20px 0px;
 }

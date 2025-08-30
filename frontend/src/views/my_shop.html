@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Charset y Viewport -->
     <meta charset="UTF-8">
@@ -32,13 +33,14 @@
     <link rel="stylesheet" href="../assets/css/card.css">
     <script src="https://kit.fontawesome.com/0b06eaa0c3.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
         <div class="icons">
             <div class="logo">
                 <a href="./dashboard.html">
                     <img src="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755732479/1000251390_brue4v.png"
-                    width="190" alt="logo">
+                        width="190" alt="logo">
                 </a>
             </div>
         </div>
@@ -65,11 +67,24 @@
         <div id="shopContainer" class="shop-container">
             <!-- Shop form will be rendered here by JavaScript -->
         </div>
+        <section>
+            <!--seccion para el renderizado de la introduccion de productos-->
+            <!-- Botón para mostrar el formulario -->
+            <button class="editBtn" id="show-form-btn"><i class="fa-solid fa-circle-plus"></i> Add product</button>
+
+            <!-- Contenedor donde se generará el formulario -->
+            <div id="form-container"></div>
+
+            <!-- Lista de productos -->
+            <div id="product-list" class="card-section"></div>
+        </section>
     </main>
 
     <script type="module" src="../assets/js/guard/global.guard.js"></script>
     <script type="module" src="../assets/js/guard/dashboard.guard.js"></script>
     <script type="module" src="../assets/js/logout.js"></script>
     <script type="module" src="../assets/js/my_shop.js"></script>
+    <script type="module" src="../assets/js/addProduct.js"></script>
 </body>
+
 </html>

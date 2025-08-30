@@ -38,6 +38,10 @@ class MyShop {
             // Find shop for current user
             this.shop = shops.find(shop => shop.id_user === this.userId);
             console.log('Found shop for user:', this.shop); // Added for debugging
+            if (this.shop) {
+                window.currentShopId = this.shop.id_shop;
+                window.currentShopName = this.shop.shop_name;
+            }
             this.renderShop();
         } catch (error) {
             console.error('Error loading shop:', error);
@@ -178,6 +182,8 @@ class MyShop {
             }
 
             this.shop = response.data;
+            window.currentShopId = this.shop.id_shop;
+            window.currentShopName = this.shop.shop_name;
             alert('Tienda guardada exitosamente');
             this.renderShop();
         } catch (error) {
