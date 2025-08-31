@@ -3,7 +3,11 @@ import axios from 'axios'
 import { endpointProducts } from './main';
 import { addToCart } from './cart.js';
 
+
 const cardSection = document.getElementById('card-section');
+const categorySection = document.getElementById('category-section');
+
+let allProducts = [];
 
 // Función para crear una carta desde un producto
 function createCard(product) {
@@ -27,31 +31,31 @@ function createCard(product) {
     `;
 }
 
+// Renderizar productos en la sección de productos
+function renderProducts(products) {
+    cardSection.innerHTML = '';
+    if (products.length > 0) {
+        products.forEach(product => {
+            cardSection.innerHTML += createCard(product);
+        });
+        setupAddToCartListeners(products);
+    } else {
+        cardSection.innerHTML = '<p>No hay productos disponibles.</p>';
+    }
+}
+
 // Obtener productos desde el backend
 axios.get(endpointProducts)
     .then(response => {
-        const products = response.data;
-
-        // Solo renderizar si hay productos
-        if (products.length > 0) {
-            // Limpiar la sección primero
-            cardSection.innerHTML = '';
-
-            // Agregar cada carta
-            products.forEach(product => {
-                cardSection.innerHTML += createCard(product);
-            });
-
-            // Agregar event listeners a los botones de agregar al carrito
-            setupAddToCartListeners(products);
-        } else {
-            cardSection.innerHTML = '<p>No hay productos disponibles.</p>';
-        }
+        allProducts = response.data;
+        renderProducts(allProducts);
+        setupCategoryListeners();
     })
     .catch(error => {
         console.error('Error al cargar los productos:', error);
         cardSection.innerHTML = '<p>Error al cargar los productos.</p>';
     });
+
 
 // Función para configurar los event listeners de agregar al carrito
 function setupAddToCartListeners(products) {
@@ -65,6 +69,35 @@ function setupAddToCartListeners(products) {
                 addToCart(product);
                 // Mostrar notificación amigable sin redirigir
                 showNotification(`Producto "${product.name_product}" agregado al carrito`, 'success');
+            }
+        });
+    });
+}
+
+// Agregar event listeners a las categorías para filtrar productos
+function setupCategoryListeners() {
+    const categoryItems = categorySection.querySelectorAll('.category-item');
+    const categoryLabels = [
+        'TODAS',
+        'FRUTAS Y VERDURAS',
+        'GRANOS Y CEREALES',
+        'LACTEOS Y DERIVADOS',
+        'RES, POLLO Y PESCADO'
+    ];
+    const currentCategoryLabel = document.getElementById('current-category-label');
+
+    categoryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            if (index === 0) {
+                // Mostrar todos los productos si se clickea "TODAS"
+                renderProducts(allProducts);
+                currentCategoryLabel.textContent = '';
+            } else {
+                // Mapear índice a id_category (asumiendo orden fijo)
+                const categoryId = index;
+                const filteredProducts = allProducts.filter(p => p.id_category === categoryId);
+                renderProducts(filteredProducts);
+                currentCategoryLabel.textContent = `: ${categoryLabels[index]}`;
             }
         });
     });
