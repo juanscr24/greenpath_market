@@ -207,7 +207,6 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Import cart utilities
 import { getOrders } from './cart.js';
 
 // Función para generar el HTML de los pedidos
@@ -262,6 +261,7 @@ function generateOrdersHTML() {
 
 // Vistas disponibles (sin el bloque de configuración, solo contenido dinámico)
 const views = {
+    pedidos: "orders", // Placeholder - handled separately in the event listener
     ayuda: `
     <h4>Centro de Ayuda</h4>
     <p>¿Necesitas soporte? Contáctanos por cualquiera de nuestras redes sociales:</p>
@@ -306,29 +306,48 @@ const views = {
 };
 
 // Manejo de clicks en los botones
-document.querySelectorAll(".menu button").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const view = btn.getAttribute("data-view");
+function setupMenuEventListeners() {
+    console.log("Setting up menu event listeners...");
+    const menuButtons = document.querySelectorAll(".menu button");
+    console.log("Found menu buttons:", menuButtons.length);
 
-        if (view && views[view]) {
-            // Si es pedidos → mostramos configuración + vista (generar dinámicamente)
-            if (view === "pedidos") {
-                settingsSection.style.display = "block";
-                viewContainer.innerHTML = generateOrdersHTML();
+    menuButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const view = btn.getAttribute("data-view");
+            console.log("Button clicked, view:", view);
+
+            if (view && views[view]) {
+                // Si es pedidos → mostramos configuración + vista (generar dinámicamente)
+                if (view === "pedidos") {
+                    console.log("Loading orders view...");
+                    settingsSection.style.display = "block";
+                    viewContainer.innerHTML = generateOrdersHTML();
+                }
+                // Si es ayuda o método → ocultamos configuración
+                else if (view === "ayuda" || view === "metodo") {
+                    console.log("Loading", view, "view...");
+                    settingsSection.style.display = "none";
+                    viewContainer.innerHTML = views[view];
+                }
+                // Logout
+                else if (view === "logout") {
+                    console.log("Logging out...");
+                    settingsSection.style.display = "none";
+                    viewContainer.innerHTML = views[view];
+                    console.log("Sesión cerrada.");
+                }
+            } else {
+                console.log("View not found in views object:", view);
             }
-            // Si es ayuda o método → ocultamos configuración
-            else if (view === "ayuda" || view === "metodo") {
-                settingsSection.style.display = "none";
-                viewContainer.innerHTML = views[view];
-            }
-            // Logout
-            else if (view === "logout") {
-                settingsSection.style.display = "none";
-                viewContainer.innerHTML = views[view];
-                console.log("Sesión cerrada.");
-            }
-        }
+        });
     });
+}
+
+// Setup menu event listeners after DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM loaded, setting up menu listeners...");
+    setupMenuEventListeners();
 });
 
 // LogOut function (no se toca)
