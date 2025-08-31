@@ -1,11 +1,11 @@
 // EndPoints
-export const endpointLogin = 'http://127.0.0.1:8000/login'
-export const endpointRegister = 'http://127.0.0.1:8000/register'
-export const endpointSearch = 'http://127.0.0.1:8000/search/?keyword='
-export const endpointProducts = 'http://127.0.0.1:8000/products'
-export const endpointUsers = 'http://127.0.0.1:8000/users'
-export const endpointShops = 'http://127.0.0.1:8000/shops'
-export const endpointDeleteShop = (id) => `http://127.0.0.1:8000/shops/${id}`
-export const endpointUpdateShop = (id) => `http://127.0.0.1:8000/shops/${id}`
+export const endpointLogin = 'https://backend-production-54f19.up.railway.app/login/'
+export const endpointRegister = 'https://backend-production-54f19.up.railway.app/register/'
+export const endpointSearch = 'https://backend-production-54f19.up.railway.app/?keyword='
+export const endpointProducts = 'https://backend-production-54f19.up.railway.app/products/'
+export const endpointUsers = 'https://backend-production-54f19.up.railway.app/users/'
+export const endpointShops = 'https://backend-production-54f19.up.railway.app/shops/'
+export const endpointDeleteShop = (id) => `https://backend-production-54f19.up.railway.app/shops/${id}/`
+export const endpointUpdateShop = (id) => `https://backend-production-54f19.up.railway.app/shops/${id}/`
 
 
