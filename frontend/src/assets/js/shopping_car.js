@@ -8,15 +8,20 @@ function renderCart() {
     if (cart.length === 0) {
         cartContainer.innerHTML = `
             <div class="empty-cart">
-                <h3>Tu carrito está vacío</h3>
-                <p>Agrega algunos productos para comenzar</p>
-                <a href="./dashboard.html" class="btn-primary">Ir a comprar</a>
+                <h3>Your GreenPath Cart is Empty</h3>
+                <p>¡Descubre productos frescos y saludables para tu hogar!</p>
+                <a href="./dashboard.html" class="btn-primary">Explorar Productos</a>
             </div>
         `;
         return;
     }
 
-    let cartHTML = '<div class="cart-items">';
+    let cartHTML = `
+        <div class="cart-header">
+            <h3>¡Tu carrito de compras está listo!</h3>
+            <p>Revisa tus productos y procede al pago seguro</p>
+        </div>
+        <div class="cart-items">`;
 
     cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
