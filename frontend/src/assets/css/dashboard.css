@@ -8,6 +8,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 20px;
+    ;
 }
 
 main {
@@ -15,6 +16,11 @@ main {
     flex-direction: column;
     gap: 20px;
     width: 80%;
+    color: white;
+}
+
+main h2 {
+    letter-spacing: 3px;
 }
 
 #card-section {
@@ -25,15 +31,54 @@ main {
 
 #category-section {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
-.category {
-    height: 200px;
+#category-section img {
     width: 100%;
-    background-color: white;
+    height: 200px;
+    object-fit: cover;
     border-radius: 20px;
+}
+
+.category-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-label-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 90%;
+}
+
+.category-icon {
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    object-fit: contain;
+    display: block;
+}
+
+.category-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 2px;
+    white-space: nowrap;
 }
 
 /* Estilos para resultados de búsqueda */
