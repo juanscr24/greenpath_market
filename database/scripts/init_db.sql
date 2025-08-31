@@ -6,7 +6,7 @@ USE green_path;
 CREATE TABLE roles (
     id_rol INT AUTO_INCREMENT PRIMARY KEY,
     role_name VARCHAR(10) UNIQUE NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,a
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE categories (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO categories(name_category) VALUES ("food");
+INSERT INTO categories(name_category) VALUES ("Frutas y Verduras"),("Granos y Cereales "),("Lácteos y Derivados"),("Carnes, Pollo y Pescado"),("Huevos y Miel");
 
 -- Table: shops
 CREATE TABLE shops (
@@ -80,8 +80,7 @@ CREATE TABLE products (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_shop) REFERENCES shops(id_shop) ON DELETE SET NULL,
-    FOREIGN KEY (id_category) REFERENCES categories(id_category) ON DELETE SET NULL,
-    FOREIGN KEY (id_image) REFERENCES product_images(id_image)
+    FOREIGN KEY (id_category) REFERENCES categories(id_category) ON DELETE SET NULL
 );
 
 -- Table: order_status
