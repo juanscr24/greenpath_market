@@ -15,7 +15,13 @@ function renderForm(product = {}) {
     <input type="number" step="0.01" id="price" placeholder="Valor unitario" value="${product.price || ''}" min="0" required>
     <input type="text" id="product_description" placeholder="Descripción (opcional)" value="${product.product_description || ''}">
     <input type="file" id="image_file" accept="image/*" ${editingId ? 'disabled' : ''}>
-    <input type="number" id="id_category" placeholder="ID de categoría" value="${product.id_category || ''}" required>
+    <select id="id_category" required>
+      <option value="">-- Selecciona una categoría --</option>
+      <option value="1" ${product.id_category == 1 ? 'selected' : ''}>Frutas y verduras</option>
+      <option value="2" ${product.id_category == 2 ? 'selected' : ''}>Granos y cereales</option>
+      <option value="3" ${product.id_category == 3 ? 'selected' : ''}>Lácteos y derivados</option>
+      <option value="4" ${product.id_category == 4 ? 'selected' : ''}>Res, pollo y pescado</option>
+    </select>
     <button id="submitBtn">${editingId ? 'Actualizar' : 'Agregar'}</button>
     <button id="cancelBtn" style="display: ${editingId ? 'inline' : 'none'};">Cancelar</button>
   `;

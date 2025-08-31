@@ -136,7 +136,7 @@ main {
 
 /*Design pedidos*/
 .orders-container {
-    max-height: 400px;
+    max-height: 20dvh;
     overflow-y: auto;
     margin-top: 1rem;
     display: flex;

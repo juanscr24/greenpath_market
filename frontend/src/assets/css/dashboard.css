@@ -21,6 +21,7 @@ main {
 
 main h2 {
     letter-spacing: 3px;
+    font-size: 22px;
 }
 
 #card-section {
@@ -37,7 +38,7 @@ main h2 {
 
 #category-section img {
     width: 100%;
-    height: 200px;
+    height: 230px;
     object-fit: cover;
     border-radius: 20px;
 }
@@ -47,6 +48,18 @@ main h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.category-item::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    border-radius: 0 0 20px 20px;
+    z-index: 1;
 }
 
 .category-label-container {
@@ -62,15 +75,12 @@ main h2 {
     transform: translateX(-50%);
     width: auto;
     max-width: 90%;
+    z-index: 2;
+    background-color: transparent;
 }
 
 .category-icon {
-    width: 20px;
-    height: 20px;
-    max-width: 20px;
-    max-height: 20px;
-    object-fit: contain;
-    display: block;
+    display: none;
 }
 
 .category-label {
