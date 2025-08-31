@@ -1,0 +1,151 @@
+main {
+    width: 80%;
+}
+
+#shopContainer {
+    display: flex;
+    flex-direction: column;
+    gap:  5px;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    backdrop-filter: blur(10px);
+    background-color: #37963d2d;
+    color: white;
+}
+
+#shopFormContainer {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#shopForm {
+    width: 100%;
+    padding: 0px 10px;
+}
+
+#shopDisplay {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container_shop {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.container_shop h2 {
+    color: white;
+    font-style: italic;
+}
+
+.container_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    width: 160px;
+    border-radius: 100%;
+    background-color: #37963d5e;
+}
+
+.container_icon i {
+    color: #0c4b32;
+    font-size: 30px;
+}
+
+.container_icon img {
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+}
+
+.shop-container {
+    margin: 60px auto;
+    margin-top: 0px;
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+#show-form-btn{
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#show-form-btn i {
+    font-size: 18px;
+}
+
+.shop-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.shop-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.shop-container input,
+.shop-container textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.shop-container input:focus,
+.shop-container textarea:focus {
+    outline: none;
+    border-color: #0c4b32;
+}
+
+.shop-container textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.shop-container button {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.shop-container button:hover {
+    background: rgba(0, 255, 0, 0.2);
+}
+
+/* Product list styling */
+.card-section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin: 20px 0px;
+}
