@@ -1,6 +1,7 @@
 
 import axios from "./auth-interceptor.js";
 import { endpointSearch } from "./main";
+import { addToCart } from "./cart.js";
 
 console.log('Módulo de búsqueda cargado correctamente');
 
@@ -101,7 +102,8 @@ function mostrarResultados(data) {
         // Botón de agregar al carrito (idéntico al de las tarjetas existentes)
         const btn = document.createElement('a');
         btn.href = '#';
-        btn.className = 'swipe-btn';
+        btn.className = 'swipe-btn add-to-cart-btn';
+        btn.setAttribute('data-product-id', producto.id_product);
 
         const btnText = document.createElement('span');
         btnText.textContent = 'Agrega al carrito';
@@ -133,6 +135,27 @@ function mostrarResultados(data) {
     });
 
     resultadosDiv.appendChild(cardSection);
+
+    // Agregar event listeners a los botones de agregar al carrito
+    setupAddToCartListeners(data);
+}
+
+// Función para configurar los event listeners de agregar al carrito
+function setupAddToCartListeners(products) {
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productId = parseInt(btn.getAttribute('data-product-id'));
+            const product = products.find(p => p.id_product === productId);
+
+            if (product) {
+                addToCart(product);
+                alert(`Producto "${product.name_product}" agregado al carrito`);
+                // Redirigir al carrito
+                window.location.href = './shopping_car.html';
+            }
+        });
+    });
 }
 
 // Event listeners para la búsqueda

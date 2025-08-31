@@ -1,6 +1,7 @@
 
 import axios from 'axios'
 import { endpointProducts } from './main';
+import { addToCart } from './cart.js';
 
 const cardSection = document.getElementById('card-section');
 
@@ -18,7 +19,7 @@ function createCard(product) {
             </div>
             <p>vendido por: <strong>Carulla</strong></p>
             </div>
-                <a href="#" class="swipe-btn">
+                <a href="#" class="swipe-btn add-to-cart-btn" data-product-id="${product.id_product}">
                 <span>Agrega al carrito</span>
             <div class="arrows"><span>›</span><span>›</span></div>
         </a>
@@ -40,6 +41,9 @@ axios.get(endpointProducts)
             products.forEach(product => {
                 cardSection.innerHTML += createCard(product);
             });
+
+            // Agregar event listeners a los botones de agregar al carrito
+            setupAddToCartListeners(products);
         } else {
             cardSection.innerHTML = '<p>No hay productos disponibles.</p>';
         }
@@ -48,3 +52,21 @@ axios.get(endpointProducts)
         console.error('Error al cargar los productos:', error);
         cardSection.innerHTML = '<p>Error al cargar los productos.</p>';
     });
+
+// Función para configurar los event listeners de agregar al carrito
+function setupAddToCartListeners(products) {
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productId = parseInt(btn.getAttribute('data-product-id'));
+            const product = products.find(p => p.id_product === productId);
+
+            if (product) {
+                addToCart(product);
+                alert(`Producto "${product.name_product}" agregado al carrito`);
+                // Redirigir al carrito
+                window.location.href = './shopping_car.html';
+            }
+        });
+    });
+}
