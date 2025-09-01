@@ -92,17 +92,28 @@ def get_product_by_id(db: Session, product_id: int) -> ProductResponse | None:
 # ------------------------------
 def get_products(db: Session, skip: int = 0, limit: int = 100) -> list[ProductResponse]:
     try:
-        db_products = db.query(Product).offset(skip).limit(limit).all()
-        
+        # Query con join para obtener shop_name
+        db_results = (
+            db.query(
+                Product,
+                Shop.shop_name.label('shop_name')
+            )
+            .outerjoin(Shop, Product.id_shop == Shop.id_shop)
+            .offset(skip)
+            .limit(limit)
+            .all()
+        )
+
         # Convertir la lista de productos a respuestas formateadas
         products_response = []
-        for product in db_products:
+        for product, shop_name in db_results:
             product_data = ProductResponse.from_orm(product)
+            product_data.shop_name = shop_name
             # Si id_shop es None, establecerlo a 0
             if product_data.id_shop is None:
                 product_data.id_shop = 0
             products_response.append(product_data)
-        
+
         return products_response
 
     except SQLAlchemyError as e:
@@ -114,15 +125,27 @@ def get_products(db: Session, skip: int = 0, limit: int = 100) -> list[ProductRe
 # ------------------------------
 def get_products_by_shop(db: Session, shop_id: int, skip: int = 0, limit: int = 100) -> list[ProductResponse]:
     try:
-        db_products = db.query(Product).filter(Product.id_shop == shop_id).offset(skip).limit(limit).all()
-        
+        # Query con join para obtener shop_name
+        db_results = (
+            db.query(
+                Product,
+                Shop.shop_name.label('shop_name')
+            )
+            .join(Shop, Product.id_shop == Shop.id_shop)
+            .filter(Product.id_shop == shop_id)
+            .offset(skip)
+            .limit(limit)
+            .all()
+        )
+
         products_response = []
-        for product in db_products:
+        for product, shop_name in db_results:
             product_data = ProductResponse.from_orm(product)
+            product_data.shop_name = shop_name
             if product_data.id_shop is None:
                 product_data.id_shop = 0
             products_response.append(product_data)
-        
+
         return products_response
 
     except SQLAlchemyError as e:

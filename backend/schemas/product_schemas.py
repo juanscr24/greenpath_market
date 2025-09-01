@@ -37,6 +37,7 @@ class ProductResponse(BaseModel):
     image_url:str
     product_star_rate: float
     id_category: int
+    shop_name: Optional[str] = None
     created_at: datetime
     updated_at: datetime
 
