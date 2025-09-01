@@ -3,7 +3,6 @@ import axios from 'axios'
 import { endpointProducts } from './main';
 import { addToCart } from './cart.js';
 
-
 const cardSection = document.getElementById('card-section');
 const categorySection = document.getElementById('category-section');
 

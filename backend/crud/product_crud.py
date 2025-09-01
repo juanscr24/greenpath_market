@@ -307,5 +307,3 @@ def get_products_by_keyword(db: Session, keyword: str, category: Optional[int] =
     except SQLAlchemyError as e:
         print(f"Error buscando productos con palabra clave '{keyword}': {e}")
         return []
-
-

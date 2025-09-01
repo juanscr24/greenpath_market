@@ -7,6 +7,7 @@ main {
 
 p {
     text-align: center;
+    color: white;
 }
 
 .shops-container {
@@ -14,6 +15,7 @@ p {
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     padding: 20px 0px;
+    color: white;
 }
 
 .shop-card {
@@ -21,13 +23,14 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid rgba(9, 58, 12, 0.2);
+    border-radius: 20px;
     padding: 15px;
     gap: 10px;
     width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    backdrop-filter: blur(10px);
+    background-color: #37963d2d;
 }
 
 .shop-logo {
@@ -39,12 +42,12 @@ p {
 
 .shop-card h3 {
     margin-top: 0;
-    color: #333;
+    color: white;
 }
 
 .shop-card p {
     margin: 5px 0;
-    color: #666;
+    color: white;
 }
 
 .shop-card button {
