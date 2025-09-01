@@ -3,7 +3,6 @@ import axios from 'axios'
 import { endpointProducts } from './main';
 import { addToCart } from './cart.js';
 
-
 const cardSection = document.getElementById('card-section');
 const categorySection = document.getElementById('category-section');
 
@@ -21,7 +20,7 @@ function createCard(product) {
                 <h3>${product.stock} L</h3> <!-- Mostrar el stock (por ejemplo, en litros) -->
                 <h3>$${product.price.toLocaleString()}</h3> <!-- Mostrar el precio -->
             </div>
-            <p>vendido por: <strong>Carulla</strong></p>
+            <p>vendido por: <strong>${product.shop_name}</strong></p>
             </div>
                 <a href="#" class="swipe-btn add-to-cart-btn" data-product-id="${product.id_product}">
                 <span>Agrega al carrito</span>

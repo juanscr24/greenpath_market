@@ -88,22 +88,44 @@ def get_product_by_id(db: Session, product_id: int) -> ProductResponse | None:
         return None
 
 # ------------------------------
-# Obtener múltiples productos con paginación
+# Obtener múltiples productos con paginación y detalles completos
 # ------------------------------
-def get_products(db: Session, skip: int = 0, limit: int = 100) -> list[ProductResponse]:
+def get_products(db: Session, skip: int = 0, limit: int = 100) -> list[ProductWithDetailsResponse]:
     try:
-        db_products = db.query(Product).offset(skip).limit(limit).all()
-        
-        # Convertir la lista de productos a respuestas formateadas
-        products_response = []
-        for product in db_products:
-            product_data = ProductResponse.from_orm(product)
-            # Si id_shop es None, establecerlo a 0
-            if product_data.id_shop is None:
-                product_data.id_shop = 0
-            products_response.append(product_data)
-        
-        return products_response
+        # Query para obtener productos con información de categoría y tienda
+        db_products = (
+            db.query(
+                Product,
+                Category.name_category.label('category_name'),
+                Shop.shop_name.label('shop_name')
+            )
+            .join(Category, Product.id_category == Category.id_category)
+            .join(Shop, Product.id_shop == Shop.id_shop)
+            .offset(skip)
+            .limit(limit)
+            .all()
+        )
+
+        # Convertir resultados a la respuesta detallada
+        products_with_details = []
+        for product, category_name, shop_name in db_products:
+            products_with_details.append(
+                ProductWithDetailsResponse(
+                    id_product=product.id_product,
+                    name_product=product.name_product,
+                    product_description=product.product_description,
+                    price=float(product.price),
+                    stock=product.stock,
+                    product_star_rate=product.product_star_rate,
+                    category_name=category_name,
+                    shop_name=shop_name,
+                    image_url=product.image_url,
+                    created_at=product.created_at,
+                    updated_at=product.updated_at
+                )
+            )
+
+        return products_with_details
 
     except SQLAlchemyError as e:
         print(f"Error obteniendo los productos: {e}")
