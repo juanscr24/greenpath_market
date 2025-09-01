@@ -108,18 +108,71 @@ header {
     justify-content: center;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 200px;
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 1001;
+}
+
+.mobile-menu a, .mobile-menu .logout-btn {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.mobile-menu .logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.mobile-menu .container-search {
+    margin-top: 1rem;
+}
+
+.mobile-menu .container-search input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
 @media screen and (max-width: 450px) {
-    .navbar i {
-    display: none;
-}
-header {
-    padding: 1.5rem 2rem;
-    margin-bottom: 1rem;
-}
-.navbar {
-    gap: 10px;
-}
-.container-search input {
-    display: none;
-}
+    .navbar {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+    header {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+    .container-nav-search {
+        position: relative;
+    }
 }
