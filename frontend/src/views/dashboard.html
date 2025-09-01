@@ -14,6 +14,9 @@
     <meta name="googlebot" content="index, follow">
     <meta name="theme-color" content="#ffffff">
     <link rel="shortcut icon" href="https://res.cloudinary.com/dd7vy0y6n/image/upload/...">
+    <link rel="shortcut icon"
+        href="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755730260/1000251053_jyonaf.png"
+        type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/card.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
@@ -26,7 +29,8 @@
         <div class="icons">
             <div class="logo">
                 <a>
-                    <img src="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755732479/1000251390_brue4v.png" width="190" alt="logo">
+                    <img src="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755732479/1000251390_brue4v.png"
+                        width="190" alt="logo">
                 </a>
             </div>
         </div>
@@ -53,21 +57,49 @@
     <main>
         <div id="resultados" class="search-results"></div>
         <section id="best-section">
-            
+
         </section>
-        <h2>Categories</h2>
-        <section id="category-section">
-            <div class="category"></div>
-            <div class="category"></div>
-            <div class="category"></div>
-            <div class="category"></div>
-            <div class="category"></div>
-            <div class="category"></div>
+        <h2>CATEGORIAS</h2>
+        <section id="category-section" class="category">
+            <div class="category-item">
+                <img src="../assets/img/category/todas.png" alt="frutas y verduras">
+                <div class="category-label-container">
+                    <span class="category-label">TODAS</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="../assets/img/category/frutas y verduras.jpg" alt="frutas y verduras">
+                <div class="category-label-container">
+                    <img class="category-icon" src="../assets/icons/logo_pequeño.webp" alt="icono frutas y verduras">
+                    <span class="category-label">FRUTAS Y VERDURAS</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="../assets/img/category/granos y cereales.jpg" alt="granos y cereales">
+                <div class="category-label-container">
+                    <img class="category-icon" src="../assets/icons/logo_pequeño.webp" alt="icono granos y cereales">
+                    <span class="category-label">GRANOS Y CEREALES</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="../assets/img/category/queso y huevos.jpg" alt="lacteos y dererivados">
+                <div class="category-label-container">
+                    <img class="category-icon" src="../assets/icons/logo_pequeño.webp" alt="icono lacteos y derivados">
+                    <span class="category-label">LACTEOS Y DERIVADOS</span>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="../assets/img/category/res, pollo y pescado.jpg" alt="res, pollo y pescado">
+                <div class="category-label-container">
+                    <img class="category-icon" src="../assets/icons/logo_pequeño.webp" alt="icono res, pollo y pescado">
+                    <span class="category-label">RES, POLLO Y PESCADO</span>
+                </div>
+            </div>
         </section>
 
         <!-- Contenedor para resultados de búsqueda -->
 
-        <h2>Products</h2>
+        <h2>PRODUCTOS <span id="current-category-label"></span></h2>
         <section id="card-section" id="productform"></section>
     </main>
 

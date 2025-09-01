@@ -8,6 +8,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 20px;
+    ;
 }
 
 main {
@@ -15,6 +16,12 @@ main {
     flex-direction: column;
     gap: 20px;
     width: 80%;
+    color: white;
+}
+
+main h2 {
+    letter-spacing: 3px;
+    font-size: 22px;
 }
 
 #card-section {
@@ -25,18 +32,68 @@ main {
 
 #category-section {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
 }
 
-.category {
-    height: 200px;
+#category-section img {
     width: 100%;
-    background-color: white;
+    height: 230px;
+    object-fit: cover;
     border-radius: 20px;
 }
 
+.category-item {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-item::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    border-radius: 0 0 20px 20px;
+    z-index: 1;
+}
+
+.category-label-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 90%;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.category-icon {
+    display: none;
+}
+
+.category-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
 /* Estilos para resultados de búsqueda */
+
 .search-results {
     border-radius: 10px;
 
@@ -68,14 +125,14 @@ main {
     margin: 0;
     padding: 10px;
     text-align: center;
-    color: #6c757d;
+    color: #ffff;
     font-style: italic;
 }
 
 /* Estilos para resultados de búsqueda */
 .search-results-title {
     margin-bottom: 20px;
-    color: #333;
+    color: #ffff;
     font-size: 24px;
     text-align: center;
 }

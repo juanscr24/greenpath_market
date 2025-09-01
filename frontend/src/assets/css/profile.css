@@ -136,22 +136,22 @@ main {
 
 /*Design pedidos*/
 .orders-container {
-    max-height: 300px; /* para que no se alargue infinito */
+    max-height: 20dvh;
     overflow-y: auto;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
     padding-right: 0.5rem;
 }
 
 /* Scrollbar bonito */
 .orders-container::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 .orders-container::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: 4px;
+    border-radius: 3px;
 }
 .orders-container::-webkit-scrollbar-thumb:hover {
     background: #555;
@@ -160,28 +160,79 @@ main {
 .order-card {
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 0.8rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .order-card:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .order-card h5 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
     color: #f8fafc;
 }
 
 .order-card p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #e2e8f0;
-    margin: 0.2rem 0;
+    margin: 0.15rem 0;
+    line-height: 1.3;
+}
+
+.order-items {
+    margin-top: 0.5rem;
+}
+
+.order-items h6 {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+    color: #cbd5e1;
+}
+
+.order-items ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.order-items li {
+    font-size: 0.75rem;
+    color: #e2e8f0;
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+}
+
+/* No orders state */
+.no-orders {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.no-orders p {
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.no-orders .btn-primary {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(225deg, #284827, #329a2e);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.no-orders .btn-primary:hover {
+    background: #329a2ed0;
 }
 
 

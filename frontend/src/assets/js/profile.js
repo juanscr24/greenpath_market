@@ -207,73 +207,61 @@ document.addEventListener('click', function(e) {
     }
 });
 
+import { getOrders } from './cart.js';
+
+// Función para generar el HTML de los pedidos
+function generateOrdersHTML() {
+    const orders = getOrders();
+
+    if (orders.length === 0) {
+        return `
+            <h4>Tus Pedidos</h4>
+            <div class="no-orders">
+                <p>Aún no has realizado ningún pedido.</p>
+                <a href="./dashboard.html" class="btn-primary">Ir a comprar</a>
+            </div>
+        `;
+    }
+
+    let ordersHTML = '<h4>Tus Pedidos</h4><div class="orders-container">';
+
+    orders.forEach(order => {
+        const orderDate = new Date(order.order_date).toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        ordersHTML += `
+            <div class="order-card">
+                <h5>Pedido #${order.id_order}</h5>
+                <p><strong>Fecha:</strong> ${orderDate}</p>
+                <p><strong>Método de pago:</strong> ${order.payment_method}</p>
+                <p><strong>Estado:</strong> ${order.status}</p>
+                <p><strong>Total:</strong> $${order.total.toLocaleString()}</p>
+                <div class="order-items">
+                    <h6>Productos:</h6>
+                    <ul>
+        `;
+
+        order.items.forEach(item => {
+            ordersHTML += `<li>${item.name_product} (x${item.quantity}) - $${(item.price * item.quantity).toLocaleString()}</li>`;
+        });
+
+        ordersHTML += `
+                    </ul>
+                </div>
+            </div>
+        `;
+    });
+
+    ordersHTML += '</div>';
+    return ordersHTML;
+}
+
 // Vistas disponibles (sin el bloque de configuración, solo contenido dinámico)
 const views = {
-    pedidos: `
-    <h4>Tus Pedidos</h4>
-    <div class="orders-container">
-        <div class="order-card">
-            <h5>Arroz Orgánico</h5>
-            <p><strong>Cantidad:</strong> 2 sacos</p>
-            <p><strong>Precio:</strong> $80.000</p>
-            <p><strong>Entregado el:</strong> 15 de Septiembre 2025</p>
-        </div>
-        <div class="order-card">
-            <h5>Café Campesino</h5>
-            <p><strong>Cantidad:</strong> 1 libra</p>
-            <p><strong>Precio:</strong> $25.000</p>
-            <p><strong>Entregado el:</strong> 16 de Septiembre 2025</p>
-        </div>
-        <div class="order-card">
-            <h5>Miel de Abeja</h5>
-            <p><strong>Cantidad:</strong> 3 frascos</p>
-            <p><strong>Precio:</strong> $60.000</p>
-            <p><strong>Entregado el:</strong> 18 de Septiembre 2025</p>
-        </div>
-        <div class="order-card">
-            <h5>Plátano Verde</h5>
-            <p><strong>Cantidad:</strong> 20 unidades</p>
-            <p><strong>Precio:</strong> $35.000</p>
-            <p><strong>Entregado el:</strong> 19 de Septiembre 2025</p>
-        </div>
-        <div class="order-card">
-            <h5>Frijol Cargamanto</h5>
-            <p><strong>Cantidad:</strong> 5 kilos</p>
-            <p><strong>Precio:</strong> $90.000</p>
-            <p><strong>Entregado el:</strong> 20 de Septiembre 2025</p>
-        </div>
-        <div class="order-card">
-            <h5>Queso Campesino</h5>
-            <p><strong>Cantidad:</strong> 2 bloques</p>
-            <p><strong>Precio:</strong> $50.000</p>
-            <p><strong>Entregado el:</strong> 21 de Septiembre 2025</p>
-        </div>
-        <div class="order-card">
-            <h5>Leche Fresca</h5>
-            <p><strong>Cantidad:</strong> 10 litros</p>
-            <p><strong>Precio:</strong> $45.000</p>
-            <p><strong>Entregado el:</strong> 22 de Septiembre 2025</p>
-        </div>
-        <div class="order-card">
-            <h5>Mazorca Dulce</h5>
-            <p><strong>Cantidad:</strong> 12 unidades</p>
-            <p><strong>Precio:</strong> $20.000</p>
-            <p><strong>Entregado el:</strong> 23 de Septiembre 2025</p>
-        </div>
-        <div class="order-card">
-            <h5>Aguacate Hass</h5>
-            <p><strong>Cantidad:</strong> 8 unidades</p>
-            <p><strong>Precio:</strong> $32.000</p>
-            <p><strong>Entregado el:</strong> 24 de Septiembre 2025</p>
-        </div>
-        <div class="order-card">
-            <h5>Papa Criolla</h5>
-            <p><strong>Cantidad:</strong> 5 kilos</p>
-            <p><strong>Precio:</strong> $28.000</p>
-            <p><strong>Entregado el:</strong> 25 de Septiembre 2025</p>
-        </div>
-    </div>`,
-
+    pedidos: "orders", // Placeholder - handled separately in the event listener
     ayuda: `
     <h4>Centro de Ayuda</h4>
     <p>¿Necesitas soporte? Contáctanos por cualquiera de nuestras redes sociales:</p>
@@ -318,29 +306,48 @@ const views = {
 };
 
 // Manejo de clicks en los botones
-document.querySelectorAll(".menu button").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const view = btn.getAttribute("data-view");
+function setupMenuEventListeners() {
+    console.log("Setting up menu event listeners...");
+    const menuButtons = document.querySelectorAll(".menu button");
+    console.log("Found menu buttons:", menuButtons.length);
 
-        if (view && views[view]) {
-            // Si es pedidos → mostramos configuración + vista
-            if (view === "pedidos") {
-                settingsSection.style.display = "block";
-                viewContainer.innerHTML = views[view];
-            } 
-            // Si es ayuda o método → ocultamos configuración
-            else if (view === "ayuda" || view === "metodo") {
-                settingsSection.style.display = "none";
-                viewContainer.innerHTML = views[view];
-            } 
-            // Logout
-            else if (view === "logout") {
-                settingsSection.style.display = "none";
-                viewContainer.innerHTML = views[view];
-                console.log("Sesión cerrada.");
+    menuButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const view = btn.getAttribute("data-view");
+            console.log("Button clicked, view:", view);
+
+            if (view && views[view]) {
+                // Si es pedidos → mostramos configuración + vista (generar dinámicamente)
+                if (view === "pedidos") {
+                    console.log("Loading orders view...");
+                    settingsSection.style.display = "block";
+                    viewContainer.innerHTML = generateOrdersHTML();
+                }
+                // Si es ayuda o método → ocultamos configuración
+                else if (view === "ayuda" || view === "metodo") {
+                    console.log("Loading", view, "view...");
+                    settingsSection.style.display = "none";
+                    viewContainer.innerHTML = views[view];
+                }
+                // Logout
+                else if (view === "logout") {
+                    console.log("Logging out...");
+                    settingsSection.style.display = "none";
+                    viewContainer.innerHTML = views[view];
+                    console.log("Sesión cerrada.");
+                }
+            } else {
+                console.log("View not found in views object:", view);
             }
-        }
+        });
     });
+}
+
+// Setup menu event listeners after DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM loaded, setting up menu listeners...");
+    setupMenuEventListeners();
 });
 
 // LogOut function (no se toca)
