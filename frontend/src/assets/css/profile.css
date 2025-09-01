@@ -5,12 +5,20 @@
 }
 
 body {
-    height: 100dvh;
+    min-height: 100dvh;
 }
 
 main {
     margin-top: 2rem;
 }
+
+.container_name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 .profile-container {
     width: 100%;
@@ -38,6 +46,10 @@ main {
     gap: 10px;
 }
 
+.sidebar h2 {
+    font-size: 1.2rem;
+}
+
 .sidebar .avatar {
     width: 120px;
     height: 120px;
@@ -45,12 +57,6 @@ main {
     margin-bottom: 1rem;
     border: 3px solid #284827;
     object-fit: cover;
-}
-
-.sidebar h2 {
-    color: #fff;
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
 }
 
 .menu {
@@ -132,6 +138,14 @@ main {
     border-radius: 12px;
     min-height: 120px;
     color: #fff;
+}
+
+.edit-btn {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: white;
+    margin-left: 10px;
 }
 
 /*Design pedidos*/
@@ -323,4 +337,95 @@ main {
     display: block;
     font-size: 0.9rem;
     margin-top: 0.3rem;
+}
+
+@media screen and (max-width: 450px) {
+    main{
+        padding: 0px 20px;
+        margin-top: 0;
+    }
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 1rem 15px 1rem 15px; /* increase horizontal padding */
+        order: 1; /* Sidebar above content */
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar .avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .menu button {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.9rem;
+        flex: 1 1 calc(50% - 0.25rem);
+        min-width: 120px;
+    }
+
+    .profile-content {
+        width: 100%;
+        padding: 1rem;
+        order: 1; /* Content above sidebar */
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .settings-item {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .view-container {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .orders-container {
+        max-height: 30dvh;
+    }
+
+    .payment-methods {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 1rem;
+    }
+
+    .payment-card {
+        width: 100px;
+        height: 80px;
+        padding: 0.8rem;
+    }
+
+    .help-links {
+        gap: 1rem;
+    }
+
+    .help-item {
+        width: 100px;
+        padding: 0.8rem;
+    }
+
+    .help-item img {
+        width: 40px;
+    }
+
+    .help-item span {
+        font-size: 0.8rem;
+    }
 }
