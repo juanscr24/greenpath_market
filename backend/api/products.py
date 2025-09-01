@@ -84,7 +84,7 @@ def get_products_by_shop_endpoint(shop_id: int, skip: int = 0, limit: int = 100,
     return products
 
 # Endpoint para obtener todos los productos con paginación (público)
-@router.get("/", response_model=list[ProductResponse])
+@router.get("/", response_model=list[ProductWithDetailsResponse])
 def get_all_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return get_products(db, skip=skip, limit=limit)
 
