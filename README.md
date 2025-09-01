@@ -77,7 +77,7 @@ greenpath_market/
 2. Create virtual environment:
    ```bash
    python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   source .venv/bin/activate  
    ```
 
 3. Install dependencies:
@@ -150,10 +150,11 @@ For questions or support, please create an issue in the repository.
 ---
 
 **GreenPath Market** - Empowering rural producers through digital innovation 🌱
+## Components Diagram
+![Components Diagram](./frontend/src/assets/img/diagrams/diagrama-componentes.svg)
 
 ## Navigation Diagram
-
-![Navigation Flow](Diagrama%20flujo%20de%20navegacion.png)
+![Navigation Diagram](./frontend/src/assets/img/diagrams/diagrama-flujo-navegacion.png)
 
 ## Links
 - [Frontend Documentation](frontend/README.md)

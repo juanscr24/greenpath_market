@@ -60,20 +60,32 @@
                 </div>
                 <i id="btnLogout" class="fa-solid fa-right-from-bracket"></i>
             </nav>
+            <!-- Hamburger Menu -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="mobile-menu">
+                <a href="./admin.html"><i class="fa-solid fa-user-tie"></i> Admin</a>
+                <a href="./my_shop.html"><i class="fa-solid fa-shop"></i> Mi Tienda</a>
+                <a href="./dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a>
+                <a href="./offers.html"><i class="fa-solid fa-tag"></i> Ofertas</a>
+                <a href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+                <div class="container-search">
+                    <input type="text" placeholder="Buscar">
+                    <div class="btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <button class="logout-btn" id="btnLogoutMobile"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </div>
         </div>
     </header>
 
     <main>
-        <section>
-            <h1>Your GreenPath Cart is Empty</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab iusto earum vitae possimus fugit optio animi, facilis alias ipsam placeat exercitationem officia, dicta eos error cupiditate laudantium magni vel veniam.</p>
-        </section>
         <section class="item_section">
             <h1>Your items</h1>
-            <div class="title_item">
-                <h3>No items saver for later</h3>
-                <h3>Buy it again</h3>
-            </div>
             <div id="render_cart">
             </div>
         </section>
@@ -82,6 +94,7 @@
     <script type="module" src="../assets/js/guard/global.guard.js"></script>
     <script type="module" src="../assets/js/guard/dashboard.guard.js"></script>
     <script type="module" src="../assets/js/logout.js"></script>
+    <script type="module" src="../assets/js/shopping_car.js"></script>
+    <script src="../assets/js/hamburger.js"></script>
 </body>
-
 </html>

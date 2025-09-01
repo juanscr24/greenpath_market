@@ -14,13 +14,14 @@ git checkout -b nameBranch
 - frontend/feature/3151/validate-data
 - frontend/feature/3155/view-management
 - frontend/feature/3157/view-pages
+- frontend/feature/3161/show-review
 - frontend/feature/3162/profile-view
+- frontend/feature/3163/car_shopping
 - backend/feature/3167/navbar-funcionality
 - backend/feature/3170/user-crud
+- frontend/feature/3174/views_javascript
 - backend/feature/3439/payment-and-automation
 - backend/feature/3432/connecting-database
-- frontend/feature/3161/show-review
-- frontend/feature/3174/views_javascript
 
 ### Ejemplo de commit 
 

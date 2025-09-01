@@ -1,6 +1,7 @@
 
 import axios from "./auth-interceptor.js";
 import { endpointSearch } from "./main";
+import { addToCart } from "./cart.js";
 
 console.log('Módulo de búsqueda cargado correctamente');
 
@@ -101,7 +102,8 @@ function mostrarResultados(data) {
         // Botón de agregar al carrito (idéntico al de las tarjetas existentes)
         const btn = document.createElement('a');
         btn.href = '#';
-        btn.className = 'swipe-btn';
+        btn.className = 'swipe-btn add-to-cart-btn';
+        btn.setAttribute('data-product-id', producto.id_product);
 
         const btnText = document.createElement('span');
         btnText.textContent = 'Agrega al carrito';
@@ -133,6 +135,79 @@ function mostrarResultados(data) {
     });
 
     resultadosDiv.appendChild(cardSection);
+
+    // Agregar event listeners a los botones de agregar al carrito
+    setupAddToCartListeners(data);
+}
+
+// Función para configurar los event listeners de agregar al carrito
+function setupAddToCartListeners(products) {
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productId = parseInt(btn.getAttribute('data-product-id'));
+            const product = products.find(p => p.id_product === productId);
+
+            if (product) {
+                addToCart(product);
+                // Mostrar notificación amigable sin redirigir
+                showNotification(`Producto "${product.name_product}" agregado al carrito`, 'success');
+            }
+        });
+    });
+}
+
+// Función para mostrar notificaciones
+function showNotification(message, type = 'info') {
+    // Crear elemento de notificación
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+
+    // Estilos básicos para la notificación
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#4caf50' : '#2196f3'};
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 1000;
+        font-weight: 500;
+        animation: slideIn 0.3s ease-out;
+    `;
+
+    // Agregar al DOM
+    document.body.appendChild(notification);
+
+    // Remover después de 3 segundos
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-in';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Agregar estilos de animación CSS si no existen
+if (!document.querySelector('#notification-styles')) {
+    const style = document.createElement('style');
+    style.id = 'notification-styles';
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
 }
 
 // Event listeners para la búsqueda

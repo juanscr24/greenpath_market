@@ -5,7 +5,7 @@ main {
 #shopContainer {
     display: flex;
     flex-direction: column;
-    gap:  5px;
+    gap: 5px;
     justify-content: center;
     align-items: center;
     width: 350px;
@@ -15,7 +15,7 @@ main {
 }
 
 #shopFormContainer {
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,7 +78,8 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: white;
 }
-#show-form-btn{
+
+#show-form-btn {
     padding: 10px;
     border-radius: 10px;
     outline: none;
@@ -148,4 +149,10 @@ main {
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     margin: 20px 0px;
+}
+
+@media screen and (max-width: 450px) {
+    .card-section {
+        grid-template-columns: 1fr;
+    }
 }
