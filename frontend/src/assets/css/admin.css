@@ -5,7 +5,7 @@ main {
     width: 80%;
 }
 
-p{
+p {
     text-align: center;
 }
 
@@ -157,4 +157,10 @@ p{
 
 .cancel-btn:hover {
     background-color: #5a6268;
+}
+
+@media screen and (max-width: 450px) {
+    .shops-container {
+        grid-template-columns: 1fr;
+    }
 }

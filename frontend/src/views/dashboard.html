@@ -51,13 +51,34 @@
                 </div>
                 <i id="btnLogout" class="fa-solid fa-right-from-bracket"></i>
             </nav>
+            <!-- Hamburger Menu -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="mobile-menu">
+                <a href="./admin.html"><i class="fa-solid fa-user-tie"></i> Admin</a>
+                <a href="./my_shop.html"><i class="fa-solid fa-shop"></i> Mi Tienda</a>
+                <a href="./shopping_car.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+                <a href="./offers.html"><i class="fa-solid fa-tag"></i> Ofertas</a>
+                <a href="./profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+                <div class="container-search">
+                    <input id="searchInputMobile" type="text" placeholder="Buscar">
+                    <div class="btn" onclick="window.buscar && window.buscar()">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <button class="logout-btn" id="btnLogoutMobile"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </div>
         </div>
     </header>
 
     <main>
         <div id="resultados" class="search-results"></div>
         <section id="best-section">
-
+            <img id="img-web" src="../assets/img/slide-coffe.jpg" alt="">
+            <img id="img-mobile" src="../assets/img/slide-mobile.png" alt="">
         </section>
         <h2>CATEGORIAS</h2>
         <section id="category-section" class="category">
@@ -108,6 +129,7 @@
     <script type="module" src="../assets/js/guard/dashboard.guard.js"></script>
     <script type="module" src="../assets/js/search.js"></script>
     <script type="module" src="../assets/js/logout.js"></script>
+    <script src="../assets/js/hamburger.js"></script>
 
 </body>
 
