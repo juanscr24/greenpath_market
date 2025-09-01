@@ -150,9 +150,10 @@ For questions or support, please create an issue in the repository.
 ---
 
 **GreenPath Market** - Empowering rural producers through digital innovation 🌱
+## Components Diagram
+![alt text](<diagrama de componentes.svg>)
 
 ## Navigation Diagram
-
 ![Navigation Flow](Diagrama%20flujo%20de%20navegacion.png)
 
 ## Links

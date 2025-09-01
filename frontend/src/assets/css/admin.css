@@ -1,17 +1,31 @@
 /* admin.css - Styles for admin.html */
 
+main {
+    color: white;
+    width: 80%;
+}
+
+p{
+    text-align: center;
+}
+
 .shops-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
-    padding: 20px;
+    padding: 20px 0px;
 }
 
 .shop-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
-    width: 300px;
+    gap: 10px;
+    width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fff;
 }
@@ -20,8 +34,7 @@
     width: 160px;
     height: 160px;
     object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    border-radius: 100%;
 }
 
 .shop-card h3 {

@@ -44,6 +44,7 @@ main h2 {
 }
 
 .category-item {
+    cursor: pointer;
     position: relative;
     display: flex;
     justify-content: center;
@@ -92,6 +93,7 @@ main h2 {
 }
 
 /* Estilos para resultados de búsqueda */
+
 .search-results {
     border-radius: 10px;
 
@@ -123,14 +125,14 @@ main h2 {
     margin: 0;
     padding: 10px;
     text-align: center;
-    color: #6c757d;
+    color: #ffff;
     font-style: italic;
 }
 
 /* Estilos para resultados de búsqueda */
 .search-results-title {
     margin-bottom: 20px;
-    color: #333;
+    color: #ffff;
     font-size: 24px;
     text-align: center;
 }

@@ -62,7 +62,7 @@
         </div>
     </header>
     <main>
-        <h1>ADMIN</h1>
+        <h2>ADMIN</h2>
         <div id="shopsContainer" class="shops-container">
             <!-- Shops will be loaded here -->
         </div>
@@ -72,7 +72,7 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Editar Tienda</h2>
-                <form id="editForm">
+                <form id="editForm" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="editShopName">Nombre de la tienda:</label>
                         <input type="text" id="editShopName" name="shop_name" required>
@@ -84,6 +84,17 @@
                     <div class="form-group">
                         <label for="editAddress">Dirección:</label>
                         <input type="text" id="editAddress" name="shop_address">
+                    </div>
+                    <div class="form-group">
+                        <label>Logo actual:</label>
+                        <div id="currentLogoContainer">
+                            <img id="currentLogo" src="" alt="Logo actual" style="max-width: 100px; max-height: 100px; display: none;">
+                            <p id="noLogoText">No hay logo</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editLogo">Cambiar logo (opcional):</label>
+                        <input type="file" id="editLogo" name="logo" accept="image/*">
                     </div>
                     <button type="submit" class="save-btn">Guardar Cambios</button>
                     <button type="button" class="cancel-btn">Cancelar</button>

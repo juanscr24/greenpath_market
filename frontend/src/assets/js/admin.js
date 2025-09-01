@@ -1,6 +1,8 @@
 // admin.js - JavaScript for admin.html to manage shops
 
-import { endpointShops, endpointDeleteShop, endpointUpdateShop } from './main.js';
+import { endpointShops, endpointDeleteShop, endpointUpdateShop, endpointUpdateShopWithImage } from './main.js';
+
+let shopsData = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     loadShops();
@@ -56,6 +58,7 @@ async function loadShops() {
         });
         if (!response.ok) throw new Error('Error fetching shops');
         const shops = await response.json();
+        shopsData = shops;
         displayShops(shops);
     } catch (error) {
         console.error('Failed to load shops:', error);
@@ -77,8 +80,10 @@ function displayShops(shops) {
             <h3>${shop.shop_name}</h3>
             <p>${shop.description}</p>
             <p><strong>Address:</strong> ${shop.shop_address || 'N/A'}</p>
+            <div>
             <button class="edit-btn" data-id="${shop.id_shop}">Editar</button>
             <button class="delete-btn" data-id="${shop.id_shop}">Borrar</button>
+            </div>
         `;
         container.appendChild(shopDiv);
     });
@@ -134,6 +139,18 @@ function handleEditShop(event) {
     document.getElementById('editDescription').value = shop.description || '';
     document.getElementById('editAddress').value = shop.shop_address || '';
 
+    // Show current logo
+    const currentLogoImg = document.getElementById('currentLogo');
+    const noLogoText = document.getElementById('noLogoText');
+    if (shop.logo_url) {
+        currentLogoImg.src = shop.logo_url;
+        currentLogoImg.style.display = 'block';
+        noLogoText.style.display = 'none';
+    } else {
+        currentLogoImg.style.display = 'none';
+        noLogoText.style.display = 'block';
+    }
+
     // Store the shop ID for the form submission
     document.getElementById('editForm').setAttribute('data-shop-id', shopId);
 
@@ -142,22 +159,8 @@ function handleEditShop(event) {
 }
 
 function getCurrentShopData(shopId) {
-    // This is a simple way to get the current shop data
-    // In a real app, you might want to store the shops data globally
-    const shopCards = document.querySelectorAll('.shop-card');
-    for (let card of shopCards) {
-        const editBtn = card.querySelector('.edit-btn');
-        if (editBtn && editBtn.getAttribute('data-id') === shopId) {
-            const h3 = card.querySelector('h3');
-            const pTags = card.querySelectorAll('p');
-            return {
-                shop_name: h3 ? h3.textContent : '',
-                description: pTags[0] ? pTags[0].textContent : '',
-                shop_address: pTags[1] ? pTags[1].textContent.replace('Address: ', '') : ''
-            };
-        }
-    }
-    return null;
+    const shop = shopsData.find(s => s.id_shop == shopId);
+    return shop || null;
 }
 
 async function handleFormSubmit(event) {
@@ -167,18 +170,32 @@ async function handleFormSubmit(event) {
     const shopId = form.getAttribute('data-shop-id');
     if (!shopId) return;
 
+    const shop = getCurrentShopData(shopId);
+    if (!shop) return;
+
     const formData = new FormData(form);
-    const data = {
-        shop_name: formData.get('shop_name') || document.getElementById('editShopName').value,
-        description: formData.get('description') || document.getElementById('editDescription').value,
-        shop_address: formData.get('shop_address') || document.getElementById('editAddress').value
-    };
+
+    // Append id_user and is_active
+    formData.append('id_user', shop.id_user);
+    formData.append('is_active', shop.is_active);
 
     // Close the modal
     document.getElementById('editModal').style.display = 'none';
 
-    // Update the shop
-    await updateShop(shopId, data);
+    // Check if a new logo file is selected
+    const logoFile = formData.get('logo');
+    if (logoFile && logoFile.size > 0) {
+        // Use multipart/form-data to upload with image
+        await updateShopWithImage(shopId, formData);
+    } else {
+        // Use JSON update without image
+        const data = {
+            shop_name: formData.get('shop_name') || document.getElementById('editShopName').value,
+            description: formData.get('description') || document.getElementById('editDescription').value,
+            shop_address: formData.get('shop_address') || document.getElementById('editAddress').value
+        };
+        await updateShop(shopId, data);
+    }
 }
 
 async function updateShop(shopId, data) {
@@ -203,5 +220,38 @@ async function updateShop(shopId, data) {
     } catch (error) {
         console.error('Failed to update shop:', error);
         alert('Error actualizando la tienda: ' + (error.message || error));
+    }
+}
+
+async function updateShopWithImage(shopId, formData) {
+    try {
+        const userData = localStorage.getItem("user");
+        let token = "";
+        if (userData) {
+            const user = JSON.parse(userData);
+            token = user.access_token || "";
+        }
+        const response = await fetch(endpointUpdateShopWithImage(shopId), {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            body: formData,
+        });
+        if (!response.ok) {
+            let errorMessage = 'Error actualizando la tienda con imagen';
+            try {
+                const errorData = await response.json();
+                errorMessage = errorData.detail || errorMessage;
+            } catch (jsonError) {
+                errorMessage = `Error ${response.status}: ${response.statusText}`;
+            }
+            throw new Error(errorMessage);
+        }
+        alert('Tienda actualizada exitosamente con imagen');
+        loadShops();
+    } catch (error) {
+        console.error('Failed to update shop with image:', error);
+        alert('Error actualizando la tienda con imagen: ' + (error.message || error));
     }
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="578px" preserveAspectRatio="none" style="width:421px;height:578px;background:#FFFFFF;" version="1.1" viewBox="0 0 421 578" width="421px" zoomAndPan="magnify"><defs/><g><!--MD5=[7b5b5a8a520517ede392eb7a0e9d0539]
+entity navegador--><g id="elem_navegador"><rect fill="#F1F1F1" height="52.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="94" x="214.5" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="224.5" y="29.9951">«browser»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="224.5" y="46.292">Navegador</text></g><!--MD5=[b1e3d2dcb3697de9e6328d1cb436cbc4]
+entity frontend--><g id="elem_frontend"><rect fill="#F1F1F1" height="52.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="155" x="184" y="137"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="194" y="159.9951">«módulo»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135" x="194" y="176.292">Frontend (Vite + JS)</text></g><!--MD5=[4e8ecd94af36cce41665c9f079adf9fd]
+entity backend--><g id="elem_backend"><rect fill="#F1F1F1" height="52.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93" x="215" y="267"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="225" y="289.9951">«servidor»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="225" y="306.292">FastAPI</text></g><!--MD5=[9110e9e3a2667a36629fdbf097313b99]
+entity crud--><g id="elem_crud"><rect fill="#F1F1F1" height="52.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="90" x="141.5" y="401.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="151.5" y="424.4951">«módulo»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="151.5" y="440.792">API CRUD</text></g><!--MD5=[99a66fbd647da800cdf7f0b19105b8ab]
+entity usuarios--><g id="elem_usuarios"><rect fill="#F1F1F1" height="52.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="159" x="7" y="520"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="17" y="542.9951">«módulo»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="17" y="559.292">Gestión de usuarios</text></g><!--MD5=[66c44a3d4e1ea455b14fccc785bc5c38]
+entity productos--><g id="elem_productos"><rect fill="#F1F1F1" height="52.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="171" x="201" y="520"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="211" y="542.9951">«módulo»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="211" y="559.292">Gestión de productos</text></g><!--MD5=[7468467f3b6b392f1d176d828c753b77]
+entity db--><g id="elem_db"><path d="M267,407 C267,397 335.5,397 335.5,397 C335.5,397 404,397 404,407 L404,448.5938 C404,458.5938 335.5,458.5938 335.5,458.5938 C335.5,458.5938 267,458.5938 267,448.5938 L267,407 " fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;"/><path d="M267,407 C267,417 335.5,417 335.5,417 C335.5,417 404,417 404,407 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="277" y="433.9951">«base de datos»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="277" y="450.292">MySQL</text></g><!--MD5=[7811b99740bac1a36ba76a7b28c09e83]
+link navegador to frontend--><g id="link_navegador_frontend"><path d="M261.5,60.1 C261.5,80.76 261.5,109.91 261.5,131.83 " fill="none" id="navegador-to-frontend" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="261.5,136.95,265.5,127.95,261.5,131.95,257.5,127.95,261.5,136.95" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="77" x="262.5" y="103.0669">HTTP/HTTPS</text></g><!--MD5=[bd606b2753a479dfaff996c7926d0075]
+link frontend to backend--><g id="link_frontend_backend"><path d="M261.5,190.1 C261.5,210.76 261.5,239.91 261.5,261.83 " fill="none" id="frontend-to-backend" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="261.5,266.95,265.5,257.95,261.5,261.95,257.5,257.95,261.5,266.95" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="262.5" y="233.0669">REST API</text></g><!--MD5=[e5036defcbae1ef2f5cc6abe927121cc]
+link backend to crud--><g id="link_backend_crud"><path d="M247.04,320.05 C234.67,341.9 216.84,373.41 203.73,396.56 " fill="none" id="backend-to-crud" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="201.17,401.08,209.0751,395.2055,203.6261,396.7248,202.1067,391.2758,201.17,401.08" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[2e6b4388af239d3bb437cbcddfbf2563]
+link crud to usuarios--><g id="link_crud_usuarios"><path d="M164.55,454.57 C149.05,472.62 128.23,496.88 112,515.8 " fill="none" id="crud-to-usuarios" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="108.39,519.99,117.2841,515.7599,111.644,516.1937,111.2101,510.5535,108.39,519.99" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[89f021a259e00091492d7a85ad072dc1]
+link crud to productos--><g id="link_crud_productos"><path d="M208.45,454.57 C223.95,472.62 244.77,496.88 261,515.8 " fill="none" id="crud-to-productos" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="264.61,519.99,261.7899,510.5535,261.356,516.1937,255.7159,515.7599,264.61,519.99" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[164906b3333609339db5c9ea3f301200]
+link backend to db--><g id="link_backend_db"><path d="M275.77,320.05 C287.27,340.63 303.54,369.78 316.2,392.45 " fill="none" id="backend-to-db" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="318.69,396.89,317.7777,387.0835,316.2448,392.5287,310.7996,390.9958,318.69,396.89" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="26" x="302.5" y="363.0669">SQL</text></g><!--MD5=[a3282793d656b2353f9e830a6f26f8c8]
+@startuml
+skinparam componentStyle rectangle
+skinparam fontName Arial
+skinparam componentFontColor black
+skinparam rectangleFontColor black
+skinparam shadowing false
+
+' Componentes principales
+component "<<browser>>\nNavegador" as navegador
+component "<<módulo>>\nFrontend (Vite + JS)" as frontend
+component "<<servidor>>\nFastAPI" as backend
+component "<<módulo>>\nAPI CRUD" as crud
+component "<<módulo>>\nGestión de usuarios" as usuarios
+component "<<módulo>>\nGestión de productos" as productos
+database "<<base de datos>>\nMySQL" as db
+
+' Relaciones
+navegador - -> frontend : HTTP/HTTPS
+frontend - -> backend : REST API
+backend - -> crud
+crud - -> usuarios
+crud - -> productos
+backend - -> db : SQL
+@enduml
+
+@startuml
+skinparam componentStyle rectangle
+skinparam fontName Arial
+skinparam componentFontColor black
+skinparam rectangleFontColor black
+skinparam shadowing false
+
+component "<<browser>>\nNavegador" as navegador
+component "<<módulo>>\nFrontend (Vite + JS)" as frontend
+component "<<servidor>>\nFastAPI" as backend
+component "<<módulo>>\nAPI CRUD" as crud
+component "<<módulo>>\nGestión de usuarios" as usuarios
+component "<<módulo>>\nGestión de productos" as productos
+database "<<base de datos>>\nMySQL" as db
+
+navegador - -> frontend : HTTP/HTTPS
+frontend - -> backend : REST API
+backend - -> crud
+crud - -> usuarios
+crud - -> productos
+backend - -> db : SQL
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 17:01:30 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
