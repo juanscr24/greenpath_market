@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Título de la página -->
-    <title>GreenPath</title>
+    <title>GreenPath - auth</title>
     <!-- Descripción SEO -->
     <meta name="description"
         content="GreenPath Market is an innovative solution aimed at rural-area merchants. Its main goal is to strengthen the local economy by providing a digital space where producers can sell their goods directly, without intermediaries. All that's required is to create a seller account, through which they can list and offer their products on the platform.">
@@ -27,12 +27,15 @@
     <link rel="shortcut icon"
         href="https://res.cloudinary.com/dd7vy0y6n/image/upload/q_auto,f_auto/v1755730260/1000251053_jyonaf.png"
         type="image/x-icon">
+    <!-- link fontawesome -->
+    <script src="https://kit.fontawesome.com/0b06eaa0c3.js" crossorigin="anonymous"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="./src/assets/css/index.css">
 </head>
 
 <body>
-
+    <!-- Fondo y overlay -->
+    <div class="bg"></div>
     <div class="overlay"></div>
 
     <header>
@@ -42,33 +45,99 @@
         </div>
         <nav>
             <ul>
-                <li><a href="/src/views/test_product_upload.html">ABOUT US</a></li>
-                <li><a href="#">CONTACT</a></li>
+                <li><a href="#about">NOSOTROS</a></li>
+                <li><a href="#contac">CONTACTANOS</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        
+        <!-- HERO -->
+        <section class="hero fade-in">
+            <div class="texts">
+                <div class="text-description">
+                    <h4><span>"</span>Únete hoy y apoya a los campesinos locales. Productos frescos, comercio justo y
+                        conexión directa.</h4>
+                </div>
+                <div class="text-eslogan">
+                    <h3>Del campo a tus manos<span>„</span></h3>
+                </div>
+                <div class="button-container">
+                    <a href="./src/views/auth.html"><button id="btnStart">COMENZAR</button></a>
+                </div>
+            </div>
+        </section>
 
-        <div class="texts">
-            <div class="text-description">
-                <h4><span>"</span>Join today and support local farmers.
-                    Fresh products, fair trade, and direct connection.</h4>
+        <!-- SOBRE NOSOTROS -->
+        <section class="about fade-in">
+            <div id="about"></div>
+            <h2>Sobre Nosotros</h2>
+            <p class="paragraph">En GreenPath Market creemos en un camino más justo y sostenible para la agricultura.
+                Somos una plataforma digital que conecta directamente a campesinos y productores rurales con
+                consumidores y empresas, eliminando los intermediarios y asegurando precios justos para quienes trabajan
+                la tierra.
+                <br>
+                Nuestra misión es impulsar el consumo responsable y promover productos frescos, naturales y sostenibles,
+                mientras apoyamos a las comunidades rurales y fortalecemos la economía local.
+            </p>
+            <div class="creators">
+                <div class="creator-card">
+                    <h3>Juan Cardona</h3>
+                    <p class="role">Develop Frontend</p>
+                </div>
+                <div class="creator-card">
+                    <h3>Forlán Ordoñez</h3>
+                    <p class="role">Frontend Design</p>
+                </div>
+                <div class="creator-card">
+                    <h3>Daniel Rojas</h3>
+                    <p class="role">Backend</p>
+                </div>
+                <div class="creator-card">
+                    <h3>Camilo Parra</h3>
+                    <p class="role">Backend</p>
+                </div>
+                <div class="creator-card">
+                    <h3>Wilson Castillo</h3>
+                    <p class="role">Base de Datos</p>
+                </div>
             </div>
-            <div class="text-eslogan">
-                <h3>From farm to your hands<span>„</span></h3>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="contact fade-in">
+            <div id="contac"></div>
+            <div class="contact-container">
+                <!-- Formulario -->
+                <div class="contact-form">
+                    <h2>Contáctanos</h2>
+                    <p>¿Tienes dudas o quieres apoyarnos? Escríbenos aquí:</p>
+                    <form>
+                        <input type="text" placeholder="Tu nombre" required>
+                        <input type="email" placeholder="Tu correo" required>
+                        <textarea placeholder="Escribe tu mensaje..." required></textarea>
+                        <button type="submit" class="btn-submit">Enviar</button>
+                    </form>
+
+                    <!-- Redes sociales -->
+                    <div class="socials">
+                        <h4>Síguenos:</h4>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="button-container">
-                <a href="./src/views/auth.html"><button id="btnStart">START</button></a>
-            </div>
-        </div>
+        </section>
+
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </main>
 
-
-
-    <script type="module" src="src/assets/js/guard/hero.guard.js"></script>
     <script type="module" src="src/assets/js/main.js"></script>
+    <script type="module" src="src/assets/js/main.js"></script>
+    <!-- scrip nuevo del hero juan -->
+    <script type="module" src="src/assets/js/hero_section.js"></script>
 </body>
+
 
 </html>
