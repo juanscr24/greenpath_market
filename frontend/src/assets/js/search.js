@@ -97,7 +97,7 @@ function mostrarResultados(data) {
 
         // Tienda (usando el mismo formato que "vendido por: Carulla")
         const tienda = document.createElement('p');
-        tienda.innerHTML = `vendido por: <strong>${producto.shop_name}</strong>`;
+        tienda.innerHTML = `Sold by: <strong>${producto.shop_name}</strong>`;
 
         // Botón de agregar al carrito (idéntico al de las tarjetas existentes)
         const btn = document.createElement('a');
@@ -106,7 +106,7 @@ function mostrarResultados(data) {
         btn.setAttribute('data-product-id', producto.id_product);
 
         const btnText = document.createElement('span');
-        btnText.textContent = 'Agrega al carrito';
+        btnText.textContent = 'Add to Cart';
 
         const arrows = document.createElement('div');
         arrows.className = 'arrows';

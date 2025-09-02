@@ -14,6 +14,7 @@
     justify-items: center;
     max-width: 80%;
     margin: 0 auto;
+    gap: 10px;
 }
 
 .footer-section {

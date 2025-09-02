@@ -21,10 +21,10 @@ function createCard(product) {
                 <h3>${product.stock} L</h3> <!-- Mostrar el stock (por ejemplo, en litros) -->
                 <h3>$${product.price.toLocaleString()}</h3> <!-- Mostrar el precio -->
             </div>
-            <p>vendido por: <strong>${product.shop_name}</strong></p>
+            <p>Sold by: <strong>${product.shop_name}</strong></p>
             </div>
                 <a href="#" class="swipe-btn add-to-cart-btn" data-product-id="${product.id_product}">
-                <span>Agrega al carrito</span>
+                <span>Add to Cart</span>
             <div class="arrows"><span>›</span><span>›</span></div>
         </a>
         </article>
