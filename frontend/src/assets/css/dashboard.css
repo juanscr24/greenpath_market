@@ -175,6 +175,6 @@ main h2 {
     }
 
     #card-section {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 }
