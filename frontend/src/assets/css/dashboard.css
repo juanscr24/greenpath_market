@@ -91,11 +91,12 @@ main h2 {
 }
 
 .category-label {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
     color: white;
     letter-spacing: 2px;
     white-space: nowrap;
+    text-align: center;
 }
 
 /* Estilos para resultados de búsqueda */
@@ -167,7 +168,10 @@ main h2 {
     }
 
     #category-section {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+    .category-label {
+        font-size: 14px;
     }
 
     #card-section {
