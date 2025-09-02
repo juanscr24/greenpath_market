@@ -16,7 +16,7 @@ function createCard(product) {
             <img src="${product.image_url}" alt="${product.name_product}" class="card-img">
             <div class="overlay"></div>
             <div class="content">
-                <h2>${product.shop_name}</h2>
+                <h2>${product.name_product}</h2>
                 <div class="price">
                 <h3>${product.stock} L</h3> <!-- Mostrar el stock (por ejemplo, en litros) -->
                 <h3>$${product.price.toLocaleString()}</h3> <!-- Mostrar el precio -->
