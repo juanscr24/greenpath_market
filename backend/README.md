@@ -213,11 +213,12 @@ python3 -m venv .venv
 
 2. Run virtual envirooment
 ```bash
+windows
+source .venv/Scripts/activate
+
 ubuntu
 source .venv/bin/activate
 
-windows
-source .venv/Scripts/activate
 ```
 
 3. Install dependencies:

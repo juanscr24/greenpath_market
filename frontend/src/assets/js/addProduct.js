@@ -22,7 +22,7 @@ function renderForm(product = {}) {
       <option value="3" ${product.id_category == 3 ? 'selected' : ''}>Lácteos y derivados</option>
       <option value="4" ${product.id_category == 4 ? 'selected' : ''}>Res, pollo y pescado</option>
     </select>
-    <button id="submitBtn">${editingId ? 'Actualizar' : 'Agregar'}</button>
+    <button id="submitBtn">${editingId ? 'Update' : 'Add'}</button>
     <button id="cancelBtn" style="display: ${editingId ? 'inline' : 'none'};">Cancelar</button>
   `;
 
@@ -71,7 +71,7 @@ function renderList(products) {
           <h3>${p.stock} L</h3>
           <h3>$${p.price.toLocaleString()}</h3>
         </div>
-        <p>vendido por: <strong>${window.currentShopName || 'Mi Tienda'}</strong></p>
+        <p>Sold by: <strong>${window.currentShopName || 'Mi Tienda'}</strong></p>
       </div>
       <div class="buttons">
         <button data-id="${p.id_product}" class="editBtn">Editar</button>
