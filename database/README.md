@@ -178,5 +178,5 @@ DATABASE_URL = "mysql://username:password@localhost/green_path"
 - Update schema scripts when making changes to the database structure
 
 - [General Documentation](../README.md)
-- [Frontend Documentation](frontend/README.md)
-- [Backend Documentation](backend/README.md)
+- [Frontend Documentation](../frontend/README.md)
+- [Backend Documentation](../backend/README.md)
