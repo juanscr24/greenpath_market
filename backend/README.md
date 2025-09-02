@@ -284,5 +284,5 @@ All endpoints include proper error handling and validation using Pydantic schema
 - Search functionality
 
 - [General Documentation](../README.md)
-- [Frontend Documentation](frontend/README.md)
-- [Database Documentation](database/README.md)
+- [Frontend Documentation](../frontend/README.md)
+- [Database Documentation](../database/README.md)

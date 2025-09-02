@@ -230,5 +230,5 @@ For support or questions, please create an issue in the GitHub repository or con
 
 
 - [General Documentation](../README.md)
-- [Backend Documentation](backend/README.md)
-- [Database Documentation](database/README.md)
+- [Backend Documentation](../backend/README.md)
+- [Database Documentation](../database/README.md)
