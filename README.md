@@ -143,12 +143,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Camilo Parra** - Development
 - **Wilson Delgado** - Development
 
-## Support
-
-For questions or support, please create an issue in the repository.
-
----
-
 **GreenPath Market** - Empowering rural producers through digital innovation 🌱
 ## Components Diagram
 ![Components Diagram](./frontend/src/assets/img/diagrams/diagrama-componentes.svg)
